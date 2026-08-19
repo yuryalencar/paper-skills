@@ -77,6 +77,36 @@
       "tags": [
         "research"
       ]
+    },
+    {
+      "name": "create-results-discussion",
+      "source": "./skills/create-results-discussion",
+      "description": "Write a results and discussion section in LaTeX, one four-class block per figure, with topic sentences and self-contained captions.",
+      "version": "0.1.0",
+      "category": "research",
+      "tags": [
+        "research"
+      ]
+    },
+    {
+      "name": "review-results-discussion",
+      "source": "./skills/review-results-discussion",
+      "description": "Review a results and discussion section: matrix of result blocks against the four information classes, plus topic sentences, captions and style.",
+      "version": "0.1.0",
+      "category": "research",
+      "tags": [
+        "research"
+      ]
+    },
+    {
+      "name": "update-results-discussion",
+      "source": "./skills/update-results-discussion",
+      "description": "Integrate new or revised data, apply reviewer suggestions, or resume a stalled results and discussion draft.",
+      "version": "0.1.0",
+      "category": "research",
+      "tags": [
+        "research"
+      ]
     }
   ]
 }
