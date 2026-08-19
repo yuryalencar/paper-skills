@@ -20,6 +20,7 @@ It writes nothing itself. Its value is orientation.
 
 | # | Step | Skill | Precondition |
 | :-- | :--- | :--- | :--- |
+| -1 | Set up the project: template, repo, Overleaf | [setup-paper-project](setup-paper-project.md) | A target venue is chosen |
 | 0 | Select and order the figures | yours | The research is finished |
 | 1 | Results and discussion | [create-results-discussion](create-results-discussion.md) | Figures selected and ordered |
 | 2 | Conclusions | [create-conclusions](create-conclusions.md) | Results written |
@@ -67,6 +68,8 @@ model from.
   just add a hop.
 - **The research is not finished and the figures are not chosen.** It will tell you that plainly rather
   than starting an interview.
+- **There is no project yet.** Use [setup-paper-project](setup-paper-project.md) for step -1: the venue
+  template, the repository, and Overleaf.
 
 ## Install
 

@@ -111,7 +111,8 @@ work resumes where it stopped instead of restarting. Every skill reads it;
 ```
 my-paper/
 ├── main.tex
-├── refs.bib
+├── src/
+├── references.bib
 └── paper-out/
     ├── STATE.md            position, next step, key decisions
     ├── decisions.md        append-only log, each entry dated
