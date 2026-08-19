@@ -23,6 +23,9 @@ The table is an index; the docs are where the detail lives.
 | `/create-results-discussion` | Writes the results and discussion, one four-class block per figure, captions included | `research` | [docs](docs/create-results-discussion.md) |
 | `/review-results-discussion` | Matrix of your result blocks against the four information classes, so the gaps are visible at a glance | `research` | [docs](docs/review-results-discussion.md) |
 | `/update-results-discussion` | Integrates new or revised data, applies suggestions, or resumes a stalled draft | `research` | [docs](docs/update-results-discussion.md) |
+| `/create-conclusions` | Writes the conclusions on the inverse funnel, opening on your result and widening to what the field gains | `research` | [docs](docs/create-conclusions.md) |
+| `/review-conclusions` | Checks the three movements, traces the funnel in reverse, catches text copied from the results | `research` | [docs](docs/review-conclusions.md) |
+| `/update-conclusions` | Checks each conclusion still follows from the evidence, applies suggestions, or finishes a draft | `research` | [docs](docs/update-conclusions.md) |
 | `paper-writing-style` | The style rulebook the paper skills lean on. Claude-only, no `/` command | `research` | [docs](docs/paper-writing-style.md) |
 
 ### Browse by tag
@@ -33,7 +36,7 @@ under both. Install every skill carrying a tag with `./install.sh --tag <tag>`.
 | Tag | Covers | Skills |
 | :------------ | :--------------------------------------------------- | :----- |
 | `programming` | Code, refactoring, review, git, code documentation | n/a |
-| `research` | Papers, literature review, methodology, academic writing | `create-abstract`, `review-abstract`, `update-abstract`, `create-introduction`, `review-introduction`, `update-introduction`, `create-results-discussion`, `review-results-discussion`, `update-results-discussion`, `paper-writing-style` |
+| `research` | Papers, literature review, methodology, academic writing | `create-abstract`, `review-abstract`, `update-abstract`, `create-introduction`, `review-introduction`, `update-introduction`, `create-results-discussion`, `review-results-discussion`, `update-results-discussion`, `create-conclusions`, `review-conclusions`, `update-conclusions`, `paper-writing-style` |
 | `workflow` | Personal process and automation not tied to a domain | n/a |
 
 ### Scientific paper writing
@@ -52,7 +55,7 @@ install that alongside whichever you use.
 | Abstract | ✅ | ✅ | ✅ |
 | Introduction | ✅ | ✅ | ✅ |
 | Results and Discussion | ✅ | ✅ | ✅ |
-| Conclusions | planned | planned | planned |
+| Conclusions | ✅ | ✅ | ✅ |
 | Title | planned | planned | planned |
 | Cover letter | planned | planned | planned |
 | Response to reviewers | planned | planned | planned |

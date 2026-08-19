@@ -107,6 +107,36 @@
       "tags": [
         "research"
       ]
+    },
+    {
+      "name": "create-conclusions",
+      "source": "./skills/create-conclusions",
+      "description": "Write a conclusions section in LaTeX on the inverse funnel, opening on the principal result and widening to what the field gains.",
+      "version": "0.1.0",
+      "category": "research",
+      "tags": [
+        "research"
+      ]
+    },
+    {
+      "name": "review-conclusions",
+      "source": "./skills/review-conclusions",
+      "description": "Review a conclusions section: three movements, reverse funnel trace, text copied from the results, consistency across the paper.",
+      "version": "0.1.0",
+      "category": "research",
+      "tags": [
+        "research"
+      ]
+    },
+    {
+      "name": "update-conclusions",
+      "source": "./skills/update-conclusions",
+      "description": "Check each conclusion still follows from the evidence, apply suggested changes, or finish an unfinished section.",
+      "version": "0.1.0",
+      "category": "research",
+      "tags": [
+        "research"
+      ]
     }
   ]
 }
