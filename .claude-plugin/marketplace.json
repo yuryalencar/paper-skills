@@ -137,6 +137,36 @@
       "tags": [
         "research"
       ]
+    },
+    {
+      "name": "create-title",
+      "source": "./skills/create-title",
+      "description": "Produce a spread of paper title options, favouring titles that state the principal finding rather than name the topic.",
+      "version": "0.1.0",
+      "category": "research",
+      "tags": [
+        "research"
+      ]
+    },
+    {
+      "name": "review-title",
+      "source": "./skills/review-title",
+      "description": "Review a paper title: descriptive versus declarative, crutch phrases, length, keywords, abbreviations, overclaiming.",
+      "version": "0.1.0",
+      "category": "research",
+      "tags": [
+        "research"
+      ]
+    },
+    {
+      "name": "update-title",
+      "source": "./skills/update-title",
+      "description": "Catch a title that no longer matches the paper, apply an editor's request, or replace a working title.",
+      "version": "0.1.0",
+      "category": "research",
+      "tags": [
+        "research"
+      ]
     }
   ]
 }
