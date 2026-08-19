@@ -1,0 +1,205 @@
+# ai-skills
+
+A collection of [Claude Code](https://code.claude.com) skills, built to be installed on any
+machine, mine or yours. Each skill packages a repeatable procedure or a body of expertise
+so Claude applies it consistently instead of being re-explained every session.
+
+Every skill here has a documentation page under [`docs/`](docs/) describing what it does,
+when to use it, and when not to.
+
+## Skills
+
+Every skill has its own documentation page with usage, inputs, outputs and worked examples.
+The table is an index; the docs are where the detail lives.
+
+| Skill | What it does | Tags | Docs |
+| :---- | :----------- | :--- | :--- |
+| `/create-abstract` | Writes a paper abstract in LaTeX from the six-part model, interviewing you for what it does not know | `research` | [docs](docs/create-abstract.md) |
+| `/review-abstract` | Labels every sentence of an abstract with the model part it implements, then reports what is missing or weak | `research` | [docs](docs/review-abstract.md) |
+| `/update-abstract` | Reconciles an abstract with the current state of the manuscript, preserving your wording | `research` | [docs](docs/update-abstract.md) |
+| `paper-writing-style` | The style rulebook the paper skills lean on. Claude-only, no `/` command | `research` | [docs](docs/paper-writing-style.md) |
+
+### Browse by tag
+
+Skills are tagged rather than filed into folders, so anything that spans two areas appears
+under both. Install every skill carrying a tag with `./install.sh --tag <tag>`.
+
+| Tag | Covers | Skills |
+| :------------ | :--------------------------------------------------- | :----- |
+| `programming` | Code, refactoring, review, git, code documentation | n/a |
+| `research` | Papers, literature review, methodology, academic writing | `create-abstract`, `review-abstract`, `update-abstract`, `paper-writing-style` |
+| `workflow` | Personal process and automation not tied to a domain | n/a |
+
+### Scientific paper writing
+
+The `research` skills are being built as a family, one paper section at a time. Each section
+gets up to three skills: `create` to draft it, `review` to critique the writing, and `update`
+to reconcile it with a changed manuscript. They share the `paper-writing-style` rulebook, so
+install that alongside whichever you use.
+
+```
+./install.sh --tag research     # everything below, plus the style rulebook
+```
+
+| Section | create | review | update |
+| :--- | :--- | :--- | :--- |
+| Abstract | ✅ | ✅ | ✅ |
+| Introduction | planned | planned | planned |
+| Results & Discussion | planned | planned | n/a |
+| Conclusions | planned | planned | planned |
+| Title | planned | planned | planned |
+| Cover letter | planned | planned | n/a |
+| Response to reviewers | planned | n/a | n/a |
+
+Update skills exist only for sections *derived* from the rest of the paper. Results are not
+derived from anything, so `/update-results` would just be `/review-results` with extra steps.
+
+Sections that need more analysis before they can be built honestly are recorded in
+[`todo/`](todo/) rather than guessed at. The methods section is there now: the source course
+proposes no model for it, so it is being replaced by narrower skills such as
+`/create-threats-to-validity`, derived from real exemplar sections.
+
+All of it is distilled from *Curso de Escrita Científica: Produção de Artigos de Alto Impacto*
+by Prof. Dr. Valtencir Zucolotto (IFSC/USP), whose transcript is in [`sources/`](sources/).
+
+## Install
+
+You need Claude Code installed. Both methods below work on macOS, Linux, and Windows.
+
+### Option A: plugin marketplace (recommended)
+
+Add the marketplace once, then install any skill by name. Skills installed this way update
+with `/plugin marketplace update`.
+
+```
+/plugin marketplace add yuryalencar/ai-skills
+/plugin install <skill-name>@yuryalencar-ai-skills
+```
+
+Browse what's available with `/plugin marketplace` after adding it. If the install summary
+says `Run /reload-plugins to activate.`, run that command.
+
+### Option B: install script
+
+Copies a skill into `~/.claude/skills/<name>`, making it available in every project on that
+machine.
+
+```bash
+git clone https://github.com/yuryalencar/ai-skills.git
+cd ai-skills
+
+./install.sh <skill-name>     # one skill
+./install.sh --tag research   # every skill carrying a tag
+./install.sh --all            # everything
+./install.sh --list           # see skills and their tags
+```
+
+On Windows (PowerShell):
+
+```powershell
+git clone https://github.com/yuryalencar/ai-skills.git
+cd ai-skills
+
+.\install.ps1 <skill-name>
+.\install.ps1 -Tag research
+.\install.ps1 -All
+.\install.ps1 -List
+```
+
+Useful flags on both: `--link` / `-Link` symlinks instead of copying, so a `git pull`
+updates your installed skills in place (Windows symlinks need Developer Mode or an elevated
+shell). `--project` / `-Project` installs into `./.claude/skills` instead of your home
+directory. `--force` / `-Force` overwrites without prompting.
+
+### Option C: manual copy
+
+A skill is just a directory. Copy it wherever Claude Code looks for skills:
+
+| Destination | Scope |
+| :---------- | :---- |
+| `~/.claude/skills/<name>/` | you, in every project |
+| `<project>/.claude/skills/<name>/` | everyone working in that project |
+
+```bash
+cp -r skills/<skill-name> ~/.claude/skills/
+```
+
+Don't nest skills in category folders at the destination. Claude Code discovers skills
+exactly one level deep, so `~/.claude/skills/<group>/<name>/SKILL.md` is never found. That
+is why this repo tags skills instead of foldering them.
+
+### Uninstall
+
+```
+/plugin uninstall <skill-name>@yuryalencar-ai-skills   # option A
+rm -rf ~/.claude/skills/<skill-name>                   # options B and C
+```
+
+## Using a skill
+
+Type `/` in Claude Code to list what's installed, then invoke a skill directly:
+
+```
+/<skill-name>
+/<skill-name> some argument
+```
+
+Plugin-installed skills are namespaced, so if a name collides with something else you have
+installed, use `/<plugin-name>:<skill-name>`.
+
+You often don't need to invoke anything. Most skills here also carry trigger conditions in
+their description, so Claude loads them on its own when the conversation calls for it.
+Ask your actual question and the relevant skill comes along. Skills marked
+**manual-only** in the table above are the exception; those only ever run when you type
+`/name`, because they have side effects you should time yourself.
+
+## Usage guidelines
+
+Read these before installing anything from this repo.
+
+- **A skill is instructions, not a guarantee.** It steers Claude strongly, but Claude still
+  exercises judgment. Review the output of anything that matters.
+- **Read the docs page first.** Every skill's `docs/<name>.md` has a "when not to use this"
+  section. That section is the important one.
+- **Check what it touches.** Skills that write files, run commands, or call external
+  services say so in their docs under "Side effects". Nothing here exfiltrates your code or
+  phones home; if a skill needs the network, its docs say what for.
+- **Install only what you'll use.** Skill descriptions sit in context so Claude knows what's
+  available. A handful is free; forty is not.
+- **Project skills beat global skills for team conventions.** If a skill encodes how *your
+  repo* works, install it into `<project>/.claude/skills/` and commit it so your team gets
+  it too. Use `~/.claude/skills/` for things that follow *you* between projects.
+- **Skills are not sandboxed.** They can instruct Claude to run commands. Only install
+  skills from sources you trust, including this one. Read the `SKILL.md`; it's plain
+  markdown and usually a few hundred lines.
+- **Pin nothing, expect changes.** Skills here get revised as the underlying practice gets
+  refined. Version history per skill is in its docs page.
+
+## Creating a skill
+
+The authoring workflow for this repo is defined in [`CLAUDE.md`](CLAUDE.md): define the
+goal, interview until the requirements are pinned down, build the skill, document it, then
+index it here. Claude Code follows that file automatically when you work in this repo, ask
+it for a new skill and it will run the interview.
+
+Contributions and suggestions are welcome via issues and pull requests. A pull request
+adding a skill needs every item in CLAUDE.md's "Definition of done", including tags in both
+the skill's frontmatter and the marketplace entry.
+
+## Repo layout
+
+```
+skills/<name>/SKILL.md    the skill itself (this is what gets installed)
+docs/<name>.md            documentation for that skill
+sources/                  raw material a skill was distilled from
+.claude-plugin/           plugin marketplace catalog
+install.sh, install.ps1   manual installers
+```
+
+`skills/` is flat, matching what Claude Code installs. Categories live in each skill's
+`metadata.tags`, so a skill that spans two areas carries both tags instead of being filed
+under one and hidden from the other.
+
+## License
+
+MIT, see [LICENSE](LICENSE).
