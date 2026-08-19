@@ -1,0 +1,14 @@
+# Normalize line endings in the repository, and force LF where it matters.
+* text=auto eol=lf
+
+# Shell scripts must have LF endings or they fail on Linux and macOS with
+# "bad interpreter: /usr/bin/env sh^M". This is not negotiable for a repo
+# meant to be cloned on any machine.
+*.sh text eol=lf
+
+# PowerShell is fine with either, but CRLF is native on Windows.
+*.ps1 text eol=crlf
+
+# Markdown and JSON stay LF so diffs are consistent across machines.
+*.md text eol=lf
+*.json text eol=lf
