@@ -47,6 +47,36 @@
       "tags": [
         "research"
       ]
+    },
+    {
+      "name": "create-introduction",
+      "source": "./skills/create-introduction",
+      "description": "Write a paper introduction in LaTeX on the four-movement model, with the general-to-specific funnel and the three citation classes.",
+      "version": "0.1.0",
+      "category": "research",
+      "tags": [
+        "research"
+      ]
+    },
+    {
+      "name": "review-introduction",
+      "source": "./skills/review-introduction",
+      "description": "Review an introduction: label each movement, trace the funnel, audit citations by class and year, report style defects.",
+      "version": "0.1.0",
+      "category": "research",
+      "tags": [
+        "research"
+      ]
+    },
+    {
+      "name": "update-introduction",
+      "source": "./skills/update-introduction",
+      "description": "Move an existing introduction forward: reconcile with a changed paper, apply suggested changes, or resume a half-written draft.",
+      "version": "0.1.0",
+      "category": "research",
+      "tags": [
+        "research"
+      ]
     }
   ]
 }

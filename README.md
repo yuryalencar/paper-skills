@@ -17,6 +17,9 @@ The table is an index; the docs are where the detail lives.
 | `/create-abstract` | Writes a paper abstract in LaTeX from the six-part model, interviewing you for what it does not know | `research` | [docs](docs/create-abstract.md) |
 | `/review-abstract` | Labels every sentence of an abstract with the model part it implements, then reports what is missing or weak | `research` | [docs](docs/review-abstract.md) |
 | `/update-abstract` | Reconciles an abstract with the current state of the manuscript, preserving your wording | `research` | [docs](docs/update-abstract.md) |
+| `/create-introduction` | Writes an introduction on the four-movement model, funnelling from the broad field to your purpose | `research` | [docs](docs/create-introduction.md) |
+| `/review-introduction` | Labels each movement, traces the funnel, audits your citations by class and by year | `research` | [docs](docs/review-introduction.md) |
+| `/update-introduction` | Reconciles an introduction with a changed paper, applies suggestions, or resumes a draft | `research` | [docs](docs/update-introduction.md) |
 | `paper-writing-style` | The style rulebook the paper skills lean on. Claude-only, no `/` command | `research` | [docs](docs/paper-writing-style.md) |
 
 ### Browse by tag
@@ -27,14 +30,14 @@ under both. Install every skill carrying a tag with `./install.sh --tag <tag>`.
 | Tag | Covers | Skills |
 | :------------ | :--------------------------------------------------- | :----- |
 | `programming` | Code, refactoring, review, git, code documentation | n/a |
-| `research` | Papers, literature review, methodology, academic writing | `create-abstract`, `review-abstract`, `update-abstract`, `paper-writing-style` |
+| `research` | Papers, literature review, methodology, academic writing | `create-abstract`, `review-abstract`, `update-abstract`, `create-introduction`, `review-introduction`, `update-introduction`, `paper-writing-style` |
 | `workflow` | Personal process and automation not tied to a domain | n/a |
 
 ### Scientific paper writing
 
 The `research` skills are being built as a family, one paper section at a time. Each section
-gets up to three skills: `create` to draft it, `review` to critique the writing, and `update`
-to reconcile it with a changed manuscript. They share the `paper-writing-style` rulebook, so
+gets three skills: `create` to draft it, `review` to critique the writing, and `update` to
+move it forward. They share the `paper-writing-style` rulebook, so
 install that alongside whichever you use.
 
 ```
@@ -44,7 +47,7 @@ install that alongside whichever you use.
 | Section | create | review | update |
 | :--- | :--- | :--- | :--- |
 | Abstract | ✅ | ✅ | ✅ |
-| Introduction | planned | planned | planned |
+| Introduction | ✅ | ✅ | ✅ |
 | Results & Discussion | planned | planned | planned |
 | Conclusions | planned | planned | planned |
 | Title | planned | planned | planned |
