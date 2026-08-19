@@ -22,12 +22,15 @@ a reader, expert or not, comfortable enough to understand everything that follow
    section if it exists. Read the `.bib` keys: they are the literature you have to work with.
    Detect the citation style. Do not ask for anything you can find yourself.
 
-## Write this section fourth, not first
+## Write this section third, not first
 
-The course puts the introduction third in the writing order, after results and discussion and
+The course puts the introduction **third** in the writing order, after results and discussion and
 after conclusions, for one reason: writing it once you know what the results say produces an
-introduction aimed directly at them. If the results section does not exist yet, say so and offer
-to continue anyway, but note that the introduction will probably need revising later.
+introduction aimed directly at them, so the connection between the gap you state and the gap you
+answer is never lost. If the results section does not exist yet, say so and offer to continue
+anyway, but note that the introduction will probably need revising later.
+
+The full order is in `paper-writing-style`, and `/write-paper` walks it.
 
 ## The four movements
 

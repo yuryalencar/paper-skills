@@ -15,6 +15,30 @@ Two words govern everything: **clarity** and **concision**. Clarity is the messa
 reaching the reader's mind as fast as possible. Concision is doing that with the fewest
 words. Every sentence must carry one idea to the reader.
 
+## The writing order
+
+Sections are not written in the order they are read. The course recommends this sequence, and every
+skill in the family assumes it:
+
+| # | Section | Why here |
+| :-- | :--- | :--- |
+| 0 | **Select and order the figures** | Precondition, not a section. The figures tell the story; the text supports them |
+| 1 | **Results and discussion** | The hardest section, and the one every other section is shaped by |
+| 2 | **Conclusions** | Written while the findings are fresh, and derived directly from them |
+| 3 | **Introduction** | Written knowing what the results say, so the gap it states is the gap the paper answers |
+| 4 | **Methods, or experimental** | One of the simplest sections. Mechanical once the work is done |
+| 5 | **Abstract** | Cannot summarize what does not exist yet |
+| 6 | **Title** | Revisited last, once the paper's actual contribution is known |
+
+The important step is 3. Writing the introduction after the results keeps the two sections
+connected, which matters because a gap promised in the introduction and never answered in the
+results is the commonest structural fault in a manuscript.
+
+Provisional titles along the way are fine. What matters is rewriting the title at the end.
+
+Deviating from this order is a judgement call, not an error. Say so when a section is being written
+out of sequence, and note what may need revising later.
+
 ## Non-negotiables
 
 These are the rules that get violated most and cost the most. Never break them.

@@ -9,6 +9,16 @@
   },
   "plugins": [
     {
+      "name": "write-paper",
+      "source": "./skills/write-paper",
+      "description": "Guide a manuscript from figures to submission in the recommended writing order, reporting where the paper stands and what to write next.",
+      "version": "0.1.0",
+      "category": "research",
+      "tags": [
+        "research"
+      ]
+    },
+    {
       "name": "paper-writing-style",
       "source": "./skills/paper-writing-style",
       "description": "House style rules for scientific paper writing in English, distilled from Zucolotto's scientific writing course.",

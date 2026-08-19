@@ -14,6 +14,7 @@ The table is an index; the docs are where the detail lives.
 
 | Skill | What it does | Tags | Docs |
 | :---- | :----------- | :--- | :--- |
+| `/write-paper` | The map for the family: where your manuscript stands, what to write next, then hands off | `research` | [docs](docs/write-paper.md) |
 | `/create-abstract` | Writes a paper abstract in LaTeX from the six-part model, interviewing you for what it does not know | `research` | [docs](docs/create-abstract.md) |
 | `/review-abstract` | Labels every sentence of an abstract with the model part it implements, then reports what is missing or weak | `research` | [docs](docs/review-abstract.md) |
 | `/update-abstract` | Reconciles an abstract with the current state of the manuscript, preserving your wording | `research` | [docs](docs/update-abstract.md) |
@@ -45,7 +46,7 @@ under both. Install every skill carrying a tag with `./install.sh --tag <tag>`.
 | Tag | Covers | Skills |
 | :------------ | :--------------------------------------------------- | :----- |
 | `programming` | Code, refactoring, review, git, code documentation | n/a |
-| `research` | Papers, literature review, methodology, academic writing | `create-abstract`, `review-abstract`, `update-abstract`, `create-introduction`, `review-introduction`, `update-introduction`, `create-results-discussion`, `review-results-discussion`, `update-results-discussion`, `create-conclusions`, `review-conclusions`, `update-conclusions`, `create-title`, `review-title`, `update-title`, `create-cover-letter`, `review-cover-letter`, `update-cover-letter`, `create-response-to-reviewers`, `review-response-to-reviewers`, `update-response-to-reviewers`, `paper-writing-style` |
+| `research` | Papers, literature review, methodology, academic writing | `write-paper`, `create-abstract`, `review-abstract`, `update-abstract`, `create-introduction`, `review-introduction`, `update-introduction`, `create-results-discussion`, `review-results-discussion`, `update-results-discussion`, `create-conclusions`, `review-conclusions`, `update-conclusions`, `create-title`, `review-title`, `update-title`, `create-cover-letter`, `review-cover-letter`, `update-cover-letter`, `create-response-to-reviewers`, `review-response-to-reviewers`, `update-response-to-reviewers`, `paper-writing-style` |
 | `workflow` | Personal process and automation not tied to a domain | n/a |
 
 ### Scientific paper writing
@@ -68,6 +69,38 @@ install that alongside whichever you use.
 | Title | ✅ | ✅ | ✅ |
 | Cover letter | ✅ | ✅ | ✅ |
 | Response to reviewers | ✅ | ✅ | ✅ |
+
+#### The writing order
+
+Sections are not written in the order they are read. The course recommends this sequence, and the whole
+family assumes it. [`/write-paper`](docs/write-paper.md) walks it, tells you where your manuscript
+currently stands, and hands off to the right skill for the next step.
+
+| # | Step | Skill |
+| :-- | :--- | :--- |
+| 0 | Select and order the figures | yours, no skill can do this |
+| 1 | Results and discussion | [`/create-results-discussion`](docs/create-results-discussion.md) |
+| 2 | Conclusions | [`/create-conclusions`](docs/create-conclusions.md) |
+| 3 | **Introduction** | [`/create-introduction`](docs/create-introduction.md) |
+| 4 | Methods or experimental | none yet, see [`todo/`](todo/methods-family.md) |
+| 5 | Abstract | [`/create-abstract`](docs/create-abstract.md) |
+| 6 | Title | [`/create-title`](docs/create-title.md) |
+| 7 | Cover letter | [`/create-cover-letter`](docs/create-cover-letter.md) |
+| 8 | Revise after review | [`/create-response-to-reviewers`](docs/create-response-to-reviewers.md) |
+
+**Step 3 is the one that earns the sequence.** Writing the introduction after the results means the gap
+you state is the gap your paper actually answers. Write it first and you state a gap before knowing what
+you found, which is how manuscripts end up promising something the results never address. That mismatch
+is the commonest structural fault in a paper.
+
+Results and discussion comes first because it is the hardest section and everything else is shaped by
+it. The abstract comes fifth because you cannot summarize what does not exist. The title comes last
+because it should name your contribution, and you only know the contribution when the paper is done.
+Provisional titles along the way are fine.
+
+Deviating is a judgement call, not an error. The skills say what it costs and let you decide.
+
+#### The three verbs
 
 The three verbs divide the work cleanly:
 
