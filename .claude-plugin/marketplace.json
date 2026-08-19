@@ -9,6 +9,16 @@
   },
   "plugins": [
     {
+      "name": "setup-paper-project",
+      "source": "./skills/setup-paper-project",
+      "description": "Set up a new paper project: the venue's LaTeX template in a GitHub repository, connected to Overleaf in the order Overleaf supports.",
+      "version": "0.1.0",
+      "category": "research",
+      "tags": [
+        "research"
+      ]
+    },
+    {
       "name": "write-paper",
       "source": "./skills/write-paper",
       "description": "Guide a manuscript from figures to submission in the recommended writing order, reporting where the paper stands and what to write next.",

@@ -1,5 +1,41 @@
 # LaTeX conventions for generated manuscript text
 
+## Project layout: sections live in `src/`
+
+The convention this family scaffolds and expects:
+
+```
+<paper>/
+├── main.tex                     preamble, title, author block, \input lines
+├── src/
+│   ├── abstract.tex
+│   ├── introduction.tex
+│   ├── methods.tex
+│   ├── results-discussion.tex
+│   └── conclusions.tex
+├── refs.bib
+├── figures/
+└── paper-out/                   session state
+```
+
+**Detect the layout before reading or writing anything.** Two cases:
+
+- **`src/` exists.** Read that section's file, and when the researcher approves a change, offer to write it
+  to `src/<section>.tex`. Do not touch `main.tex` unless the change is genuinely to the preamble, the title
+  block or the author block.
+- **No `src/`, everything in one file.** Work with the section inside `main.tex` or whatever file holds it.
+  Do not restructure the project uninvited. Mention that `src/` is the layout `/setup-paper-project`
+  scaffolds, and leave the choice to them.
+
+Some venue templates require a section inline, most often an abstract that must sit in a command argument
+rather than an environment. When `src/abstract.tex` does not exist but `src/` does, look in `main.tex`
+before concluding the abstract is missing.
+
+Map section to file by name: `abstract`, `introduction`, `methods`, `results-discussion`, `conclusions`.
+A title lives in `main.tex`, in the template's `\title{}`. A cover letter and a response to reviewers are
+not part of the manuscript and belong in their own files at the project root, for example
+`cover-letter.tex` and `response-to-reviewers.md`.
+
 ## Emit class-agnostic fragments
 
 Produce section-level LaTeX that drops into any document class. No `\documentclass`, no

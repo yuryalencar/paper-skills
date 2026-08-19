@@ -73,6 +73,7 @@ snapshot; `decisions.md` is the append-only log.
 
 | # | Step | Skill | Precondition |
 | :-- | :--- | :--- | :--- |
+| -1 | Set up the project: template, repo, Overleaf | `/setup-paper-project` | A target venue is chosen |
 | 0 | Select and order the figures | none, this is yours | The research is finished |
 | 1 | Results and discussion | `/create-results-discussion` | Figures selected and ordered |
 | 2 | Conclusions | `/create-conclusions` | Results written |
@@ -186,5 +187,6 @@ last time, what is open, and the next step. Then stop and let the researcher dir
 - **Never declare a paper finished.** Offer the pre-submission pass instead.
 - **Never insist on the order.** State the cost of deviating and let the researcher choose.
 - **Never emit an em dash (`---`).**
-- If there is no manuscript and no figures, the honest answer is that the research has to be finished
-  and the figures chosen before any of this applies. Say that rather than starting an interview.
+- If there is no manuscript at all, point at `/setup-paper-project` for step -1. If there is a project but
+  no figures chosen, say that the research has to be finished and the figures selected and ordered before
+  any writing applies, rather than starting an interview.

@@ -14,6 +14,7 @@ The table is an index; the docs are where the detail lives.
 
 | Skill | What it does | Tags | Docs |
 | :---- | :----------- | :--- | :--- |
+| `/setup-paper-project` | Step zero: the venue template in a GitHub repo, connected to Overleaf. Manual only | `research` | [docs](docs/setup-paper-project.md) |
 | `/write-paper` | The map for the family: where your manuscript stands, what to write next, then hands off | `research` | [docs](docs/write-paper.md) |
 | `/create-abstract` | Writes a paper abstract in LaTeX from the six-part model, interviewing you for what it does not know | `research` | [docs](docs/create-abstract.md) |
 | `/review-abstract` | Labels every sentence of an abstract with the model part it implements, then reports what is missing or weak | `research` | [docs](docs/review-abstract.md) |
@@ -46,7 +47,7 @@ under both. Install every skill carrying a tag with `./install.sh --tag <tag>`.
 | Tag | Covers | Skills |
 | :------------ | :--------------------------------------------------- | :----- |
 | `programming` | Code, refactoring, review, git, code documentation | n/a |
-| `research` | Papers, literature review, methodology, academic writing | `write-paper`, `create-abstract`, `review-abstract`, `update-abstract`, `create-introduction`, `review-introduction`, `update-introduction`, `create-results-discussion`, `review-results-discussion`, `update-results-discussion`, `create-conclusions`, `review-conclusions`, `update-conclusions`, `create-title`, `review-title`, `update-title`, `create-cover-letter`, `review-cover-letter`, `update-cover-letter`, `create-response-to-reviewers`, `review-response-to-reviewers`, `update-response-to-reviewers`, `paper-writing-style` |
+| `research` | Papers, literature review, methodology, academic writing | `setup-paper-project`, `write-paper`, `create-abstract`, `review-abstract`, `update-abstract`, `create-introduction`, `review-introduction`, `update-introduction`, `create-results-discussion`, `review-results-discussion`, `update-results-discussion`, `create-conclusions`, `review-conclusions`, `update-conclusions`, `create-title`, `review-title`, `update-title`, `create-cover-letter`, `review-cover-letter`, `update-cover-letter`, `create-response-to-reviewers`, `review-response-to-reviewers`, `update-response-to-reviewers`, `paper-writing-style` |
 | `workflow` | Personal process and automation not tied to a domain | n/a |
 
 ### Scientific paper writing
@@ -78,6 +79,7 @@ currently stands, and hands off to the right skill for the next step.
 
 | # | Step | Skill |
 | :-- | :--- | :--- |
+| -1 | Set up the project: template, repo, Overleaf | [`/setup-paper-project`](docs/setup-paper-project.md) |
 | 0 | Select and order the figures | yours, no skill can do this |
 | 1 | Results and discussion | [`/create-results-discussion`](docs/create-results-discussion.md) |
 | 2 | Conclusions | [`/create-conclusions`](docs/create-conclusions.md) |

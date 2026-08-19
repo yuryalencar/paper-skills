@@ -15,6 +15,14 @@ Two words govern everything: **clarity** and **concision**. Clarity is the messa
 reaching the reader's mind as fast as possible. Concision is doing that with the fewest
 words. Every sentence must carry one idea to the reader.
 
+## Project layout
+
+Sections live one per file in `src/`: `src/abstract.tex`, `src/introduction.tex`, `src/methods.tex`,
+`src/results-discussion.tex`, `src/conclusions.tex`, with `main.tex` holding the preamble, title block and
+`\input` lines. **Detect this before reading or writing**: when `src/` exists, read and write that section's
+file and leave `main.tex` alone; when it does not, work in whatever file holds the section and do not
+restructure the project uninvited. Details in `references/latex-conventions.md`.
+
 ## Session state: check `paper-out/` first
 
 A paper spans weeks or months, so **before asking the researcher anything, check whether
