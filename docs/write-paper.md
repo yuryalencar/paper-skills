@@ -131,7 +131,7 @@ that work resumes where it stopped instead of restarting.
 ```
 my-paper/
 ├── main.tex
-├── refs.bib
+├── references.bib
 ├── figures/
 └── paper-out/
     ├── STATE.md            position, next step, key decisions

@@ -98,7 +98,7 @@ WHAT EXISTS
 MISSING: STATE OF THE ART, PURPOSE
 
 I can recover both from the paper rather than asking you to repeat yourself.
-Your results section measures shear stability over 30 days, and refs.bib has
+Your results section measures shear stability over 30 days, and references.bib has
 Park 2024 and Mendes 2025 as the only entries newer than your ¶3 citations,
 both on crosslinking. That gives me the state of the art and a purpose that
 answers your existing gap.

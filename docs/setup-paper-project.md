@@ -84,18 +84,17 @@ Or `./install.sh setup-paper-project`. Invoke it with `/setup-paper-project`; it
 
 ```
 <paper-name>/
-├── main.tex              venue template: preamble, title, authors, \input lines
-├── src/                  one file per section, where the writing happens
-│   ├── abstract.tex
-│   ├── introduction.tex
-│   ├── methods.tex
-│   ├── results-discussion.tex
-│   └── conclusions.tex
-├── refs.bib
-├── figures/
+├── main.tex              preamble, title block, \input order, bibliography
+├── src/
+│   ├── macros.tex        \ifblind switch, \RQ, recurring values, 	odo and 
+ote
+│   └── <section>.tex     one per section, named for your paper's actual structure
+├── references.bib
+├── figures/              plus .gitkeep, with \graphicspath set in main.tex
 ├── <venue .cls, .bst, .sty>
+├── build.ps1             gates on main.log, reports the page count
 ├── .gitignore            LaTeX build artefacts
-├── README.md             venue, deadline, template provenance, build command, Overleaf link
+├── CLAUDE.md             the project's own conventions. Authoritative
 └── paper-out/
     └── STATE.md          position: step 0, figures not yet selected
 ```
@@ -105,6 +104,16 @@ and author block stay untouched; only its body is replaced with `\input` lines. 
 as an empty file with a comment naming what belongs there, so **the project compiles from the first
 commit**: a scaffold that does not build is worse than no scaffold, because building it is the first thing
 a co-author tries.
+
+**It asks what your sections are** rather than imposing a set. An empirical software engineering paper wants
+`background`, `study-design`, `results`, `discussion`, `threats`, `related-work` and `end-matter`; an
+experimental physical sciences paper wants `experimental` and `results-discussion`. The writing skills read
+the `\input` list rather than assuming names, so `conclusion` and `conclusions` both work.
+
+`src/macros.tex` is created even when nearly empty, because three things in it pay for themselves at once:
+`\ifblind` so a double-blind author block switches with one line at camera-ready, recurring values as macros
+so a revised number changes in one place instead of three, and `	odo{}` rendering in red so a gap is
+visible in the compiled PDF rather than hiding in a comment until submission.
 
 Where a venue template requires a section inline, most often an abstract that must sit in a command
 argument rather than an environment, that section stays in `main.tex` and the skill says which ones it had

@@ -84,7 +84,7 @@ plain `article` with no preamble changes.
 > /create-abstract silver nanoparticle cytotoxicity in wound dressings
 ```
 
-It reads the directory, finds `main.tex` and `refs.bib` with `natbib`, then asks about the
+It reads the directory, finds `main.tex` and `references.bib` with `natbib`, then asks about the
 target journal, the gap, the principal result with values, and the contribution. Then:
 
 ```latex

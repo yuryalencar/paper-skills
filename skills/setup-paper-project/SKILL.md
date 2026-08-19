@@ -26,17 +26,24 @@ repository holding an unpublished manuscript without asking explicitly.
 
 ## The order matters, and it is not obvious
 
-Overleaf **cannot link an Overleaf project to a GitHub repository that already exists**. You get one of
-two directions, chosen at creation:
+Overleaf **cannot link an Overleaf project to a GitHub repository that already exists**. You get one of two
+directions, chosen once at creation. **Ask which one applies before doing anything**, because it determines
+the whole sequence:
 
-- Create an Overleaf project **from** a GitHub repository, or
-- Create a GitHub repository **from** an Overleaf project.
+**Direction A, starting from nothing.** Template into a local repo, push to GitHub, then create the Overleaf
+project **from** that repository.
 
-So the sequence is: **template into a local repo, push to GitHub, then create the Overleaf project from
-that repository.** Starting on Overleaf with the venue template and then trying to attach a repo does not
-work, and it is the mistake this skill exists to prevent.
+**Direction B, starting from Overleaf.** The researcher already has an Overleaf project, usually created by
+importing the venue template through Overleaf's own template gallery. Then the GitHub repository is created
+**from** the Overleaf project, cloned locally, and restructured into `src/` from there. This is common and
+perfectly fine; the first commit ends up being the Overleaf import.
 
-Tell the researcher this before starting, because it determines everything that follows.
+What does not work in either direction is attaching an existing repository to an existing Overleaf project.
+If the researcher has both already, one has to be recreated from the other, so establish this first rather
+than discovering it later.
+
+For direction B, skip repository creation below: clone what Overleaf produced, then apply the scaffold to it
+as a restructuring commit.
 
 ## What Overleaf sync does and does not do
 
@@ -95,48 +102,95 @@ Present the plan and get explicit agreement:
 
 ```
 <paper-name>/
-├── main.tex              from the venue template: preamble, title, authors, \input lines
+├── main.tex              venue template: preamble, title block, \input order, bibliography.
+│                         The only file with document-level structure
 ├── src/                  one file per section, this is where the writing happens
-│   ├── abstract.tex
-│   ├── introduction.tex
-│   ├── methods.tex
-│   ├── results-discussion.tex
-│   └── conclusions.tex
-├── refs.bib              empty, ready
-├── figures/              one file per figure, source formats kept
+│   ├── macros.tex        shared macros and switches. Created first, read first
+│   └── <section>.tex     one per section, named for the paper's actual structure
+├── references.bib        empty, ready
+├── figures/              all figures, plus a .gitkeep so the directory is tracked
 ├── <venue class files>   .cls, .bst, .sty shipped with the template
+├── build.ps1 or Makefile build script
 ├── .gitignore            LaTeX build artefacts
-├── README.md             venue, deadline, template provenance, how to build
+├── CLAUDE.md             the project's own conventions. See below
 └── paper-out/            created by the writing skills on first decision
 ```
 
-**Sections live in `src/`, one file each**, and `main.tex` pulls them in. Keep the venue template's
-preamble, title block and author block in `main.tex` untouched, and replace only its body with the
-`\input` lines:
+#### Sections in `src/`
+
+**One file per section**, pulled in by `main.tex`. Keep the venue template's preamble, title block and
+author block untouched; replace only its body with `\input` lines.
+
+**Ask what the section structure is** rather than imposing one. It depends on the venue and the kind of
+paper, and one question settles it:
+
+| Kind of paper | Typical `src/` files |
+| :--- | :--- |
+| Empirical software engineering | `abstract`, `introduction`, `background`, `study-design`, `results`, `discussion`, `threats`, `related-work`, `conclusion`, `end-matter` |
+| Experimental physical sciences | `abstract`, `introduction`, `experimental`, `results-discussion`, `conclusions` |
+| Anything | whatever the venue's accepted papers actually use |
+
+`results` and `discussion` are often separate files even where the venue merges the section, and
+`conclusion` singular is as common as `conclusions`. Use what the researcher says: the writing skills read
+the `\input` list rather than assuming names.
+
+`end-matter.tex` earns its own file where the venue expects CRediT statements, competing interest
+declarations, data availability statements and acknowledgements. Those also identify the authors, so under
+double-blind review they belong behind the `\ifblind` switch.
+
+Create each file with a single comment naming what belongs there, so **the project compiles from the first
+commit**. A scaffold that does not build is worse than none, because building it is the first thing a
+co-author tries.
+
+Where a venue template requires a section inline, most often an abstract inside a command argument rather
+than an environment, leave it in `main.tex` and say which ones you had to, so the writing skills know where
+to look.
+
+#### `src/macros.tex`
+
+Create this even when it starts nearly empty. It is what keeps terminology and numbers consistent across
+section files, and every writing skill reads it before drafting.
 
 ```latex
-% main.tex, body only. Preamble and title block stay as the template shipped them.
-\begin{abstract}
-\input{src/abstract}
-\end{abstract}
+% Project-specific macros. Define terminology once here so wording stays
+% consistent across all section files.
 
-\input{src/introduction}
-\input{src/methods}
-\input{src/results-discussion}
-\input{src/conclusions}
+% Double-blind switch. \blindtrue for submission, \blindfalse for camera-ready.
+% Controls the author block in main.tex and the identifying end matter.
+\newif\ifblind
+\blindtrue
 
-\bibliography{refs}
+% Research questions. Do not name this \rq: LaTeX already defines it.
+\newcommand{\RQ}[1]{\textbf{RQ#1}}
+
+% Recurring values. Change once, changes everywhere.
+% \newcommand{\nparticipants}{54\xspace}
+
+% Draft annotations. Remove before submission.
+\newcommand{\todo}[1]{\textcolor{red}{[TODO: #1]}}
+\newcommand{\note}[1]{\textcolor{blue}{[Note: #1]}}
 ```
 
-Create each `src/*.tex` as an empty file with a single comment naming what belongs there, so the project
-compiles from the first commit. A scaffold that does not compile is worse than no scaffold, because the
-first thing a co-author does is try to build it.
+Three of these earn their place immediately:
 
-Some venue templates fight this, most often by expecting the abstract inside a command argument rather
-than an environment. Where the template requires it, keep that section inline in `main.tex` and say which
-ones you had to leave there, so the writing skills know where to look.
+- **`\ifblind`** for a double-blind venue, so the author block and identifying end matter switch with one
+  line at camera-ready instead of being edited by hand. Ask whether the venue is double blind.
+- **Recurring values as macros**, so a revised number changes in one place instead of separately in the
+  abstract, the results and the conclusions. The writing skills propose new ones as values recur.
+- **`\todo{}` rendering in red**, so a gap is visible in the compiled PDF. A `% TODO:` comment is invisible
+  and survives to submission. The writing skills use this macro wherever it exists.
 
-`.gitignore` for LaTeX, since build artefacts in a repo synced with Overleaf cause noise and conflicts:
+`\todo` and `\note` need `xcolor`, and `\xspace` needs `xspace`. Add both to the preamble if the template
+does not already load them.
+
+#### Figures
+
+Set `\graphicspath{{figures/}}` in `main.tex` so figures are included **without a path or extension**:
+`\includegraphics{detection-accuracy}`. Add `figures/.gitkeep` so the empty directory is tracked.
+
+#### `.gitignore`
+
+Build artefacts in a repository synced with Overleaf cause noise and conflicts:
 
 ```gitignore
 *.aux
@@ -150,6 +204,7 @@ ones you had to leave there, so the writing skills know where to look.
 *.toc
 *.lof
 *.lot
+*.spl
 *.nav
 *.snm
 *.vrb
@@ -160,11 +215,35 @@ main.pdf
 
 Keep `main.pdf` ignored unless the venue or the co-authors want a built PDF committed. Say which you chose.
 
-Do **not** gitignore `paper-out/`: it is meant to be committed alongside the manuscript.
+Do **not** gitignore `paper-out/`: the decision log is meant to be committed alongside the manuscript.
 
-`README.md` should record the venue, the submission deadline, the template source and version, the build
-command, and the Overleaf project link once it exists. That is the information a co-author or a future
-session needs first.
+#### `build.ps1` or `Makefile`
+
+Ship a build script rather than leaving people to remember the pass order. A full build is `pdflatex`,
+`bibtex`, `pdflatex`, `pdflatex`. Offer a quick single-pass mode for iteration, and say that it leaves
+cross-references and citations stale.
+
+Two things the script must do that a bare `pdflatex` call does not:
+
+- **Gate on the log, not the exit code.** `pdflatex` exits non-zero on warnings alone, so its exit status is
+  not a usable pass or fail signal. Parse `main.log` for real errors instead, and surface undefined
+  references separately as warnings.
+- **Report the page count.** Conference limits are hard, and an over-length paper is desk rejected without
+  being read.
+
+#### `CLAUDE.md`
+
+Write the project's own conventions file. It is what makes every later session start correctly, and it
+outranks the defaults in `paper-writing-style`. Record at minimum:
+
+- The target venue, the submission deadlines, and the template provenance and version.
+- The layout, and the rule that section prose never goes in `main.tex`.
+- Where new packages go (`main.tex`) versus new macros (`src/macros.tex`).
+- The label convention, for example `sec:`, `fig:` and `tab:` prefixes with kebab-case names.
+- The build command and **the page limit**.
+- **Where the numbers come from.** If the analysis lives in a separate replication package, name its path
+  and state that every statistic must trace to a file in it. This is the most valuable line in the file:
+  it is what stops a number being invented three months later.
 
 ### 4. Create the GitHub repository and push
 
@@ -174,10 +253,14 @@ repository, and push. Report the URL.
 If `gh` is not installed or not authenticated, say so and give the researcher the two commands to run
 themselves rather than guessing at credentials.
 
-### 5. Create the Overleaf project from the repository
+### 5. Connect Overleaf
 
-This step happens in the Overleaf web interface and cannot be automated from here. Give the researcher the
-exact steps, then wait:
+This step happens in the Overleaf web interface and cannot be automated from here. For **direction A**, give
+the researcher the exact steps and wait. For **direction B** the project already exists on Overleaf and the
+repository came from it, so the connection is already in place: confirm it still pushes and pulls, and skip
+to step 6.
+
+Direction A:
 
 1. On Overleaf, choose **New Project**, then **Import from GitHub**.
 2. Authorise Overleaf's GitHub access if prompted.
@@ -211,7 +294,12 @@ links, and the position as step 0, figures not yet selected.
 - **Never claim Overleaf sync works on a free account.** It is premium only, and saying otherwise wastes
   the researcher's afternoon.
 - **Never tell the researcher to link an existing Overleaf project to an existing repository.** It is not
-  supported, and the resulting workaround is worse than starting over in the right order.
+  supported. Establish which direction applies before starting, since one side has to be created from the
+  other.
+- **Never impose a section structure.** Ask what the paper's sections are; they depend on the venue and the
+  kind of study.
+- **Never skip `src/macros.tex` or the project `CLAUDE.md`.** They are what make every later session start
+  correctly.
 - **Never commit raw data.** Overleaf recommends staying under 100 files and 100 MB, and data belongs in a
   repository or archive of its own.
 - **Never emit an em dash (`---`).**

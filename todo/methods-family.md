@@ -28,6 +28,37 @@ temperatures, sample sizes, and statistical tests. Anything the researcher does 
 and the skill fills in is a fabricated protocol, which is a research integrity problem rather
 than a writing problem.
 
+## Evidence from a real project
+
+Reviewed `2026-saner-conflict-experiment`, a SANER research-track paper in progress, on 2026-08-19. Its
+`src/` section set is:
+
+```
+abstract  introduction  background  study-design  results  discussion
+threats   related-work  conclusion  end-matter    macros
+```
+
+This confirms four of the candidates below as real sections that researchers actually maintain as separate
+files: `study-design`, `threats`, `related-work` and `background`. It also adds one the list missed:
+
+- **`end-matter`**: CRediT contribution statements, competing interest declarations, data availability
+  statements, acknowledgements. Increasingly mandatory, highly conventional, and the parts of it that
+  identify the authors have to sit behind a double-blind switch. A good candidate for a skill, and the
+  conventions are venue-published rather than needing to be derived.
+
+Two further observations from that project, both relevant to how these skills should behave:
+
+- Its own `CLAUDE.md` states the rule this family arrived at independently: *"Never invent or estimate a
+  number. Every statistic must trace to a file in the replication package."* Worth citing when explaining
+  why the writing skills refuse to supply values.
+- Recurring values live as macros in `src/macros.tex` (`\nparticipants`, `\nscenarios`). Any methods-family
+  skill has to write `\nparticipants` rather than a literal, and change the macro rather than the prose when
+  a value is revised. That convention is now in `paper-writing-style`.
+
+That project is a useful source of exemplars for step 1 below, since its sections are real rather than
+illustrative. It is not sufficient on its own: one paper shows one field's conventions, and the point of
+categorização is the pattern that recurs across several.
+
 ## Candidate replacements
 
 Narrower sections with conventions specific enough to be worth encoding. Not all of these

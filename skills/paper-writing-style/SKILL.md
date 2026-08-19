@@ -15,13 +15,30 @@ Two words govern everything: **clarity** and **concision**. Clarity is the messa
 reaching the reader's mind as fast as possible. Concision is doing that with the fewest
 words. Every sentence must carry one idea to the reader.
 
-## Project layout
+## Project layout and conventions
 
-Sections live one per file in `src/`: `src/abstract.tex`, `src/introduction.tex`, `src/methods.tex`,
-`src/results-discussion.tex`, `src/conclusions.tex`, with `main.tex` holding the preamble, title block and
-`\input` lines. **Detect this before reading or writing**: when `src/` exists, read and write that section's
-file and leave `main.tex` alone; when it does not, work in whatever file holds the section and do not
-restructure the project uninvited. Details in `references/latex-conventions.md`.
+Four things to establish before writing a single line, all covered in
+`references/latex-conventions.md`:
+
+1. **The project's own `CLAUDE.md` outranks these defaults.** A working paper repository documents its
+   layout, section files, label convention, page limit and data provenance rules. Read it first and follow
+   it. Never restructure a project to match a default.
+2. **Sections live one per file in `src/`**, with `main.tex` holding the preamble, title block and `\input`
+   order. **Read the `\input` list to learn what the project calls things** rather than assuming:
+   `conclusion.tex` and `conclusions.tex` both occur, results and discussion may be one file or two, and
+   methods may be `study-design.tex`.
+3. **Read `src/macros.tex`.** Recurring values and terminology are defined there so they stay consistent.
+   Write `\nparticipants participants`, not `54 participants`. Write `\RQ{1}`, not `\textbf{RQ1}`. When a
+   value changes, change the macro, not the prose. When a value recurs and has no macro, propose one.
+   If `\newif\ifblind` is present the paper is double blind, so never insert author names, affiliations, or
+   self-identifying phrasing.
+4. **Mark gaps with the project's `\todo{}` macro** where one exists, since it renders in the PDF, and fall
+   back to a `% TODO:` comment only when there is none. A comment is invisible in the PDF and survives to
+   submission.
+
+Where the project states a **page limit**, treat it as a constraint on every draft: say what a section
+costs, and name what should give way rather than overrunning. An over-length paper is desk rejected without
+being read.
 
 ## Session state: check `paper-out/` first
 

@@ -1,40 +1,118 @@
 # LaTeX conventions for generated manuscript text
 
+## Read the project's own `CLAUDE.md` first
+
+**If the manuscript directory has a `CLAUDE.md`, it outranks everything in this file.** A working paper
+repository usually documents its own layout, section files, label conventions, page limit, build command
+and data provenance rules. Read it before touching anything, and follow it where it differs from the
+defaults below. Never restructure a project to match this file.
+
+Typical contents worth looking for: the `\input` order, which file holds which section, where figures go
+and how they are included, the macros file, the page limit, and where the numbers in the paper are allowed
+to come from.
+
 ## Project layout: sections live in `src/`
 
-The convention this family scaffolds and expects:
+The common layout, and what `/setup-paper-project` scaffolds:
 
 ```
 <paper>/
-├── main.tex                     preamble, title, author block, \input lines
+├── main.tex                     preamble, title, author block, \input order. The only file with
+│                                document-level structure
 ├── src/
+│   ├── macros.tex               shared macros and switches. Read this first
 │   ├── abstract.tex
 │   ├── introduction.tex
-│   ├── methods.tex
-│   ├── results-discussion.tex
-│   └── conclusions.tex
-├── refs.bib
+│   └── <one file per section>
+├── references.bib
 ├── figures/
+├── build.ps1  or  Makefile      build script
+├── CLAUDE.md                    the project's own conventions. Authoritative
 └── paper-out/                   session state
 ```
 
-**Detect the layout before reading or writing anything.** Two cases:
+**Detect the layout before reading or writing anything:**
 
 - **`src/` exists.** Read that section's file, and when the researcher approves a change, offer to write it
-  to `src/<section>.tex`. Do not touch `main.tex` unless the change is genuinely to the preamble, the title
-  block or the author block.
-- **No `src/`, everything in one file.** Work with the section inside `main.tex` or whatever file holds it.
-  Do not restructure the project uninvited. Mention that `src/` is the layout `/setup-paper-project`
-  scaffolds, and leave the choice to them.
+  there. Do not touch `main.tex` unless the change is genuinely to the preamble, the title block, the
+  author block or the `\input` order.
+- **No `src/`.** Work with the section wherever it lives. Do not restructure the project uninvited.
 
-Some venue templates require a section inline, most often an abstract that must sit in a command argument
-rather than an environment. When `src/abstract.tex` does not exist but `src/` does, look in `main.tex`
-before concluding the abstract is missing.
+**Map section names to files, never assume them.** Read `main.tex`'s `\input` list to find out what the
+project actually calls things. Real projects vary, and guessing wrong means reading the wrong file:
 
-Map section to file by name: `abstract`, `introduction`, `methods`, `results-discussion`, `conclusions`.
+| Section | Seen as |
+| :--- | :--- |
+| Conclusions | `conclusion.tex` or `conclusions.tex` |
+| Results and discussion | one `results-discussion.tex`, or split `results.tex` and `discussion.tex` |
+| Methods | `methods.tex`, `study-design.tex`, `experimental.tex` |
+| Background | `background.tex`, sometimes merged into the introduction |
+| Related work | `related-work.tex`, sometimes part of the introduction |
+| Threats to validity | `threats.tex` |
+| End matter | `end-matter.tex`: CRediT, competing interests, data availability, acknowledgements |
+
 A title lives in `main.tex`, in the template's `\title{}`. A cover letter and a response to reviewers are
-not part of the manuscript and belong in their own files at the project root, for example
-`cover-letter.tex` and `response-to-reviewers.md`.
+not part of the manuscript and belong at the project root, for example `cover-letter.tex` and
+`response-to-reviewers.md`.
+
+Some venue templates require a section inline, most often an abstract inside a command argument rather
+than an environment. When `src/` exists but a section's file does not, look in `main.tex` before concluding
+the section is missing.
+
+## Use the project's macros
+
+**Read `src/macros.tex` before writing anything.** A well-run paper project defines terminology and
+recurring values once so they stay consistent, and text that hardcodes what a macro already covers breaks
+that.
+
+| Pattern | What to do |
+| :--- | :--- |
+| `\newcommand{\nparticipants}{54\xspace}` | Write `\nparticipants participants`, never `54 participants` |
+| `\newcommand{\RQ}[1]{\textbf{RQ#1}}` | Write `\RQ{1}`, never `\textbf{RQ1}` |
+| `\newif\ifblind` | The paper is double blind. Never insert author names, affiliations, or self-identifying phrasing such as "our previous work \citep{ourpaper}" |
+| `\newcommand{\todo}[1]{...}` | Use `\todo{...}` for gaps instead of a `% TODO:` comment. See below |
+
+**When a value recurs and has no macro, propose one.** A number appearing in the abstract, the results and
+the conclusions should be defined once in `src/macros.tex`, so a revision changes it in one place instead
+of three. Offer this rather than silently writing the literal three times.
+
+**When a value changes, change the macro, not the occurrences.** If `\nparticipants` is defined as 54 and
+the real figure is now 52, the edit is one line in `src/macros.tex`. Editing the prose instead leaves the
+macro wrong and the paper inconsistent.
+
+## Marking gaps: `\todo{}` beats `% TODO:`
+
+A `% TODO:` comment is invisible in the compiled PDF, so it survives to submission. If the project defines
+a rendering annotation macro, use it:
+
+```latex
+% project defines: \newcommand{\todo}[1]{\textcolor{red}{[TODO: #1]}}
+Viability fell to \todo{confirm the 72 h value, results give two figures} at the highest
+concentration tested.
+```
+
+That shows up in red in the PDF and is impossible to miss. Fall back to `% TODO:` only when the project has
+no such macro, and say that you did.
+
+## Labels
+
+If the project's `CLAUDE.md` defines a label convention, follow it exactly. A common one is a type prefix
+plus a kebab-case name from the element's own title: `sec:study-design`, `fig:detection-accuracy`,
+`tab:participant-demographics`. Reference with `\Cref{}` or `\cref{}` when the project loads `cleveref`,
+otherwise `Figure~\ref{}` with a non-breaking space.
+
+## Figures
+
+If `main.tex` sets `\graphicspath{{figures/}}`, include figures **without a path or extension**:
+`\includegraphics{detection-accuracy}`. Adding `figures/` or `.pdf` when `\graphicspath` is set is
+redundant and breaks if the path changes.
+
+## Page limits
+
+Conference papers have hard limits, often stated in the project's `CLAUDE.md`, for example ten pages plus
+two of references. When a limit is known, treat it as a constraint on every draft: say what a section costs
+and, when something has to give way, name the candidate rather than silently overrunning. A paper over
+length is desk rejected without being read.
 
 ## Emit class-agnostic fragments
 
