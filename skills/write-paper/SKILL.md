@@ -16,12 +16,58 @@ the work.
 
 ## Before anything else
 
-1. **Load the style rules.** Invoke `paper-writing-style`, which holds the writing order and the
-   house style.
-2. **Lock the language.** Language of the user's first message, whole run. Any LaTeX the section
-   skills produce is English.
-3. **Survey the manuscript.** Read the `.tex` files, the `.bib`, the figures and their captions.
-   Work out what exists rather than asking.
+1. **Check for `paper-out/STATE.md`.** This is the fast path and it comes first. If it exists, read it
+   plus `decisions.md` and `open-questions.md` before anything else. If it does not, this is either a
+   new paper or a manuscript nobody has used these skills on yet.
+2. **Load the style rules.** Invoke `paper-writing-style`, which holds the writing order, the house
+   style, and the session state protocol in `references/session-state.md`. Read that reference before
+   creating or updating any state.
+3. **Lock the language.** Language of the user's first message, whole run. Any LaTeX the section skills
+   produce is English.
+4. **Survey the manuscript.** Read the `.tex` files, the `.bib`, the figures and their captions. Work
+   out what exists rather than asking.
+
+## This skill owns the state folder
+
+Every skill in the family reads `paper-out/` and appends to it. **This one owns its lifecycle**: it
+creates the folder, writes `STATE.md`, and keeps it accurate. The section skills log their own decisions
+and interview answers; only this skill maintains the position table and the next step, because only this
+skill sees the whole manuscript.
+
+### Resuming
+
+When `paper-out/STATE.md` exists, open with a short reconciliation, not a fresh interview:
+
+> Resuming from 2026-08-19. Target journal ACS Nano, 250 word abstract. Your principal result is the
+> 96% versus 71% retention comparison, and the size-dependence result was deferred pending TEM data.
+> Last position: results and discussion done, conclusions next.
+>
+> Two things have changed in the manuscript since then: Section 3.6 is new, and Table 2 now reads 91%
+> where the state records 96%. The manuscript wins, so I have corrected the state. Does the new
+> section change which result is principal?
+
+Three moves in that order: **state what you know**, **report what has changed underneath it**, then
+**ask only what the change raises**. Never replay the original interview.
+
+**Verify state against the manuscript every time.** Stored position is a hint, not a fact. A section
+recorded as done that no longer looks done, or a value that no longer matches, means the state is stale:
+say so, correct it, and continue. Silent trust in stale state is worse than having no state at all.
+
+### Creating it
+
+Create `paper-out/` on the first run that produces something worth saving, not on arrival. Then:
+
+- Tell the researcher it was created, and list the files.
+- Say once that it is intended to be **committed alongside the manuscript**, since the decision log is
+  project history a co-author benefits from, and it carries the same sensitivity as the unpublished
+  paper itself. Offer to add it to `.gitignore` if they prefer. Record the answer in `STATE.md` so it is
+  not raised again.
+
+### Updating it
+
+At the end of any run that changed something, rewrite `STATE.md` in place: the position table, the next
+step, the open question count, and the decisions that shape everything downstream. `STATE.md` is a
+snapshot; `decisions.md` is the append-only log.
 
 ## The writing order
 
@@ -120,12 +166,23 @@ This is the commonest reason to invoke this skill, and the answer should be shor
 
 One next action, the reason, the skill to run.
 
+## Answering "where were we?"
+
+The other common reason to invoke this skill, and it should be answerable in one screen. Read
+`STATE.md`, verify it against the manuscript, and report: where the paper stands, what changed since
+last time, what is open, and the next step. Then stop and let the researcher direct.
+
 ## Hard rules
 
 - **Never write section content yourself.** Hand off. This skill's value is orientation, and a
   half-implemented section skill inside it would be worse than the real one.
 - **Never invent the state of the manuscript.** If you cannot tell whether a section is complete, say
   what you could not determine and ask.
+- **Never trust stored state over the manuscript.** Verify every time; report and correct staleness.
+- **Never re-ask a question answered in `paper-out/interviews/`.**
+- **Never write to `paper-out/` silently.** Name the files created or changed.
+- **Never block on missing or malformed state.** Carry on without it and say so. The manuscript is what
+  matters.
 - **Never declare a paper finished.** Offer the pre-submission pass instead.
 - **Never insist on the order.** State the cost of deviating and let the researcher choose.
 - **Never emit an em dash (`---`).**

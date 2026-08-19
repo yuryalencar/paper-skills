@@ -15,6 +15,25 @@ Two words govern everything: **clarity** and **concision**. Clarity is the messa
 reaching the reader's mind as fast as possible. Concision is doing that with the fewest
 words. Every sentence must carry one idea to the reader.
 
+## Session state: check `paper-out/` first
+
+A paper spans weeks or months, so **before asking the researcher anything, check whether
+`paper-out/STATE.md` exists in the working directory.** If it does, read it plus `decisions.md` and any
+relevant `interviews/*.md`, then say in two or three lines what you already know so they can correct
+anything stale. Never re-ask a question whose answer is already recorded.
+
+`paper-out/` stores only what cannot be re-derived from the manuscript: the target journal, which result
+is principal and why, what was deliberately deferred, interview answers, open questions, and declined
+reviewer points with their reasons. It never stores prose, values, figure numbers or section structure,
+because a duplicate goes stale and then lies. **If stored state and the manuscript disagree, the
+manuscript wins.**
+
+Write to it after any decision the researcher makes, and say which files you created or changed. Never
+block on it: if it is missing or unreadable, carry on without it and say so.
+
+Full protocol, including the file layout and the `STATE.md` format, is in `references/session-state.md`.
+Read it before creating or updating any state.
+
 ## The writing order
 
 Sections are not written in the order they are read. The course recommends this sequence, and every

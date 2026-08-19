@@ -123,6 +123,78 @@ your Figures 1 to 3 are about durability. Once the results are finished,
 /update-introduction mode A will reconcile them.
 ```
 
+## Resuming after weeks away
+
+A paper is not written in one sitting. The family keeps a `paper-out/` folder beside your manuscript so
+that work resumes where it stopped instead of restarting.
+
+```
+my-paper/
+├── main.tex
+├── refs.bib
+├── figures/
+└── paper-out/
+    ├── STATE.md            position, next step, key decisions
+    ├── decisions.md         append-only log, each entry dated
+    ├── open-questions.md    unresolved items
+    ├── interviews/          answers given, so they are not asked twice
+    └── revision/            reviewer rounds and coverage
+```
+
+**Every skill reads it. `/write-paper` owns it**, creating the folder and keeping `STATE.md` accurate,
+since only it sees the whole manuscript.
+
+### The rule that keeps it honest
+
+**The manuscript is the only source of truth for content.** `paper-out/` stores only what cannot be
+re-derived from it:
+
+| Stored | Never stored, always re-read |
+| :--- | :--- |
+| Target journal, word limit, article type | The prose of any section |
+| Which result is principal, and why | Section structure, or whether a section is complete |
+| Why this journal | Values, figure numbers, citation keys |
+| The reasoning behind a gap phrasing | Anything in the `.tex` or `.bib` |
+| What was deliberately deferred | |
+| Interview answers | |
+| Open questions | |
+| Declined reviewer points, with reasons | |
+
+A duplicated draft goes stale and then lies to you. Structure is cheap to re-derive and expensive to keep
+in sync, so it is re-derived every run. **If stored state and the manuscript disagree, the manuscript
+wins**, and the skill says the state was stale and corrects it.
+
+### What resuming looks like
+
+```
+> /write-paper
+
+Resuming from 2026-08-19. Target journal ACS Nano, 250 word abstract.
+Your principal result is the 96% versus 71% retention comparison, and the
+size-dependence result was deferred pending TEM data. Last position:
+results and discussion done, conclusions next.
+
+Two things changed in the manuscript since then. Section 3.6 is new, and
+Table 2 now reads 91% where the state recorded 96%. The manuscript wins,
+so I have corrected paper-out/STATE.md.
+
+Does the new section change which result is principal?
+```
+
+Three moves, in that order: **state what it knows**, **report what changed underneath it**, then **ask
+only what the change raises**. It never replays the original interview, and it never re-asks a question
+answered in `interviews/`.
+
+### Git
+
+`paper-out/` is meant to be **committed alongside your manuscript**. The decision log is real project
+history, a co-author benefits from seeing why a gap was framed a particular way, and it survives a
+machine change. It lives in the same repository as your unpublished manuscript, so it carries the same
+sensitivity as the paper itself and no more. The skill says this once on creation and offers to
+`.gitignore` it instead if you prefer.
+
+Everything in the folder is markdown you can read and edit by hand. No JSON, no internal formats.
+
 ## The ripple check
 
 Once several sections exist, changing one makes others stale. After any step it reports which:
@@ -165,6 +237,22 @@ nothing without your approval either. No network access.
 - **The cross-section checks live here** because they fall between sections and no section skill owns
   them.
 - **The missing methods step is stated openly** rather than papered over, with a pointer to why.
+- **Session state was added because the first version re-derived everything from the manuscript each
+  run.** That works for structure and fails for decisions: which journal, which result is principal,
+  what was deliberately left out. Those live nowhere in the `.tex` and were being lost between sessions,
+  so the researcher got re-interviewed on settled questions weeks later.
+- **State stores only non-derivable decisions**, never prose or structure. The failure mode of a state
+  file is drifting from reality and being believed anyway, so the surface area is kept as small as
+  possible and the manuscript always wins a disagreement.
+- **The protocol lives in `paper-writing-style`, not here.** Every skill already loads that rulebook, so
+  one edit taught all 23 skills to read and append to `paper-out/`. Putting it here would have meant
+  editing 23 files and letting them drift.
+- **State is verified against the manuscript every run**, never trusted. Silent trust in stale state is
+  worse than having no state.
+- **Markdown, not JSON.** The researcher has to be able to read the decision log, and hand-editing it
+  must work.
+- **Created on first real decision, not on arrival**, so a directory where somebody ran one review does
+  not acquire an empty folder.
 
 ## Sources
 

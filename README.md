@@ -100,6 +100,34 @@ Provisional titles along the way are fine.
 
 Deviating is a judgement call, not an error. The skills say what it costs and let you decide.
 
+#### Resuming across sessions
+
+A paper is not written in one sitting. The family keeps a `paper-out/` folder beside your manuscript so
+work resumes where it stopped instead of restarting. Every skill reads it;
+[`/write-paper`](docs/write-paper.md) owns it.
+
+```
+my-paper/
+├── main.tex
+├── refs.bib
+└── paper-out/
+    ├── STATE.md            position, next step, key decisions
+    ├── decisions.md        append-only log, each entry dated
+    ├── open-questions.md   unresolved items
+    ├── interviews/         answers given, so they are not asked twice
+    └── revision/           reviewer rounds and coverage
+```
+
+**The manuscript is the only source of truth for content.** `paper-out/` stores only what cannot be
+re-derived from it: the target journal, which result is principal and why, what was deliberately
+deferred, interview answers, open questions, and declined reviewer points with their reasons. It never
+stores your prose, your values, or section structure, because a duplicate goes stale and then lies to
+you. If the state and the manuscript disagree, the manuscript wins and the state gets corrected.
+
+It is meant to be **committed alongside your manuscript**: the decision log is project history a
+co-author benefits from, and it carries the same sensitivity as the unpublished paper itself. Everything
+in it is markdown you can read and edit by hand.
+
 #### The three verbs
 
 The three verbs divide the work cleanly:
