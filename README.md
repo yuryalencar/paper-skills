@@ -29,6 +29,12 @@ The table is an index; the docs are where the detail lives.
 | `/create-title` | Produces a spread of title options, favouring titles that state your finding over ones that name your topic | `research` | [docs](docs/create-title.md) |
 | `/review-title` | Seven checks from crutch phrases to overclaiming, then two or three rewrites | `research` | [docs](docs/review-title.md) |
 | `/update-title` | Catches a title that no longer matches the paper, applies an editor's request, or finalizes a working title | `research` | [docs](docs/update-title.md) |
+| `/create-cover-letter` | Writes the submission cover letter: the novelty, and why this journal | `research` | [docs](docs/create-cover-letter.md) |
+| `/review-cover-letter` | Checks the two things that make a cover letter work, plus the declarations your journal mandates | `research` | [docs](docs/review-cover-letter.md) |
+| `/update-cover-letter` | Retargets a letter to a different journal after rejection, stripping every trace of the old one | `research` | [docs](docs/update-cover-letter.md) |
+| `/create-response-to-reviewers` | Pairs every reviewer comment with a response and the exact manuscript location of the change | `research` | [docs](docs/create-response-to-reviewers.md) |
+| `/review-response-to-reviewers` | Re-enumerates the comments independently, then verifies every claimed change actually exists | `research` | [docs](docs/review-response-to-reviewers.md) |
+| `/update-response-to-reviewers` | Writes the second round, checked for contradictions against what you said the first time | `research` | [docs](docs/update-response-to-reviewers.md) |
 | `paper-writing-style` | The style rulebook the paper skills lean on. Claude-only, no `/` command | `research` | [docs](docs/paper-writing-style.md) |
 
 ### Browse by tag
@@ -39,7 +45,7 @@ under both. Install every skill carrying a tag with `./install.sh --tag <tag>`.
 | Tag | Covers | Skills |
 | :------------ | :--------------------------------------------------- | :----- |
 | `programming` | Code, refactoring, review, git, code documentation | n/a |
-| `research` | Papers, literature review, methodology, academic writing | `create-abstract`, `review-abstract`, `update-abstract`, `create-introduction`, `review-introduction`, `update-introduction`, `create-results-discussion`, `review-results-discussion`, `update-results-discussion`, `create-conclusions`, `review-conclusions`, `update-conclusions`, `create-title`, `review-title`, `update-title`, `paper-writing-style` |
+| `research` | Papers, literature review, methodology, academic writing | `create-abstract`, `review-abstract`, `update-abstract`, `create-introduction`, `review-introduction`, `update-introduction`, `create-results-discussion`, `review-results-discussion`, `update-results-discussion`, `create-conclusions`, `review-conclusions`, `update-conclusions`, `create-title`, `review-title`, `update-title`, `create-cover-letter`, `review-cover-letter`, `update-cover-letter`, `create-response-to-reviewers`, `review-response-to-reviewers`, `update-response-to-reviewers`, `paper-writing-style` |
 | `workflow` | Personal process and automation not tied to a domain | n/a |
 
 ### Scientific paper writing
@@ -60,8 +66,8 @@ install that alongside whichever you use.
 | Results and Discussion | ✅ | ✅ | ✅ |
 | Conclusions | ✅ | ✅ | ✅ |
 | Title | ✅ | ✅ | ✅ |
-| Cover letter | planned | planned | planned |
-| Response to reviewers | planned | planned | planned |
+| Cover letter | ✅ | ✅ | ✅ |
+| Response to reviewers | ✅ | ✅ | ✅ |
 
 The three verbs divide the work cleanly:
 
