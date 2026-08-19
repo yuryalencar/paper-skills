@@ -14,7 +14,9 @@
       "description": "House style rules for scientific paper writing in English, distilled from Zucolotto's scientific writing course.",
       "version": "0.1.0",
       "category": "research",
-      "tags": ["research"]
+      "tags": [
+        "research"
+      ]
     },
     {
       "name": "create-abstract",
@@ -22,7 +24,9 @@
       "description": "Write a scientific paper abstract in LaTeX following the six-part model, interviewing you for what is missing.",
       "version": "0.1.0",
       "category": "research",
-      "tags": ["research"]
+      "tags": [
+        "research"
+      ]
     },
     {
       "name": "review-abstract",
@@ -30,15 +34,19 @@
       "description": "Review an abstract from a writing perspective, labelling every sentence with the model part it implements.",
       "version": "0.1.0",
       "category": "research",
-      "tags": ["research"]
+      "tags": [
+        "research"
+      ]
     },
     {
       "name": "update-abstract",
       "source": "./skills/update-abstract",
-      "description": "Reconcile an abstract with the current state of the manuscript, preserving your wording where it still holds.",
-      "version": "0.1.0",
+      "description": "Move an existing abstract forward: reconcile it with a changed manuscript, apply suggested changes, or resume a half-written draft.",
+      "version": "0.2.0",
       "category": "research",
-      "tags": ["research"]
+      "tags": [
+        "research"
+      ]
     }
   ]
 }

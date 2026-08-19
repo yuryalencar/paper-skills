@@ -1,38 +1,49 @@
 # /update-abstract
 
-> Reads the paper as it stands now, finds where the abstract has drifted from it, and proposes
-> a reconciled abstract that keeps your wording wherever it still holds.
+> Moves an existing abstract forward, whether the paper drifted underneath it, someone
+> suggested changes, or it was left half-written.
 
-**Status:** alpha · **Version:** 0.1.0 · **Invocation:** `/update-abstract` ·
+**Status:** alpha · **Version:** 0.2.0 · **Invocation:** `/update-abstract` ·
 **Auto-loads:** yes · **Tags:** `research`
 **Companion skills:** [paper-writing-style](paper-writing-style.md),
 [create-abstract](create-abstract.md), [review-abstract](review-abstract.md)
 
 ## What it does
 
-An abstract is downstream of the paper. When you add a result, revise a value, or rewrite the
-introduction's gap, the abstract silently stops being true. This skill reads the current
-manuscript, builds a picture of what the paper now says, diffs it against what the abstract
-claims, and proposes the revision.
+An abstract already exists and needs to change. This skill evolves it, in contrast to
+`/create-abstract` which starts from nothing and `/review-abstract` which diagnoses without
+rewriting.
 
-It is a **reconciliation, not a rewrite**. The starting assumption is that your abstract was
-correct once, so sentences that still hold are left exactly as you wrote them.
+It handles three situations, and every abstract runs into all three sooner or later:
+
+| Mode | When |
+| :--- | :--- |
+| **A. Reconcile** | The paper changed and the abstract has drifted from it |
+| **B. Apply suggestions** | Reviewer comments, co-author notes, or `/review-abstract` output to incorporate |
+| **C. Resume** | The abstract was left half-written and needs picking up |
+
+It says which mode it is in before starting, so you can correct it. More than one can apply at
+once, most often B and A together after a revision round, and it runs them in the order B, C, A
+so that reconciliation happens last over the finished text.
+
+Throughout, the assumption is that your text was correct once. This is a **revision, not a
+rewrite**: sentences that still hold are left exactly as you wrote them.
 
 ## When to use it
 
 - You added, dropped or revised results since the abstract was written.
-- You rewrote the introduction and are not sure the abstract's gap still matches.
+- Reviewers asked for changes and you need them incorporated without losing track of any.
+- A co-author sent notes on the abstract.
+- You ran `/review-abstract` and want its findings applied.
+- You abandoned the abstract half-finished and want to continue.
 - Before submission, as a final check that the abstract and the paper agree.
-- After a revision round, when reviewers pushed you to change claims in the body.
 
 ## When *not* to use it
 
-- **There is no manuscript to compare against.** This skill has nothing to work from without
-  the paper; it will tell you so and point you at [review-abstract](review-abstract.md).
 - **You have no abstract yet.** Use [create-abstract](create-abstract.md).
-- **You want a style critique.** Use [review-abstract](review-abstract.md). This skill checks
-  that the six-part structure survived the update but deliberately does not duplicate the full
-  style pass.
+- **You want a critique, not a change.** Use [review-abstract](review-abstract.md).
+- **There is no manuscript, no feedback and no unfinished draft.** There is nothing to update
+  against; it will tell you so and point you at `/review-abstract`.
 
 ## Install
 
@@ -46,110 +57,134 @@ Or `./install.sh update-abstract paper-writing-style`.
 
 ## Inputs
 
-**Required:** both a current abstract and a current manuscript body. It finds them itself in
-the working directory, or you can pass paths.
-
-| Input | Effect |
+| Input | Selects mode |
 | :--- | :--- |
-| Nothing | Finds the `.tex` files, abstract and `.bib` in the working directory |
-| Path to the manuscript | Uses that instead of searching |
-| Separate abstract and body paths | For split manuscripts |
+| Nothing, with a manuscript present | A, reconcile |
+| Pasted reviewer comments or co-author notes | B, apply suggestions |
+| Output from `/review-abstract` | B, apply suggestions |
+| An abstract that is visibly incomplete | C, resume |
+| Reviewer comments *and* a changed manuscript | B then A |
 
-It reads figures, tables and captions too, since a result that exists only as a figure is
-still a result the abstract may need to mention.
+It finds the abstract, manuscript, `.bib` and citation style itself. It reads figures, tables
+and captions too, since a result that exists only as a figure is still a result the abstract may
+need.
 
-**Language.** Interviews in the language you open in and stays there. Output LaTeX is English.
+**Language.** Interviews in the language you open in and stays there for the whole run. Output
+LaTeX is always English.
 
 ## Outputs
 
-1. **A divergence table**: what the abstract says, what the paper says, where in the paper,
-   and how serious it is.
-2. **Questions**, only for divergences where the direction of reconciliation genuinely matters.
-3. **The revised abstract** as a LaTeX fragment, with `% UPDATED:` comments explaining each
-   changed block and `% TODO:` for anything unverifiable.
-4. **A short summary** of what changed.
+1. **The mode it detected**, stated up front.
+2. **Mode A:** a severity-ordered divergence table. **Mode B:** a numbered account of every
+   suggestion and what happened to it. **Mode C:** a categorization of what exists and what is
+   missing.
+3. **Questions**, only where the direction of the change genuinely matters.
+4. **The revised abstract** as a LaTeX fragment with `% UPDATED:`, `% ADDED:` and `% TODO:`
+   comments.
+5. **A summary** of what changed.
 
-Nothing is written until you approve it.
+Nothing is written to disk until you approve it.
 
-## Example
+## Example, mode A
 
 ```
 > /update-abstract
 ```
 
 ```
+Mode A: reconciling against the manuscript. No feedback supplied and the
+abstract looks complete.
+
 DIVERGENCES
 
-| Abstract says              | Paper says               | Where       | Severity |
-|----------------------------|--------------------------|-------------|----------|
-| viability fell to 71%      | 62%                      | Table 2     | HIGH     |
-| threefold LDH increase     | 4.2-fold                 | Fig. 4b     | HIGH     |
-| 48 h exposure              | 72 h                     | Sec. 2.3    | HIGH     |
-| (not mentioned)            | size-dependence result   | Sec. 3.4    | MEDIUM   |
-| "establish a safe          | conclusions now say      | Sec. 5      | MEDIUM   |
-|  concentration"            | "indicate a threshold"   |             |          |
+| Abstract says          | Paper says              | Where    | Severity |
+|------------------------|-------------------------|----------|----------|
+| viability fell to 71%  | 62%                     | Table 2  | HIGH     |
+| threefold LDH increase | 4.2-fold                | Fig. 4b  | HIGH     |
+| 48 h exposure          | 72 h                    | Sec. 2.3 | HIGH     |
+| (not mentioned)        | size-dependence result  | Sec. 3.4 | MEDIUM   |
 
-The methods, gap and purpose still match the paper.
+Methods, gap and purpose still match.
 
-The size-dependence result in 3.4 looks principal to me: it is the only finding
-that distinguishes this work from ref. 14. Should it go in the abstract? It would
-cost you the second methods sentence to fit within 250 words.
-
-One I cannot resolve for you: the conclusions section softened from "establish"
-to "indicate". If that was a deliberate response to a reviewer, the abstract
-should follow. If the body was softened by accident, the abstract was right.
-Which direction?
+One I cannot resolve for you: the conclusions section softened from
+"establish" to "indicate". If that answered a reviewer, the abstract should
+follow. If the body was softened by accident, the abstract was right.
 ```
 
-Then the revised fragment:
+## Example, mode B
 
-```latex
-% RESULTS
-% UPDATED: 62\% per Table~2, was 71\%
-Viability fell to 62\% at 25\,\textmu g\,mL$^{-1}$ over 72\,h,
-% UPDATED: exposure time corrected from 48\,h per Sec.~2.3
-while lactate dehydrogenase release increased 4.2-fold over the same range.
 ```
+> /update-abstract  (pasting reviewer 2's comments)
+```
+
+```
+Mode B: applying suggested updates. Four distinct requests in that paragraph.
+
+1. "state the sample size in the abstract"          DIRECT      applied
+2. "the contribution is not clear"                  INTERPRETIVE proposed
+   -> rewrote the conclusions sentence to name the concentration
+      threshold as the contribution. Flagging that I interpreted this.
+3. "shorten to 200 words"                           DIRECT      applied
+   -> to fit, the methods sentence lost the LDH assay mention. Your call
+      whether that is the right sacrifice.
+4. "the statistics need revising"                    OUT OF SCOPE
+   -> concerns Sec. 2.4, not the abstract wording. Left alone.
+
+Note: request 1 and request 3 pull against each other. Adding the sample
+size costs 9 words while you are being asked to cut 50.
+```
+
+Every suggestion is accounted for, including the ones not applied. A reviewer request silently
+dropped is the main failure mode in this mode, and with reviewers it has consequences.
 
 ## Why it asks instead of assuming
 
-A divergence has two possible resolutions and only you know which: the abstract is stale and
+In mode A, a divergence has two resolutions and only you know which: the abstract is stale and
 should follow the paper, or the paper changed by mistake and the abstract was right. Assuming
 the paper always wins would quietly propagate an accidental edit into your abstract.
 
-Where the answer is obvious, such as a value the results section clearly revised, it states
-the assumption and lets you correct it rather than making you answer a question. Explicit
-questions are reserved for cases that genuinely change the outcome.
+In mode B, a conflicting pair of suggestions has no correct answer without you. It surfaces the
+conflict rather than picking a side.
+
+Where the answer is obvious, such as a value the results section clearly revised, it states the
+assumption and lets you correct it rather than making you answer a question.
 
 ## Side effects
 
-Reads the manuscript, figures and bibliography in your working directory. Writes nothing
-unless you approve and say where. No network access.
+Reads the manuscript, figures and bibliography in your working directory. Writes nothing unless
+you approve and say where. No network access.
 
 ## Design decisions
 
 - **Separate skill from `/create-abstract`**, on the researcher's instruction. Creating and
   updating are different operations: creating starts from nothing, updating starts from
   something that was right once and must preserve it.
+- **Three modes rather than one.** The first version only reconciled against a changed
+  manuscript, which made `update` look useful merely for sections *derived* from the paper. The
+  researcher pointed out the two commoner cases, incorporating suggested changes and resuming
+  after a pause, which apply to every section. That is why `update` now exists across the whole
+  family rather than only for abstract, introduction, conclusions and title.
+- **Mode order B, C, A**, so a reconciliation pass runs last over finished text.
+- **Every suggestion accounted for** in mode B, including the rejected ones.
+- **Reviewer outranks the style guide.** Where a request conflicts with the house style, it is
+  applied and the tension noted.
 - **Preserve wording aggressively.** Restyling sentences that were already fine hides what
-  actually changed and erodes trust in the update. Churn is a defect here, not a bonus.
-- **Severity-ordered divergences**, because a contradicted number is a different class of
-  problem from a missing mention.
+  actually changed. Churn is a defect here, not a bonus.
 - **Never assume the paper wins.** See above.
-- **Every value traceable or `% TODO:`.** No number enters the revised abstract unless it was
-  found at a specific place in the manuscript.
-- **A clean result is a valid outcome.** If the abstract and paper already agree, it says so
-  and changes nothing rather than making cosmetic edits to look busy.
-- **Structure check yes, full style pass no.** It verifies the six-part model survived, then
-  points at `/review-abstract` rather than duplicating it.
+- **Every value traceable or `% TODO:`.**
+- **A clean result is a valid outcome.** If there is nothing to change, it says so rather than
+  making cosmetic edits to look busy.
+- **Resume does not restyle.** Mixing a resume with a critique makes both worse, so mode C
+  matches the existing voice and suggests `/review-abstract` separately.
 
 ## Sources
 
-Module 2 (the six-part model) and Module 4 (the writing order that makes the abstract
-downstream of everything else) of *Curso de Escrita Científica* by Prof. Dr. Valtencir
-Zucolotto, IFSC/USP, transcript in
-[`sources/`](../sources/curso_escrita_cientifica_valtencir_zucolotto.md).
+Module 2 (the six-part model) and Module 4 (the writing order that makes the abstract downstream
+of everything else) and Module 8 (the editorial process, revised manuscripts and response
+letters) of *Curso de Escrita Científica* by Prof. Dr. Valtencir Zucolotto, IFSC/USP, transcript
+in [`sources/`](../sources/curso_escrita_cientifica_valtencir_zucolotto.md).
 
 ## Changelog
 
+- **0.2.0**: broadened from reconcile-only to three modes: reconcile, apply suggestions, resume.
 - **0.1.0**: initial version. Abstract vertical slice, phase 1.

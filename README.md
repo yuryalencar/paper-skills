@@ -45,14 +45,20 @@ install that alongside whichever you use.
 | :--- | :--- | :--- | :--- |
 | Abstract | ✅ | ✅ | ✅ |
 | Introduction | planned | planned | planned |
-| Results & Discussion | planned | planned | n/a |
+| Results & Discussion | planned | planned | planned |
 | Conclusions | planned | planned | planned |
 | Title | planned | planned | planned |
-| Cover letter | planned | planned | n/a |
-| Response to reviewers | planned | n/a | n/a |
+| Cover letter | planned | planned | planned |
+| Response to reviewers | planned | planned | planned |
 
-Update skills exist only for sections *derived* from the rest of the paper. Results are not
-derived from anything, so `/update-results` would just be `/review-results` with extra steps.
+The three verbs divide the work cleanly:
+
+- **create** starts a section from nothing, interviewing you for what it needs.
+- **review** diagnoses an existing section and reports, without rewriting it.
+- **update** moves an existing section forward. It covers three situations, and every
+  section runs into all three: the paper changed underneath it and it has drifted, there
+  are suggested changes to incorporate (from reviewers, a co-author, or a `/review-*` run),
+  or it was left half-written and needs picking up after a pause.
 
 Sections that need more analysis before they can be built honestly are recorded in
 [`todo/`](todo/) rather than guessed at. The methods section is there now: the source course
