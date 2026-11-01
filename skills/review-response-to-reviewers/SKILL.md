@@ -2,8 +2,6 @@
 name: review-response-to-reviewers
 description: Review a point-by-point response letter to reviewers before resubmission, checking that every comment has a response, that every response names where in the manuscript the change lives, that no claimed change is missing from the revised manuscript, and that the tone will not antagonize the reviewers. Use when asked to review or check a response letter or rebuttal before sending it.
 allowed-tools: Read, Grep, Glob
-metadata:
-  tags: [research]
 ---
 
 # /review-response-to-reviewers

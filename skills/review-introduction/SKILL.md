@@ -2,8 +2,6 @@
 name: review-introduction
 description: Review a scientific paper introduction from a writing perspective, labelling each paragraph and sentence with the movement it implements (contextualization, gap, state of the art, purpose), checking the general-to-specific funnel, auditing the three citation classes, and reporting style defects with concrete rewrites. Use when asked to review, critique, check or improve an introduction.
 allowed-tools: Read, Grep, Glob
-metadata:
-  tags: [research]
 ---
 
 # /review-introduction

@@ -2,8 +2,6 @@
 name: update-title
 description: Update an existing paper title when the paper's principal finding has changed, when reviewers or an editor asked for a different title, or when a provisional working title needs replacing now that the paper is finished. Use when a title already exists and needs to change.
 allowed-tools: Read, Grep, Glob
-metadata:
-  tags: [research]
 ---
 
 # /update-title

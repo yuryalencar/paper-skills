@@ -1,8 +1,9 @@
-# ai-skills
+# paper-skills
 
-A collection of [Claude Code](https://code.claude.com) skills, built to be installed on any
-machine, mine or yours. Each skill packages a repeatable procedure or a body of expertise
-so Claude applies it consistently instead of being re-explained every session.
+A collection of [Claude Code](https://code.claude.com) skills for writing academic papers,
+built to be installed on any machine, mine or yours. Each skill packages a repeatable
+procedure or a body of expertise so Claude applies it consistently instead of being
+re-explained every session.
 
 Every skill here has a documentation page under [`docs/`](docs/) describing what it does,
 when to use it, and when not to.
@@ -12,53 +13,42 @@ when to use it, and when not to.
 Every skill has its own documentation page with usage, inputs, outputs and worked examples.
 The table is an index; the docs are where the detail lives.
 
-| Skill | What it does | Tags | Docs |
-| :---- | :----------- | :--- | :--- |
-| `/setup-paper-project` | Step zero: the venue template in a GitHub repo, connected to Overleaf. Manual only | `research` | [docs](docs/setup-paper-project.md) |
-| `/write-paper` | The map for the family: where your manuscript stands, what to write next, then hands off | `research` | [docs](docs/write-paper.md) |
-| `/create-abstract` | Writes a paper abstract in LaTeX from the six-part model, interviewing you for what it does not know | `research` | [docs](docs/create-abstract.md) |
-| `/review-abstract` | Labels every sentence of an abstract with the model part it implements, then reports what is missing or weak | `research` | [docs](docs/review-abstract.md) |
-| `/update-abstract` | Reconciles an abstract with the current state of the manuscript, preserving your wording | `research` | [docs](docs/update-abstract.md) |
-| `/create-introduction` | Writes an introduction on the four-movement model, funnelling from the broad field to your purpose | `research` | [docs](docs/create-introduction.md) |
-| `/review-introduction` | Labels each movement, traces the funnel, audits your citations by class and by year | `research` | [docs](docs/review-introduction.md) |
-| `/update-introduction` | Reconciles an introduction with a changed paper, applies suggestions, or resumes a draft | `research` | [docs](docs/update-introduction.md) |
-| `/create-results-discussion` | Writes the results and discussion, one four-class block per figure, captions included | `research` | [docs](docs/create-results-discussion.md) |
-| `/review-results-discussion` | Matrix of your result blocks against the four information classes, so the gaps are visible at a glance | `research` | [docs](docs/review-results-discussion.md) |
-| `/update-results-discussion` | Integrates new or revised data, applies suggestions, or resumes a stalled draft | `research` | [docs](docs/update-results-discussion.md) |
-| `/create-conclusions` | Writes the conclusions on the inverse funnel, opening on your result and widening to what the field gains | `research` | [docs](docs/create-conclusions.md) |
-| `/review-conclusions` | Checks the three movements, traces the funnel in reverse, catches text copied from the results | `research` | [docs](docs/review-conclusions.md) |
-| `/update-conclusions` | Checks each conclusion still follows from the evidence, applies suggestions, or finishes a draft | `research` | [docs](docs/update-conclusions.md) |
-| `/create-title` | Produces a spread of title options, favouring titles that state your finding over ones that name your topic | `research` | [docs](docs/create-title.md) |
-| `/review-title` | Seven checks from crutch phrases to overclaiming, then two or three rewrites | `research` | [docs](docs/review-title.md) |
-| `/update-title` | Catches a title that no longer matches the paper, applies an editor's request, or finalizes a working title | `research` | [docs](docs/update-title.md) |
-| `/create-cover-letter` | Writes the submission cover letter: the novelty, and why this journal | `research` | [docs](docs/create-cover-letter.md) |
-| `/review-cover-letter` | Checks the two things that make a cover letter work, plus the declarations your journal mandates | `research` | [docs](docs/review-cover-letter.md) |
-| `/update-cover-letter` | Retargets a letter to a different journal after rejection, stripping every trace of the old one | `research` | [docs](docs/update-cover-letter.md) |
-| `/create-response-to-reviewers` | Pairs every reviewer comment with a response and the exact manuscript location of the change | `research` | [docs](docs/create-response-to-reviewers.md) |
-| `/review-response-to-reviewers` | Re-enumerates the comments independently, then verifies every claimed change actually exists | `research` | [docs](docs/review-response-to-reviewers.md) |
-| `/update-response-to-reviewers` | Writes the second round, checked for contradictions against what you said the first time | `research` | [docs](docs/update-response-to-reviewers.md) |
-| `paper-writing-style` | The style rulebook the paper skills lean on. Claude-only, no `/` command | `research` | [docs](docs/paper-writing-style.md) |
-
-### Browse by tag
-
-Skills are tagged rather than filed into folders, so anything that spans two areas appears
-under both. Install every skill carrying a tag with `./install.sh --tag <tag>`.
-
-| Tag | Covers | Skills |
-| :------------ | :--------------------------------------------------- | :----- |
-| `programming` | Code, refactoring, review, git, code documentation | n/a |
-| `research` | Papers, literature review, methodology, academic writing | `setup-paper-project`, `write-paper`, `create-abstract`, `review-abstract`, `update-abstract`, `create-introduction`, `review-introduction`, `update-introduction`, `create-results-discussion`, `review-results-discussion`, `update-results-discussion`, `create-conclusions`, `review-conclusions`, `update-conclusions`, `create-title`, `review-title`, `update-title`, `create-cover-letter`, `review-cover-letter`, `update-cover-letter`, `create-response-to-reviewers`, `review-response-to-reviewers`, `update-response-to-reviewers`, `paper-writing-style` |
-| `workflow` | Personal process and automation not tied to a domain | n/a |
+| Skill | What it does | Docs |
+| :---- | :----------- | :--- |
+| `/setup-paper-project` | Step zero: the venue template in a GitHub repo, connected to Overleaf. Manual only | [docs](docs/setup-paper-project.md) |
+| `/write-paper` | The map for the family: where your manuscript stands, what to write next, then hands off | [docs](docs/write-paper.md) |
+| `/create-abstract` | Writes a paper abstract in LaTeX from the six-part model, interviewing you for what it does not know | [docs](docs/create-abstract.md) |
+| `/review-abstract` | Labels every sentence of an abstract with the model part it implements, then reports what is missing or weak | [docs](docs/review-abstract.md) |
+| `/update-abstract` | Reconciles an abstract with the current state of the manuscript, preserving your wording | [docs](docs/update-abstract.md) |
+| `/create-introduction` | Writes an introduction on the four-movement model, funnelling from the broad field to your purpose | [docs](docs/create-introduction.md) |
+| `/review-introduction` | Labels each movement, traces the funnel, audits your citations by class and by year | [docs](docs/review-introduction.md) |
+| `/update-introduction` | Reconciles an introduction with a changed paper, applies suggestions, or resumes a draft | [docs](docs/update-introduction.md) |
+| `/create-results-discussion` | Writes the results and discussion, one four-class block per figure, captions included | [docs](docs/create-results-discussion.md) |
+| `/review-results-discussion` | Matrix of your result blocks against the four information classes, so the gaps are visible at a glance | [docs](docs/review-results-discussion.md) |
+| `/update-results-discussion` | Integrates new or revised data, applies suggestions, or resumes a stalled draft | [docs](docs/update-results-discussion.md) |
+| `/create-conclusions` | Writes the conclusions on the inverse funnel, opening on your result and widening to what the field gains | [docs](docs/create-conclusions.md) |
+| `/review-conclusions` | Checks the three movements, traces the funnel in reverse, catches text copied from the results | [docs](docs/review-conclusions.md) |
+| `/update-conclusions` | Checks each conclusion still follows from the evidence, applies suggestions, or finishes a draft | [docs](docs/update-conclusions.md) |
+| `/create-title` | Produces a spread of title options, favouring titles that state your finding over ones that name your topic | [docs](docs/create-title.md) |
+| `/review-title` | Seven checks from crutch phrases to overclaiming, then two or three rewrites | [docs](docs/review-title.md) |
+| `/update-title` | Catches a title that no longer matches the paper, applies an editor's request, or finalizes a working title | [docs](docs/update-title.md) |
+| `/create-cover-letter` | Writes the submission cover letter: the novelty, and why this journal | [docs](docs/create-cover-letter.md) |
+| `/review-cover-letter` | Checks the two things that make a cover letter work, plus the declarations your journal mandates | [docs](docs/review-cover-letter.md) |
+| `/update-cover-letter` | Retargets a letter to a different journal after rejection, stripping every trace of the old one | [docs](docs/update-cover-letter.md) |
+| `/create-response-to-reviewers` | Pairs every reviewer comment with a response and the exact manuscript location of the change | [docs](docs/create-response-to-reviewers.md) |
+| `/review-response-to-reviewers` | Re-enumerates the comments independently, then verifies every claimed change actually exists | [docs](docs/review-response-to-reviewers.md) |
+| `/update-response-to-reviewers` | Writes the second round, checked for contradictions against what you said the first time | [docs](docs/update-response-to-reviewers.md) |
+| `paper-writing-style` | The style rulebook the paper skills lean on. Claude-only, no `/` command | [docs](docs/paper-writing-style.md) |
 
 ### Scientific paper writing
 
-The `research` skills are being built as a family, one paper section at a time. Each section
+The skills are built as a family, one paper section at a time. Each section
 gets three skills: `create` to draft it, `review` to critique the writing, and `update` to
 move it forward. They share the `paper-writing-style` rulebook, so
 install that alongside whichever you use.
 
 ```
-./install.sh --tag research     # everything below, plus the style rulebook
+./install.sh --all     # everything below, plus the style rulebook
 ```
 
 | Section | create | review | update |
@@ -160,8 +150,8 @@ Add the marketplace once, then install any skill by name. Skills installed this 
 with `/plugin marketplace update`.
 
 ```
-/plugin marketplace add yuryalencar/ai-skills
-/plugin install <skill-name>@yuryalencar-ai-skills
+/plugin marketplace add yuryalencar/paper-skills
+/plugin install <skill-name>@yuryalencar-paper-skills
 ```
 
 Browse what's available with `/plugin marketplace` after adding it. If the install summary
@@ -173,23 +163,21 @@ Copies a skill into `~/.claude/skills/<name>`, making it available in every proj
 machine.
 
 ```bash
-git clone https://github.com/yuryalencar/ai-skills.git
-cd ai-skills
+git clone https://github.com/yuryalencar/paper-skills.git
+cd paper-skills
 
 ./install.sh <skill-name>     # one skill
-./install.sh --tag research   # every skill carrying a tag
 ./install.sh --all            # everything
-./install.sh --list           # see skills and their tags
+./install.sh --list           # see available skills
 ```
 
 On Windows (PowerShell):
 
 ```powershell
-git clone https://github.com/yuryalencar/ai-skills.git
-cd ai-skills
+git clone https://github.com/yuryalencar/paper-skills.git
+cd paper-skills
 
 .\install.ps1 <skill-name>
-.\install.ps1 -Tag research
 .\install.ps1 -All
 .\install.ps1 -List
 ```
@@ -213,13 +201,12 @@ cp -r skills/<skill-name> ~/.claude/skills/
 ```
 
 Don't nest skills in category folders at the destination. Claude Code discovers skills
-exactly one level deep, so `~/.claude/skills/<group>/<name>/SKILL.md` is never found. That
-is why this repo tags skills instead of foldering them.
+exactly one level deep, so `~/.claude/skills/<group>/<name>/SKILL.md` is never found.
 
 ### Uninstall
 
 ```
-/plugin uninstall <skill-name>@yuryalencar-ai-skills   # option A
+/plugin uninstall <skill-name>@yuryalencar-paper-skills   # option A
 rm -rf ~/.claude/skills/<skill-name>                   # options B and C
 ```
 
@@ -271,8 +258,7 @@ index it here. Claude Code follows that file automatically when you work in this
 it for a new skill and it will run the interview.
 
 Contributions and suggestions are welcome via issues and pull requests. A pull request
-adding a skill needs every item in CLAUDE.md's "Definition of done", including tags in both
-the skill's frontmatter and the marketplace entry.
+adding a skill needs every item in CLAUDE.md's "Definition of done".
 
 ## Repo layout
 
@@ -284,9 +270,7 @@ sources/                  raw material a skill was distilled from
 install.sh, install.ps1   manual installers
 ```
 
-`skills/` is flat, matching what Claude Code installs. Categories live in each skill's
-`metadata.tags`, so a skill that spans two areas carries both tags instead of being filed
-under one and hidden from the other.
+`skills/` is flat, matching what Claude Code installs.
 
 ## License
 

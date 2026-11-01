@@ -2,8 +2,6 @@
 name: review-abstract
 description: Review an existing scientific abstract from a writing perspective using the categorization exercise from Zucolotto's course, labelling every sentence with the part of the six-part model it implements, then reporting missing parts, a weak gap, vague results, and style defects with concrete rewrites. Use when asked to review, critique, check, improve, or give feedback on an abstract.
 allowed-tools: Read, Grep, Glob
-metadata:
-  tags: [research]
 ---
 
 # /review-abstract

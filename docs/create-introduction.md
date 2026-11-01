@@ -4,7 +4,7 @@
 > broad field down to your purpose.
 
 **Status:** alpha · **Version:** 0.1.0 · **Invocation:** `/create-introduction` ·
-**Auto-loads:** yes · **Tags:** `research`
+**Auto-loads:** yes
 **Companion skills:** [paper-writing-style](paper-writing-style.md),
 [review-introduction](review-introduction.md), [update-introduction](update-introduction.md)
 
@@ -38,9 +38,9 @@ Output is an English LaTeX fragment with movement labels.
 ## Install
 
 ```
-/plugin marketplace add yuryalencar/ai-skills
-/plugin install create-introduction@yuryalencar-ai-skills
-/plugin install paper-writing-style@yuryalencar-ai-skills
+/plugin marketplace add yuryalencar/paper-skills
+/plugin install create-introduction@yuryalencar-paper-skills
+/plugin install paper-writing-style@yuryalencar-paper-skills
 ```
 
 Or `./install.sh create-introduction paper-writing-style`.

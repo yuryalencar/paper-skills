@@ -4,7 +4,7 @@
 > changes, or resumes a half-written draft.
 
 **Status:** alpha · **Version:** 0.1.0 · **Invocation:** `/update-introduction` ·
-**Auto-loads:** yes · **Tags:** `research`
+**Auto-loads:** yes
 **Companion skills:** [paper-writing-style](paper-writing-style.md),
 [create-introduction](create-introduction.md), [review-introduction](review-introduction.md)
 
@@ -39,9 +39,9 @@ It is a **revision, not a rewrite**. What still holds stays as you wrote it.
 ## Install
 
 ```
-/plugin marketplace add yuryalencar/ai-skills
-/plugin install update-introduction@yuryalencar-ai-skills
-/plugin install paper-writing-style@yuryalencar-ai-skills
+/plugin marketplace add yuryalencar/paper-skills
+/plugin install update-introduction@yuryalencar-paper-skills
+/plugin install paper-writing-style@yuryalencar-paper-skills
 ```
 
 Or `./install.sh update-introduction paper-writing-style`.

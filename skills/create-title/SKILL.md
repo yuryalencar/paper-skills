@@ -2,8 +2,6 @@
 name: create-title
 description: Write scientific paper title options in LaTeX, concise and keyword-rich, favouring the modern trend of stating the paper's principal contribution in the title rather than merely describing the topic. Use when asked to write, draft, propose or produce a title for a paper, article or manuscript.
 allowed-tools: Read, Grep, Glob
-metadata:
-  tags: [research]
 ---
 
 # /create-title

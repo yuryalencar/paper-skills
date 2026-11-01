@@ -2,8 +2,6 @@
 name: update-conclusions
 description: Move an existing conclusions section forward, in any of three situations: the results changed and the conclusions no longer follow from them, there are suggested changes to incorporate from reviewers or a co-author, or the section was left unfinished. Preserves the researcher's wording and claims where they still hold. Use when a conclusions section already exists and needs to change.
 allowed-tools: Read, Grep, Glob
-metadata:
-  tags: [research]
 ---
 
 # /update-conclusions

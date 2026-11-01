@@ -3,7 +3,7 @@
 > Writes the submission cover letter: what the work shows, why it matters, and why this journal.
 
 **Status:** alpha · **Version:** 0.1.0 · **Invocation:** `/create-cover-letter` ·
-**Auto-loads:** yes · **Tags:** `research`
+**Auto-loads:** yes
 **Companion skills:** [paper-writing-style](paper-writing-style.md),
 [review-cover-letter](review-cover-letter.md), [update-cover-letter](update-cover-letter.md),
 [create-response-to-reviewers](create-response-to-reviewers.md)
@@ -40,9 +40,9 @@ author approval, required declarations, suggested reviewers, and contact details
 ## Install
 
 ```
-/plugin marketplace add yuryalencar/ai-skills
-/plugin install create-cover-letter@yuryalencar-ai-skills
-/plugin install paper-writing-style@yuryalencar-ai-skills
+/plugin marketplace add yuryalencar/paper-skills
+/plugin install create-cover-letter@yuryalencar-paper-skills
+/plugin install paper-writing-style@yuryalencar-paper-skills
 ```
 
 Or `./install.sh create-cover-letter paper-writing-style`.

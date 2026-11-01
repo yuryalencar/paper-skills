@@ -3,7 +3,7 @@
 > Writes the second round, checked for consistency against what you said the first time.
 
 **Status:** alpha · **Version:** 0.1.0 · **Invocation:** `/update-response-to-reviewers` ·
-**Auto-loads:** yes · **Tags:** `research`
+**Auto-loads:** yes
 **Companion skills:** [paper-writing-style](paper-writing-style.md),
 [create-response-to-reviewers](create-response-to-reviewers.md),
 [review-response-to-reviewers](review-response-to-reviewers.md)
@@ -36,9 +36,9 @@ written once.
 ## Install
 
 ```
-/plugin marketplace add yuryalencar/ai-skills
-/plugin install update-response-to-reviewers@yuryalencar-ai-skills
-/plugin install paper-writing-style@yuryalencar-ai-skills
+/plugin marketplace add yuryalencar/paper-skills
+/plugin install update-response-to-reviewers@yuryalencar-paper-skills
+/plugin install paper-writing-style@yuryalencar-paper-skills
 ```
 
 Or `./install.sh update-response-to-reviewers paper-writing-style`.

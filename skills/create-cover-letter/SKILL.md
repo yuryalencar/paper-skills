@@ -2,8 +2,6 @@
 name: create-cover-letter
 description: Write a submission cover letter for a scientific manuscript, stating the importance and novelty of the work and why this specific journal is the right venue. Use when asked to write, draft or produce a cover letter for a paper submission, or when preparing to submit a manuscript to a journal.
 allowed-tools: Read, Grep, Glob
-metadata:
-  tags: [research]
 ---
 
 # /create-cover-letter

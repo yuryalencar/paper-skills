@@ -2,8 +2,6 @@
 name: update-response-to-reviewers
 description: Update an existing response letter to reviewers, whether a second round of comments arrived on the revised manuscript, the manuscript changed after the letter was drafted, a co-author commented on the letter, or it was left unfinished. Use when a response letter already exists and needs to change.
 allowed-tools: Read, Grep, Glob
-metadata:
-  tags: [research]
 ---
 
 # /update-response-to-reviewers

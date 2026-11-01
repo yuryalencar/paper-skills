@@ -4,7 +4,7 @@
 > in the manuscript.
 
 **Status:** alpha · **Version:** 0.1.0 · **Invocation:** `/review-response-to-reviewers` ·
-**Auto-loads:** yes · **Tags:** `research`
+**Auto-loads:** yes
 **Companion skills:** [paper-writing-style](paper-writing-style.md),
 [create-response-to-reviewers](create-response-to-reviewers.md),
 [update-response-to-reviewers](update-response-to-reviewers.md)
@@ -38,9 +38,9 @@ The highest-value check is not stylistic. It is check 2.
 ## Install
 
 ```
-/plugin marketplace add yuryalencar/ai-skills
-/plugin install review-response-to-reviewers@yuryalencar-ai-skills
-/plugin install paper-writing-style@yuryalencar-ai-skills
+/plugin marketplace add yuryalencar/paper-skills
+/plugin install review-response-to-reviewers@yuryalencar-paper-skills
+/plugin install paper-writing-style@yuryalencar-paper-skills
 ```
 
 Or `./install.sh review-response-to-reviewers paper-writing-style`.

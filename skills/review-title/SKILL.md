@@ -2,8 +2,6 @@
 name: review-title
 description: Review a scientific paper title, checking whether it states the principal contribution or merely describes the topic, whether it carries scientific crutch phrases, whether it is concise and keyword-rich, and whether it claims exactly what the paper shows. Use when asked to review, critique, check or improve a paper title.
 allowed-tools: Read, Grep, Glob
-metadata:
-  tags: [research]
 ---
 
 # /review-title

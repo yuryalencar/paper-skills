@@ -2,8 +2,6 @@
 name: create-conclusions
 description: Write a scientific paper conclusions section in LaTeX using the inverse funnel from Zucolotto's course, opening on the principal result and widening to how it advances the broad field. Use when asked to write, draft or produce a conclusions or conclusion section for a paper, article or manuscript.
 allowed-tools: Read, Grep, Glob
-metadata:
-  tags: [research]
 ---
 
 # /create-conclusions

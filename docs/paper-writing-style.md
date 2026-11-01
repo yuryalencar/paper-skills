@@ -4,7 +4,7 @@
 > you never invoke it directly.
 
 **Status:** alpha · **Version:** 0.1.0 · **Invocation:** none, Claude-only ·
-**Auto-loads:** yes · **Tags:** `research`
+**Auto-loads:** yes
 **Used by:** [create-abstract](create-abstract.md), [review-abstract](review-abstract.md),
 [update-abstract](update-abstract.md), and every paper skill added later
 
@@ -86,8 +86,8 @@ are correct typography that an editor would expect. Suppressing it there would l
 ## Install
 
 ```
-/plugin marketplace add yuryalencar/ai-skills
-/plugin install paper-writing-style@yuryalencar-ai-skills
+/plugin marketplace add yuryalencar/paper-skills
+/plugin install paper-writing-style@yuryalencar-paper-skills
 ```
 
 Or `./install.sh paper-writing-style`. Install it alongside any paper skill.

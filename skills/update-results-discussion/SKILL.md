@@ -2,8 +2,6 @@
 name: update-results-discussion
 description: Move an existing results and discussion section forward, in any of three situations: new or revised data has to be integrated, there are suggested changes to incorporate from reviewers or a co-author, or the section was left half-written and needs resuming. Preserves the researcher's wording and interpretations where they still hold. Use when a results or discussion section already exists and needs to change.
 allowed-tools: Read, Grep, Glob
-metadata:
-  tags: [research]
 ---
 
 # /update-results-discussion

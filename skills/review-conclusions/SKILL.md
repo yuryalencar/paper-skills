@@ -2,8 +2,6 @@
 name: review-conclusions
 description: Review a scientific paper conclusions section from a writing perspective, checking the inverse funnel from specific to general, verifying the principal result, interpretation and contribution are all present, catching text copied from the results section, and reporting style defects with rewrites. Use when asked to review, critique or improve a conclusions section.
 allowed-tools: Read, Grep, Glob
-metadata:
-  tags: [research]
 ---
 
 # /review-conclusions

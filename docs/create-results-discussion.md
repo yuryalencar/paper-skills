@@ -4,7 +4,7 @@
 > and self-contained captions.
 
 **Status:** alpha · **Version:** 0.1.0 · **Invocation:** `/create-results-discussion` ·
-**Auto-loads:** yes · **Tags:** `research`
+**Auto-loads:** yes
 **Companion skills:** [paper-writing-style](paper-writing-style.md),
 [review-results-discussion](review-results-discussion.md),
 [update-results-discussion](update-results-discussion.md)
@@ -43,9 +43,9 @@ chosen, because every other section is shaped by what this one says.
 ## Install
 
 ```
-/plugin marketplace add yuryalencar/ai-skills
-/plugin install create-results-discussion@yuryalencar-ai-skills
-/plugin install paper-writing-style@yuryalencar-ai-skills
+/plugin marketplace add yuryalencar/paper-skills
+/plugin install create-results-discussion@yuryalencar-paper-skills
+/plugin install paper-writing-style@yuryalencar-paper-skills
 ```
 
 Or `./install.sh create-results-discussion paper-writing-style`.

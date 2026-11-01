@@ -2,8 +2,6 @@
 name: create-introduction
 description: Write a scientific paper introduction in LaTeX following the four-movement model (contextualization, gap, state of the art, purpose) from Zucolotto's course, with the general-to-specific funnel and the three classes of citation. Interviews the researcher for the literature and the gap, drafts, then refines. Use when asked to write, draft or produce an introduction for a paper, article or manuscript.
 allowed-tools: Read, Grep, Glob
-metadata:
-  tags: [research]
 ---
 
 # /create-introduction

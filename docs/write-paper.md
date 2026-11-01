@@ -4,7 +4,7 @@
 > hands off to the skill that does it.
 
 **Status:** alpha · **Version:** 0.1.0 · **Invocation:** `/write-paper` ·
-**Auto-loads:** yes · **Tags:** `research`
+**Auto-loads:** yes
 **Companion skills:** [paper-writing-style](paper-writing-style.md), and every `create-*`,
 `review-*` and `update-*` skill in the family
 
@@ -74,9 +74,8 @@ model from.
 ## Install
 
 ```
-/plugin marketplace add yuryalencar/ai-skills
-/plugin install write-paper@yuryalencar-ai-skills
-./install.sh --tag research     # or just install the whole family
+/plugin marketplace add yuryalencar/paper-skills
+/plugin install write-paper@yuryalencar-paper-skills
 ```
 
 It is most useful with the rest of the family installed, since its job is to hand off to them.

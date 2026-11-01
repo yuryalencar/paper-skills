@@ -4,7 +4,7 @@
 > actually supports, ready for the writing skills to work inside.
 
 **Status:** alpha · **Version:** 0.1.0 · **Invocation:** `/setup-paper-project` ·
-**Auto-loads:** no, **manual only** · **Tags:** `research`
+**Auto-loads:** no, **manual only**
 **Companion skills:** [write-paper](write-paper.md), [paper-writing-style](paper-writing-style.md)
 
 ## What it does
@@ -65,8 +65,8 @@ error-prone, and that a repository on its own is a perfectly good way to write a
 ## Install
 
 ```
-/plugin marketplace add yuryalencar/ai-skills
-/plugin install setup-paper-project@yuryalencar-ai-skills
+/plugin marketplace add yuryalencar/paper-skills
+/plugin install setup-paper-project@yuryalencar-paper-skills
 ```
 
 Or `./install.sh setup-paper-project`. Invoke it with `/setup-paper-project`; it will not auto-load.

@@ -3,7 +3,7 @@
 > Seven checks on the first document the editor reads, led by the two that decide whether it works at all.
 
 **Status:** alpha · **Version:** 0.1.0 · **Invocation:** `/review-cover-letter` ·
-**Auto-loads:** yes · **Tags:** `research`
+**Auto-loads:** yes
 **Companion skills:** [paper-writing-style](paper-writing-style.md),
 [create-cover-letter](create-cover-letter.md), [update-cover-letter](update-cover-letter.md)
 
@@ -36,9 +36,9 @@ choosing this journal. Both are fatal to the letter's purpose and both are quick
 ## Install
 
 ```
-/plugin marketplace add yuryalencar/ai-skills
-/plugin install review-cover-letter@yuryalencar-ai-skills
-/plugin install paper-writing-style@yuryalencar-ai-skills
+/plugin marketplace add yuryalencar/paper-skills
+/plugin install review-cover-letter@yuryalencar-paper-skills
+/plugin install paper-writing-style@yuryalencar-paper-skills
 ```
 
 Or `./install.sh review-cover-letter paper-writing-style`.

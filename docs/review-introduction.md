@@ -4,7 +4,7 @@
 > by class and by year, then reports style defects with rewrites.
 
 **Status:** alpha · **Version:** 0.1.0 · **Invocation:** `/review-introduction` ·
-**Auto-loads:** yes · **Tags:** `research`
+**Auto-loads:** yes
 **Companion skills:** [paper-writing-style](paper-writing-style.md),
 [create-introduction](create-introduction.md), [update-introduction](update-introduction.md)
 
@@ -39,9 +39,9 @@ It reviews the writing, not the science.
 ## Install
 
 ```
-/plugin marketplace add yuryalencar/ai-skills
-/plugin install review-introduction@yuryalencar-ai-skills
-/plugin install paper-writing-style@yuryalencar-ai-skills
+/plugin marketplace add yuryalencar/paper-skills
+/plugin install review-introduction@yuryalencar-paper-skills
+/plugin install paper-writing-style@yuryalencar-paper-skills
 ```
 
 Or `./install.sh review-introduction paper-writing-style`.

@@ -4,7 +4,7 @@
 > title now that the paper is finished.
 
 **Status:** alpha · **Version:** 0.1.0 · **Invocation:** `/update-title` ·
-**Auto-loads:** yes · **Tags:** `research`
+**Auto-loads:** yes
 **Companion skills:** [paper-writing-style](paper-writing-style.md),
 [create-title](create-title.md), [review-title](review-title.md)
 
@@ -36,9 +36,9 @@ because it should be revisited at the end.
 ## Install
 
 ```
-/plugin marketplace add yuryalencar/ai-skills
-/plugin install update-title@yuryalencar-ai-skills
-/plugin install paper-writing-style@yuryalencar-ai-skills
+/plugin marketplace add yuryalencar/paper-skills
+/plugin install update-title@yuryalencar-paper-skills
+/plugin install paper-writing-style@yuryalencar-paper-skills
 ```
 
 Or `./install.sh update-title paper-writing-style`.

@@ -2,8 +2,6 @@
 name: update-abstract
 description: Move an existing abstract forward, in any of three situations: the paper changed underneath it and the abstract has drifted, there are suggested changes to incorporate from reviewers or a co-author, or it was left half-written and needs resuming. Produces a revised LaTeX abstract that preserves the researcher's wording wherever it still holds. Use when an abstract already exists and needs to change rather than be written from scratch.
 allowed-tools: Read, Grep, Glob
-metadata:
-  tags: [research]
 ---
 
 # /update-abstract

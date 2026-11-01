@@ -3,15 +3,12 @@
     Install skills from this repo into ~/.claude/skills.
 
 .DESCRIPTION
-    skills/ is flat, matching the layout Claude Code installs. Grouping lives in each
-    skill's metadata.tags, so a skill can belong to several groups at once.
+    skills/ is flat, matching the layout Claude Code installs.
 
 .EXAMPLE
     .\install.ps1 scientific-writing
 .EXAMPLE
     .\install.ps1 -All
-.EXAMPLE
-    .\install.ps1 -Tag research
 .EXAMPLE
     .\install.ps1 -List
 .EXAMPLE
@@ -24,7 +21,6 @@ param(
     [Parameter(Position = 0, ValueFromRemainingArguments = $true)]
     [string[]] $Skill,
 
-    [string] $Tag,
     [switch] $All,
     [switch] $List,
     [switch] $Link,
@@ -42,31 +38,6 @@ $destDir = if ($Project) {
     Join-Path $HOME '.claude\skills'
 }
 
-# Read metadata.tags from a skill's frontmatter. Expects a single-line flow
-# sequence: "  tags: [a, b]".
-function Get-SkillTags {
-    param([string] $Path)
-
-    $file = Join-Path $Path 'SKILL.md'
-    if (-not (Test-Path $file)) { return @() }
-
-    $lines = Get-Content -Path $file
-    $inFrontmatter = $false
-
-    for ($i = 0; $i -lt $lines.Count; $i++) {
-        $line = $lines[$i]
-        if ($i -eq 0 -and $line -match '^---\s*$') { $inFrontmatter = $true; continue }
-        if (-not $inFrontmatter) { continue }
-        if ($line -match '^---\s*$') { break }
-        if ($line -match '^\s*tags:\s*\[(.*)\]') {
-            return $Matches[1] -split ',' |
-                ForEach-Object { $_.Trim() } |
-                Where-Object { $_ }
-        }
-    }
-    return @()
-}
-
 function Get-AvailableSkills {
     if (-not (Test-Path $srcDir)) { return @() }
 
@@ -76,7 +47,6 @@ function Get-AvailableSkills {
             [pscustomobject]@{
                 Name = $_.Name
                 Path = $_.FullName
-                Tags = @(Get-SkillTags -Path $_.FullName)
             }
         }
 }
@@ -88,8 +58,7 @@ function Show-AvailableSkills {
         return
     }
     foreach ($s in $available | Sort-Object Name) {
-        $tagLabel = if ($s.Tags.Count -gt 0) { "[$($s.Tags -join ',')]" } else { '(untagged)' }
-        Write-Host ('  {0,-28} {1}' -f $s.Name, $tagLabel)
+        Write-Host ('  {0}' -f $s.Name)
     }
 }
 
@@ -103,22 +72,12 @@ $available = @(Get-AvailableSkills)
 
 $targets = if ($All) {
     $available.Name
-} elseif ($Tag) {
-    $tagged = @($available | Where-Object { $_.Tags -contains $Tag })
-    if ($tagged.Count -eq 0) {
-        Write-Warning "no skill carries the tag '$Tag'"
-        Write-Host ''
-        Write-Host 'available:'
-        Show-AvailableSkills
-        exit 1
-    }
-    $tagged.Name
 } else {
     $Skill
 }
 
 if (-not $targets -or @($targets).Count -eq 0) {
-    Write-Host 'nothing to install. Pass a skill name, -Tag <tag>, -All, or -List.'
+    Write-Host 'nothing to install. Pass a skill name, -All, or -List.'
     Write-Host ''
     Write-Host 'available:'
     Show-AvailableSkills

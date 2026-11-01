@@ -2,8 +2,6 @@
 name: update-introduction
 description: Move an existing paper introduction forward, in any of three situations: the paper changed and the introduction has drifted, there are suggested changes to incorporate from reviewers or a co-author, or it was left half-written and needs resuming. Preserves the researcher's wording where it still holds. Use when an introduction already exists and needs to change rather than be written from scratch.
 allowed-tools: Read, Grep, Glob
-metadata:
-  tags: [research]
 ---
 
 # /update-introduction

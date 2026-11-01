@@ -4,7 +4,7 @@
 > skill, short review.
 
 **Status:** alpha · **Version:** 0.1.0 · **Invocation:** `/review-title` ·
-**Auto-loads:** yes · **Tags:** `research`
+**Auto-loads:** yes
 **Companion skills:** [paper-writing-style](paper-writing-style.md),
 [create-title](create-title.md), [update-title](update-title.md)
 
@@ -38,9 +38,9 @@ If the title passes everything, it says so in a sentence or two and stops. A goo
 ## Install
 
 ```
-/plugin marketplace add yuryalencar/ai-skills
-/plugin install review-title@yuryalencar-ai-skills
-/plugin install paper-writing-style@yuryalencar-ai-skills
+/plugin marketplace add yuryalencar/paper-skills
+/plugin install review-title@yuryalencar-paper-skills
+/plugin install paper-writing-style@yuryalencar-paper-skills
 ```
 
 Or `./install.sh review-title paper-writing-style`.

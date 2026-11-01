@@ -2,8 +2,6 @@
 name: create-abstract
 description: Write a scientific paper abstract in LaTeX from a short description, a draft manuscript, or a results section, following the six-part model (contextualization, gap, purpose, methods, results, conclusions) from Zucolotto's scientific writing course. Interviews the researcher for what is missing, drafts, then refines with them. Use when asked to write, draft, or produce an abstract for a paper, article, or manuscript.
 allowed-tools: Read, Grep, Glob
-metadata:
-  tags: [research]
 ---
 
 # /create-abstract

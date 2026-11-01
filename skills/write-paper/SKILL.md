@@ -2,8 +2,6 @@
 name: write-paper
 description: Guide a scientific manuscript from figures to submission, following the recommended writing order from Zucolotto's course (results and discussion, conclusions, introduction, methods, abstract, title), reporting where the paper currently stands and invoking the right section skill for the next step. Use when asked how to start writing a paper, what to write next, what order to write a paper in, or to be walked through writing a manuscript end to end.
 allowed-tools: Read, Grep, Glob
-metadata:
-  tags: [research]
 ---
 
 # /write-paper

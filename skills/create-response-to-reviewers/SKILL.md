@@ -2,8 +2,6 @@
 name: create-response-to-reviewers
 description: Write a point-by-point response letter to reviewer comments for a revised manuscript, pairing every comment with a reply and the change made, plus the accompanying cover letter to the editor. Use when asked to respond to reviewers, write a response letter, address referee comments, or prepare a revision after peer review.
 allowed-tools: Read, Grep, Glob
-metadata:
-  tags: [research]
 ---
 
 # /create-response-to-reviewers

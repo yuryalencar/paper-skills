@@ -3,7 +3,7 @@
 > Pairs every reviewer comment with a response and the exact place in the manuscript where the change lives.
 
 **Status:** alpha · **Version:** 0.1.0 · **Invocation:** `/create-response-to-reviewers` ·
-**Auto-loads:** yes · **Tags:** `research`
+**Auto-loads:** yes
 **Companion skills:** [paper-writing-style](paper-writing-style.md),
 [review-response-to-reviewers](review-response-to-reviewers.md),
 [update-response-to-reviewers](update-response-to-reviewers.md),
@@ -44,9 +44,9 @@ gets three things.
 ## Install
 
 ```
-/plugin marketplace add yuryalencar/ai-skills
-/plugin install create-response-to-reviewers@yuryalencar-ai-skills
-/plugin install paper-writing-style@yuryalencar-ai-skills
+/plugin marketplace add yuryalencar/paper-skills
+/plugin install create-response-to-reviewers@yuryalencar-paper-skills
+/plugin install paper-writing-style@yuryalencar-paper-skills
 ```
 
 Or `./install.sh create-response-to-reviewers paper-writing-style`.

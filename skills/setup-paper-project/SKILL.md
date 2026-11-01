@@ -3,8 +3,6 @@ name: setup-paper-project
 description: Set up a new scientific paper project before writing starts: find the target conference or journal's LaTeX template, scaffold the repository with the right structure and gitignore, create the GitHub repository, and connect it to Overleaf in the order Overleaf actually supports. Use when starting a new paper, asked to set up a paper project or repository, or asked how to begin writing a paper for a specific venue.
 disable-model-invocation: true
 allowed-tools: Read, Grep, Glob
-metadata:
-  tags: [research]
 ---
 
 # /setup-paper-project

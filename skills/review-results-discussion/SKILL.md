@@ -2,8 +2,6 @@
 name: review-results-discussion
 description: Review a results and discussion section from a writing perspective, labelling each result block against the four information classes (background, description, interpretation, comparison), checking topic sentences and paragraph boundaries, auditing figure captions for self-containment, and reporting style defects with rewrites. Use when asked to review, critique or improve a results or discussion section.
 allowed-tools: Read, Grep, Glob
-metadata:
-  tags: [research]
 ---
 
 # /review-results-discussion

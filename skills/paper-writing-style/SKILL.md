@@ -2,8 +2,6 @@
 name: paper-writing-style
 description: House style rules for scientific paper writing in English, distilled from Valtencir Zucolotto's scientific writing course. Load whenever drafting, revising, or reviewing any part of a scientific manuscript (abstract, introduction, results, discussion, conclusions, cover letter) so the prose reads as clear, concise, specific, human-written academic English rather than generated text. Also load when asked to humanize, tighten, or de-jargon scientific prose.
 user-invocable: false
-metadata:
-  tags: [research]
 ---
 
 # Scientific writing house style

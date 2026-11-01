@@ -4,7 +4,7 @@
 > suggested changes, or it was left half-written.
 
 **Status:** alpha · **Version:** 0.2.0 · **Invocation:** `/update-abstract` ·
-**Auto-loads:** yes · **Tags:** `research`
+**Auto-loads:** yes
 **Companion skills:** [paper-writing-style](paper-writing-style.md),
 [create-abstract](create-abstract.md), [review-abstract](review-abstract.md)
 
@@ -48,9 +48,9 @@ rewrite**: sentences that still hold are left exactly as you wrote them.
 ## Install
 
 ```
-/plugin marketplace add yuryalencar/ai-skills
-/plugin install update-abstract@yuryalencar-ai-skills
-/plugin install paper-writing-style@yuryalencar-ai-skills
+/plugin marketplace add yuryalencar/paper-skills
+/plugin install update-abstract@yuryalencar-paper-skills
+/plugin install paper-writing-style@yuryalencar-paper-skills
 ```
 
 Or `./install.sh update-abstract paper-writing-style`.

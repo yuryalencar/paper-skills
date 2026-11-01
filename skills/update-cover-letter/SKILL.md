@@ -2,8 +2,6 @@
 name: update-cover-letter
 description: Update an existing cover letter, whether the paper changed since it was written, the manuscript is being submitted to a different journal after rejection, feedback was given on the letter, or it was left unfinished. Use when a cover letter already exists and needs to change rather than be written from scratch.
 allowed-tools: Read, Grep, Glob
-metadata:
-  tags: [research]
 ---
 
 # /update-cover-letter

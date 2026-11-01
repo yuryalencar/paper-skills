@@ -3,10 +3,7 @@
 > One-sentence summary of what this skill does.
 
 **Status:** alpha | stable · **Version:** 0.1.0 · **Invocation:** `/<skill-name>` ·
-**Auto-loads:** yes | no (manual-only) · **Tags:** `programming` `research`
-
-If more than one tag applies, list them all and say in one line why, it tells a reader
-from either audience that this is for them too.
+**Auto-loads:** yes | no (manual-only)
 
 ## What it does
 
@@ -26,8 +23,8 @@ behaves while it's active.
 ## Install
 
 ```
-/plugin marketplace add yuryalencar/ai-skills
-/plugin install <skill-name>@yuryalencar-ai-skills
+/plugin marketplace add yuryalencar/paper-skills
+/plugin install <skill-name>@yuryalencar-paper-skills
 ```
 
 Or `./install.sh <skill-name>` / `.\install.ps1 <skill-name>`.

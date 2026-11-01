@@ -4,7 +4,7 @@
 > at a glance, then checks topic sentences, captions and style.
 
 **Status:** alpha · **Version:** 0.1.0 · **Invocation:** `/review-results-discussion` ·
-**Auto-loads:** yes · **Tags:** `research`
+**Auto-loads:** yes
 **Companion skills:** [paper-writing-style](paper-writing-style.md),
 [create-results-discussion](create-results-discussion.md),
 [update-results-discussion](update-results-discussion.md)
@@ -41,9 +41,9 @@ first.
 ## Install
 
 ```
-/plugin marketplace add yuryalencar/ai-skills
-/plugin install review-results-discussion@yuryalencar-ai-skills
-/plugin install paper-writing-style@yuryalencar-ai-skills
+/plugin marketplace add yuryalencar/paper-skills
+/plugin install review-results-discussion@yuryalencar-paper-skills
+/plugin install paper-writing-style@yuryalencar-paper-skills
 ```
 
 Or `./install.sh review-results-discussion paper-writing-style`.

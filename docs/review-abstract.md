@@ -4,7 +4,7 @@
 > implements, then reports what is missing, weak or badly worded, with concrete rewrites.
 
 **Status:** alpha · **Version:** 0.1.0 · **Invocation:** `/review-abstract` ·
-**Auto-loads:** yes · **Tags:** `research`
+**Auto-loads:** yes
 **Companion skills:** [paper-writing-style](paper-writing-style.md),
 [create-abstract](create-abstract.md), [update-abstract](update-abstract.md)
 
@@ -37,9 +37,9 @@ interesting.
 ## Install
 
 ```
-/plugin marketplace add yuryalencar/ai-skills
-/plugin install review-abstract@yuryalencar-ai-skills
-/plugin install paper-writing-style@yuryalencar-ai-skills
+/plugin marketplace add yuryalencar/paper-skills
+/plugin install review-abstract@yuryalencar-paper-skills
+/plugin install paper-writing-style@yuryalencar-paper-skills
 ```
 
 Or `./install.sh review-abstract paper-writing-style`.

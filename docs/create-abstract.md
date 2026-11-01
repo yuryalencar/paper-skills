@@ -4,7 +4,7 @@
 > interviewing you for what it does not know.
 
 **Status:** alpha · **Version:** 0.1.0 · **Invocation:** `/create-abstract` ·
-**Auto-loads:** yes · **Tags:** `research`
+**Auto-loads:** yes
 **Companion skills:** [paper-writing-style](paper-writing-style.md) (style rules),
 [review-abstract](review-abstract.md) (critique an existing one),
 [update-abstract](update-abstract.md) (reconcile with a changed paper)
@@ -40,9 +40,9 @@ sentence implements and argue with the choices.
 ## Install
 
 ```
-/plugin marketplace add yuryalencar/ai-skills
-/plugin install create-abstract@yuryalencar-ai-skills
-/plugin install paper-writing-style@yuryalencar-ai-skills
+/plugin marketplace add yuryalencar/paper-skills
+/plugin install create-abstract@yuryalencar-paper-skills
+/plugin install paper-writing-style@yuryalencar-paper-skills
 ```
 
 Or `./install.sh create-abstract paper-writing-style` / `.\install.ps1 create-abstract paper-writing-style`.

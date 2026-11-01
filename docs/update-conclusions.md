@@ -4,7 +4,7 @@
 > unfinished section, without rewriting your claims.
 
 **Status:** alpha · **Version:** 0.1.0 · **Invocation:** `/update-conclusions` ·
-**Auto-loads:** yes · **Tags:** `research`
+**Auto-loads:** yes
 **Companion skills:** [paper-writing-style](paper-writing-style.md),
 [create-conclusions](create-conclusions.md), [review-conclusions](review-conclusions.md)
 
@@ -38,9 +38,9 @@ It states the mode before starting, and runs B, then C, then A where several app
 ## Install
 
 ```
-/plugin marketplace add yuryalencar/ai-skills
-/plugin install update-conclusions@yuryalencar-ai-skills
-/plugin install paper-writing-style@yuryalencar-ai-skills
+/plugin marketplace add yuryalencar/paper-skills
+/plugin install update-conclusions@yuryalencar-paper-skills
+/plugin install paper-writing-style@yuryalencar-paper-skills
 ```
 
 Or `./install.sh update-conclusions paper-writing-style`.

@@ -4,7 +4,7 @@
 > section, and verifies your numbers and claims against the rest of the paper.
 
 **Status:** alpha · **Version:** 0.1.0 · **Invocation:** `/review-conclusions` ·
-**Auto-loads:** yes · **Tags:** `research`
+**Auto-loads:** yes
 **Companion skills:** [paper-writing-style](paper-writing-style.md),
 [create-conclusions](create-conclusions.md), [update-conclusions](update-conclusions.md)
 
@@ -40,9 +40,9 @@ not widen** so it reads as a second results summary, and **sentences are copied*
 ## Install
 
 ```
-/plugin marketplace add yuryalencar/ai-skills
-/plugin install review-conclusions@yuryalencar-ai-skills
-/plugin install paper-writing-style@yuryalencar-ai-skills
+/plugin marketplace add yuryalencar/paper-skills
+/plugin install review-conclusions@yuryalencar-paper-skills
+/plugin install paper-writing-style@yuryalencar-paper-skills
 ```
 
 Or `./install.sh review-conclusions paper-writing-style`.

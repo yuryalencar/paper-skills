@@ -2,8 +2,6 @@
 name: create-results-discussion
 description: Write a scientific paper results and discussion section in LaTeX, structuring each result block with the four information classes from Zucolotto's course (background, description, interpretation, comparison with prior work), opening each paragraph with a topic sentence, and writing self-contained figure captions. Use when asked to write, draft or produce a results, discussion, or results and discussion section.
 allowed-tools: Read, Grep, Glob
-metadata:
-  tags: [research]
 ---
 
 # /create-results-discussion

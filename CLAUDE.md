@@ -1,9 +1,10 @@
-# ai-skills
+# paper-skills
 
-A distributable collection of Claude Code skills. Skills are authored here, documented
-here, and installed on any machine through the plugin marketplace or the install scripts.
+A distributable collection of Claude Code skills for writing academic papers. Skills are
+authored here, documented here, and installed on any machine through the plugin marketplace
+or the install scripts.
 
-Repo: `yuryalencar/ai-skills` · License: MIT · Language: **English** for all skills, docs,
+Repo: `yuryalencar/paper-skills` · License: MIT · Language: **English** for all skills, docs,
 and README (source material may be in any language).
 
 **This repo's only job is producing skills.** Every task here is either creating a skill,
@@ -27,47 +28,12 @@ README.md                         install instructions, usage guidelines, skill 
 the marketplace entry. It is also the invocation name, so make it short and typeable:
 `scientific-writing`, not `scientific-writing-assistant-helper`.
 
-## Grouping: tags, not folders
+## Layout rule: flat, no grouping
 
-Skills are grouped by **tags in metadata**, never by directory. Two reasons, both binding:
-
-- **Skills belong to more than one group.** A data-visualization skill is programming when
-  it writes charting code and research when it produces figures for a paper. A folder forces
-  one answer and hides the skill from the other audience; tags don't.
-- **Claude Code discovers skills exactly one level deep.** `~/.claude/skills/<group>/<name>/SKILL.md`
-  is never found, verified by testing, not assumed. Keeping `skills/` flat means the repo
-  layout already matches the installed layout, so nothing is rearranged at install time and
-  name collisions are impossible.
-
-Current tags:
-
-| Tag | Covers |
-| :------------ | :---------------------------------------------------------------- |
-| `programming` | Code, refactoring, review, git, and code documentation |
-| `research` | Papers, literature review, methodology, and academic writing |
-| `workflow` | Personal process and automation not tied to a domain |
-
-Apply **every** tag that fits. That is the whole point. Add a new tag only when a skill
-genuinely fits none of the above, and say so when you do.
-
-Tags are declared in three places, and all three must agree:
-
-1. `SKILL.md` frontmatter, so the grouping travels with an installed skill:
-
-   ```yaml
-   metadata:
-     tags: [programming, research]
-   ```
-
-   Keep it a **single-line flow sequence** exactly as shown. The installers parse this line
-   for `--tag` filtering without a YAML parser, so a multi-line list breaks them.
-   `metadata` is a free-form map Claude Code doesn't act on, and it's in the portable
-   frontmatter subset, so this is safe everywhere.
-
-2. `tags` in the skill's `.claude-plugin/marketplace.json` entry, same list.
-3. `category` in that entry, the single best-fit tag, used only for `/plugin` UI sorting.
-   When a skill is genuinely cross-cutting, pick the primary audience and rely on `tags`
-   for the rest.
+Every skill here is for writing a paper, so there are no tags, categories, or group folders.
+Keep `skills/` flat: Claude Code discovers skills exactly one level deep
+(`~/.claude/skills/<group>/<name>/SKILL.md` is never found, verified by testing), and a flat
+layout matches the installed layout, so nothing is rearranged at install time.
 
 ## The skill creation workflow
 
@@ -84,7 +50,6 @@ Also settle two things:
 
 - Is this genuinely a skill? A skill is a **procedure or a body of expertise** that gets
   reused. A single fact belongs in CLAUDE.md; a one-off task is just a task.
-- Which tags apply? Propose all of them and confirm. Don't force a single answer.
 
 ### 1b. Refuse to guess a model
 
@@ -147,9 +112,7 @@ Then register it in `.claude-plugin/marketplace.json`: append an entry to `plugi
   "name": "<name>",
   "source": "./skills/<name>",
   "description": "<one line, same as the skill description's first sentence>",
-  "version": "0.1.0",
-  "category": "<primary tag>",
-  "tags": ["<every tag that fits>"]
+  "version": "0.1.0"
 }
 ```
 
@@ -161,7 +124,7 @@ no `plugin.json` is needed per skill.
 
 Create `docs/<name>.md` from `docs/TEMPLATE.md`. The docs are for a **human deciding
 whether to install it**, so they must include: what it does, when to use it and when not
-to, its tags, install command, a worked example of invocation and output, the inputs it
+to, install command, a worked example of invocation and output, the inputs it
 expects, configuration or arguments, design decisions from the interview, and source
 attribution.
 
@@ -169,9 +132,8 @@ Docs explain and persuade; `SKILL.md` instructs. Do not just copy one into the o
 
 ### 5. Update the README index
 
-Add the skill to the index table in `README.md`: name, one-line purpose, its tags, link to
-`docs/<name>.md`. Keep the table alphabetical. Then add it to every tag section it belongs
-to; a multi-tag skill is listed under each of them, which is the payoff for tagging.
+Add the skill to the index table in `README.md`: name, one-line purpose, link to
+`docs/<name>.md`. Keep the table alphabetical.
 
 ## SKILL.md conventions
 
@@ -179,8 +141,6 @@ to; a multi-tag skill is listed under each of them, which is the payoff for tagg
 ---
 name: <name>
 description: <what it does AND when to use it, trigger-focused, key use case first>
-metadata:
-  tags: [<tag>, <tag>]
 ---
 
 # /<name>
@@ -223,17 +183,15 @@ Rules:
 
 ## Definition of done
 
-A skill is not finished until all six hold:
+A skill is not finished until all five hold:
 
 1. `skills/<name>/SKILL.md` exists and follows the conventions above.
-2. Its frontmatter carries `metadata.tags` as a single-line list.
-3. An entry for it exists in `.claude-plugin/marketplace.json` with matching `tags` and a
-   `category`.
-4. `docs/<name>.md` exists and is complete.
-5. The README index lists it, and it appears under every tag section that applies.
-6. `./install.sh --list` shows it with the right tags, and the marketplace JSON parses.
+2. An entry for it exists in `.claude-plugin/marketplace.json`.
+3. `docs/<name>.md` exists and is complete.
+4. The README index lists it.
+5. `./install.sh --list` shows it, and the marketplace JSON parses.
 
-Report which of the six are done when handing work back.
+Report which of the five are done when handing work back.
 
 ## Maintenance notes
 

@@ -2,8 +2,6 @@
 name: review-cover-letter
 description: Review a submission cover letter for a scientific manuscript, checking that it states the novelty concretely, gives a real reason for choosing this journal, includes the declarations the journal requires, does not overclaim relative to the paper, and fits on one page. Use when asked to review, critique or check a cover letter before submission.
 allowed-tools: Read, Grep, Glob
-metadata:
-  tags: [research]
 ---
 
 # /review-cover-letter
