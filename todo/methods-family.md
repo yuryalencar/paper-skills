@@ -2,9 +2,9 @@
 
 **Status:** deferred, pending exemplar sections
 **Decided:** 2026-08-19
-**Supersedes:** `/create-methods`, which was removed from the plan before being built
+**Supersedes:** `/write methods`, which was removed from the plan before being built
 
-## Why `/create-methods` was dropped
+## Why `/write methods` was dropped
 
 It was too broad to write good rules for, for three separate reasons.
 
@@ -66,16 +66,16 @@ should necessarily be built; the list is here so the choice can be made against 
 
 | Candidate | Where it applies | Why it is a better unit than "methods" |
 | :--- | :--- | :--- |
-| `/create-threats-to-validity` | Empirical studies, software engineering, experimental social science | Has a genuinely standard structure: internal, external, construct and conclusion validity, each with the mitigation taken. Highly conventional, so a real model exists to extract |
-| `/create-research-questions` | Any empirical study | RQs have recognizable forms and a required relationship to the gap and to the results. Also feeds the introduction |
-| `/create-study-design` | Empirical and experimental work | Design type, variables, controls, and the reasoning that links design to research question |
-| `/create-participants-and-sample` | Human-subject and survey research | Sampling strategy, inclusion and exclusion criteria, size justification, ethics approval. Conventions here are strict and often mandated |
-| `/create-data-collection` | Empirical work | Instruments, procedure, timeline, and what was recorded |
-| `/create-data-analysis` | Any study with statistics | Tests chosen, assumptions checked, significance handling, effect sizes |
-| `/create-experimental-setup` | Physical sciences and engineering | Apparatus, materials, parameters, and characterization techniques |
-| `/create-reproducibility-statement` | Increasingly required across fields | Artifact availability, data and code links, what would be needed to repeat the work |
+| `/write threats-to-validity` | Empirical studies, software engineering, experimental social science | Has a genuinely standard structure: internal, external, construct and conclusion validity, each with the mitigation taken. Highly conventional, so a real model exists to extract |
+| `/write research-questions` | Any empirical study | RQs have recognizable forms and a required relationship to the gap and to the results. Also feeds the introduction |
+| `/write study-design` | Empirical and experimental work | Design type, variables, controls, and the reasoning that links design to research question |
+| `/write participants-and-sample` | Human-subject and survey research | Sampling strategy, inclusion and exclusion criteria, size justification, ethics approval. Conventions here are strict and often mandated |
+| `/write data-collection` | Empirical work | Instruments, procedure, timeline, and what was recorded |
+| `/write data-analysis` | Any study with statistics | Tests chosen, assumptions checked, significance handling, effect sizes |
+| `/write experimental-setup` | Physical sciences and engineering | Apparatus, materials, parameters, and characterization techniques |
+| `/write reproducibility-statement` | Increasingly required across fields | Artifact availability, data and code links, what would be needed to repeat the work |
 
-`/review-*` counterparts are more defensible than the `/create-*` ones in every case, because
+Reviewing (`/review <section>`) is more defensible than writing (`/write <section>`) in every case, because
 reviewing an existing section for structure and style needs no fabricated content. If only
 part of this family gets built, build the reviews first.
 
@@ -100,8 +100,8 @@ from what actually recurs, and only then write the skill.
 
 - Which of the candidates above are relevant to their actual work? The list spans several
   research traditions and most researchers need three or four of them, not all eight.
-- Should these carry a shared prefix, so that a `/create-` autocomplete does not fill with
-  eight section skills? For example `/paper-threats-to-validity`.
+- These would be new sections of `/write` and `/review` (a reference file each), not new commands, so
+  the command list stays short. Does each need its own reference, or do some belong together?
 - Do any of them need to know about the others? Research questions, study design and threats
   to validity are strongly coupled: a threat to validity usually refers back to a design
   decision, and a research question constrains both.

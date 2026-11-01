@@ -13,7 +13,7 @@ to come from.
 
 ## Project layout: sections live in `src/`
 
-The common layout, and what `/setup-paper-project` scaffolds:
+The common layout, and what `/organize` scaffolds:
 
 ```
 <paper>/

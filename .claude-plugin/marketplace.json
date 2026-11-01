@@ -1,7 +1,7 @@
 {
   "name": "yuryalencar-paper-skills",
   "description": "Claude Code skills for writing academic papers by Yury Alencar Lima — installable anywhere.",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "owner": {
     "name": "Yury Alencar Lima",
     "email": "yuryalencar19@gmail.com",
@@ -9,148 +9,59 @@
   },
   "plugins": [
     {
-      "name": "setup-paper-project",
-      "source": "./skills/setup-paper-project",
-      "description": "Set up a new paper project: the venue's LaTeX template in a GitHub repository, connected to Overleaf in the order Overleaf supports.",
-      "version": "0.1.0"
+      "name": "organize",
+      "source": "./skills/organize",
+      "description": "Set up a new paper project from the venue's own format: reads the author guidelines, fetches the official template, and scaffolds a LaTeX project that compiles, with optional GitHub and Overleaf.",
+      "version": "0.2.0"
     },
     {
-      "name": "write-paper",
-      "source": "./skills/write-paper",
-      "description": "Guide a manuscript from figures to submission in the recommended writing order, reporting where the paper stands and what to write next.",
-      "version": "0.1.0"
+      "name": "ask-paper",
+      "source": "./skills/ask-paper",
+      "description": "The paper-writing helper: explains every skill and when to use it, reports where the manuscript stands and what to write next, and keeps session state across weeks.",
+      "version": "0.2.0"
+    },
+    {
+      "name": "write",
+      "source": "./skills/write",
+      "description": "Write or update one paper section in LaTeX (abstract, introduction, results and discussion, conclusions, title, cover letter, response to reviewers) from the course-derived model for that section.",
+      "version": "0.2.0"
+    },
+    {
+      "name": "review",
+      "source": "./skills/review",
+      "description": "Review one paper section against the course-derived model for that section and report what is missing, weak or inconsistent, without rewriting it unasked.",
+      "version": "0.2.0"
     },
     {
       "name": "paper-writing-style",
       "source": "./skills/paper-writing-style",
       "description": "House style rules for scientific paper writing in English, distilled from Zucolotto's scientific writing course.",
-      "version": "0.1.0"
-    },
-    {
-      "name": "create-abstract",
-      "source": "./skills/create-abstract",
-      "description": "Write a scientific paper abstract in LaTeX following the six-part model, interviewing you for what is missing.",
-      "version": "0.1.0"
-    },
-    {
-      "name": "review-abstract",
-      "source": "./skills/review-abstract",
-      "description": "Review an abstract from a writing perspective, labelling every sentence with the model part it implements.",
-      "version": "0.1.0"
-    },
-    {
-      "name": "update-abstract",
-      "source": "./skills/update-abstract",
-      "description": "Move an existing abstract forward: reconcile it with a changed manuscript, apply suggested changes, or resume a half-written draft.",
-      "version": "0.2.0"
-    },
-    {
-      "name": "create-introduction",
-      "source": "./skills/create-introduction",
-      "description": "Write a paper introduction in LaTeX on the four-movement model, with the general-to-specific funnel and the three citation classes.",
-      "version": "0.1.0"
-    },
-    {
-      "name": "review-introduction",
-      "source": "./skills/review-introduction",
-      "description": "Review an introduction: label each movement, trace the funnel, audit citations by class and year, report style defects.",
-      "version": "0.1.0"
-    },
-    {
-      "name": "update-introduction",
-      "source": "./skills/update-introduction",
-      "description": "Move an existing introduction forward: reconcile with a changed paper, apply suggested changes, or resume a half-written draft.",
-      "version": "0.1.0"
-    },
-    {
-      "name": "create-results-discussion",
-      "source": "./skills/create-results-discussion",
-      "description": "Write a results and discussion section in LaTeX, one four-class block per figure, with topic sentences and self-contained captions.",
-      "version": "0.1.0"
-    },
-    {
-      "name": "review-results-discussion",
-      "source": "./skills/review-results-discussion",
-      "description": "Review a results and discussion section: matrix of result blocks against the four information classes, plus topic sentences, captions and style.",
-      "version": "0.1.0"
-    },
-    {
-      "name": "update-results-discussion",
-      "source": "./skills/update-results-discussion",
-      "description": "Integrate new or revised data, apply reviewer suggestions, or resume a stalled results and discussion draft.",
-      "version": "0.1.0"
-    },
-    {
-      "name": "create-conclusions",
-      "source": "./skills/create-conclusions",
-      "description": "Write a conclusions section in LaTeX on the inverse funnel, opening on the principal result and widening to what the field gains.",
-      "version": "0.1.0"
-    },
-    {
-      "name": "review-conclusions",
-      "source": "./skills/review-conclusions",
-      "description": "Review a conclusions section: three movements, reverse funnel trace, text copied from the results, consistency across the paper.",
-      "version": "0.1.0"
-    },
-    {
-      "name": "update-conclusions",
-      "source": "./skills/update-conclusions",
-      "description": "Check each conclusion still follows from the evidence, apply suggested changes, or finish an unfinished section.",
-      "version": "0.1.0"
-    },
-    {
-      "name": "create-title",
-      "source": "./skills/create-title",
-      "description": "Produce a spread of paper title options, favouring titles that state the principal finding rather than name the topic.",
-      "version": "0.1.0"
-    },
-    {
-      "name": "review-title",
-      "source": "./skills/review-title",
-      "description": "Review a paper title: descriptive versus declarative, crutch phrases, length, keywords, abbreviations, overclaiming.",
-      "version": "0.1.0"
-    },
-    {
-      "name": "update-title",
-      "source": "./skills/update-title",
-      "description": "Catch a title that no longer matches the paper, apply an editor's request, or replace a working title.",
-      "version": "0.1.0"
-    },
-    {
-      "name": "create-cover-letter",
-      "source": "./skills/create-cover-letter",
-      "description": "Write a submission cover letter stating the novelty of the work and why this specific journal is the right venue.",
-      "version": "0.1.0"
-    },
-    {
-      "name": "review-cover-letter",
-      "source": "./skills/review-cover-letter",
-      "description": "Review a cover letter: concrete novelty, real journal-fit reason, overclaiming, required declarations, one page.",
-      "version": "0.1.0"
-    },
-    {
-      "name": "update-cover-letter",
-      "source": "./skills/update-cover-letter",
-      "description": "Retarget a cover letter to a different journal after rejection, reconcile it with a changed paper, or finish a draft.",
-      "version": "0.1.0"
-    },
-    {
-      "name": "create-response-to-reviewers",
-      "source": "./skills/create-response-to-reviewers",
-      "description": "Write a point-by-point response to reviewer comments, pairing every comment with a reply and the manuscript location of the change.",
-      "version": "0.1.0"
-    },
-    {
-      "name": "review-response-to-reviewers",
-      "source": "./skills/review-response-to-reviewers",
-      "description": "Review a response letter: re-enumerate the comments independently and verify every claimed change exists in the manuscript.",
-      "version": "0.1.0"
-    },
-    {
-      "name": "update-response-to-reviewers",
-      "source": "./skills/update-response-to-reviewers",
-      "description": "Write a second round response, checked for contradictions against the previous letter, or reconcile locations after edits.",
-      "version": "0.1.0"
+      "version": "0.1.1"
     }
-  ]
+  ],
+  "renames": {
+    "setup-paper-project": "organize",
+    "write-paper": "ask-paper",
+    "create-abstract": "write",
+    "update-abstract": "write",
+    "review-abstract": "review",
+    "create-introduction": "write",
+    "update-introduction": "write",
+    "review-introduction": "review",
+    "create-results-discussion": "write",
+    "update-results-discussion": "write",
+    "review-results-discussion": "review",
+    "create-conclusions": "write",
+    "update-conclusions": "write",
+    "review-conclusions": "review",
+    "create-title": "write",
+    "update-title": "write",
+    "review-title": "review",
+    "create-cover-letter": "write",
+    "update-cover-letter": "write",
+    "review-cover-letter": "review",
+    "create-response-to-reviewers": "write",
+    "update-response-to-reviewers": "write",
+    "review-response-to-reviewers": "review"
+  }
 }

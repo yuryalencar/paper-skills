@@ -30,11 +30,11 @@ invented from general knowledge cannot.
 
 | Item | Blocked on | Notes |
 | :--- | :--- | :--- |
-| [methods-family.md](methods-family.md) | Exemplar sections per candidate skill | `/create-methods` was dropped as too broad. Replaced by a set of narrower, well-defined section skills |
+| [methods-family.md](methods-family.md) | Exemplar sections per candidate skill | `/write methods` was dropped as too broad. Replaced by a set of narrower, well-defined section skills |
 
 ## Deferred within the built skills
 
-Not everything here is a whole skill. `/create-graphical-abstract` was raised and set aside:
-the output is a figure specification rather than prose, so it does not fit the create, review
-and update pattern the writing skills share, and it needs its own thinking about what the
+Not everything here is a whole skill. a graphical-abstract section was raised and set aside:
+the output is a figure specification rather than prose, so it does not fit the write and review
+pattern the writing skills share, and it needs its own thinking about what the
 deliverable even is.

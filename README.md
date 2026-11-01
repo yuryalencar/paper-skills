@@ -15,70 +15,61 @@ The table is an index; the docs are where the detail lives.
 
 | Skill | What it does | Docs |
 | :---- | :----------- | :--- |
-| `/setup-paper-project` | Step zero: the venue template in a GitHub repo, connected to Overleaf. Manual only | [docs](docs/setup-paper-project.md) |
-| `/write-paper` | The map for the family: where your manuscript stands, what to write next, then hands off | [docs](docs/write-paper.md) |
-| `/create-abstract` | Writes a paper abstract in LaTeX from the six-part model, interviewing you for what it does not know | [docs](docs/create-abstract.md) |
-| `/review-abstract` | Labels every sentence of an abstract with the model part it implements, then reports what is missing or weak | [docs](docs/review-abstract.md) |
-| `/update-abstract` | Reconciles an abstract with the current state of the manuscript, preserving your wording | [docs](docs/update-abstract.md) |
-| `/create-introduction` | Writes an introduction on the four-movement model, funnelling from the broad field to your purpose | [docs](docs/create-introduction.md) |
-| `/review-introduction` | Labels each movement, traces the funnel, audits your citations by class and by year | [docs](docs/review-introduction.md) |
-| `/update-introduction` | Reconciles an introduction with a changed paper, applies suggestions, or resumes a draft | [docs](docs/update-introduction.md) |
-| `/create-results-discussion` | Writes the results and discussion, one four-class block per figure, captions included | [docs](docs/create-results-discussion.md) |
-| `/review-results-discussion` | Matrix of your result blocks against the four information classes, so the gaps are visible at a glance | [docs](docs/review-results-discussion.md) |
-| `/update-results-discussion` | Integrates new or revised data, applies suggestions, or resumes a stalled draft | [docs](docs/update-results-discussion.md) |
-| `/create-conclusions` | Writes the conclusions on the inverse funnel, opening on your result and widening to what the field gains | [docs](docs/create-conclusions.md) |
-| `/review-conclusions` | Checks the three movements, traces the funnel in reverse, catches text copied from the results | [docs](docs/review-conclusions.md) |
-| `/update-conclusions` | Checks each conclusion still follows from the evidence, applies suggestions, or finishes a draft | [docs](docs/update-conclusions.md) |
-| `/create-title` | Produces a spread of title options, favouring titles that state your finding over ones that name your topic | [docs](docs/create-title.md) |
-| `/review-title` | Seven checks from crutch phrases to overclaiming, then two or three rewrites | [docs](docs/review-title.md) |
-| `/update-title` | Catches a title that no longer matches the paper, applies an editor's request, or finalizes a working title | [docs](docs/update-title.md) |
-| `/create-cover-letter` | Writes the submission cover letter: the novelty, and why this journal | [docs](docs/create-cover-letter.md) |
-| `/review-cover-letter` | Checks the two things that make a cover letter work, plus the declarations your journal mandates | [docs](docs/review-cover-letter.md) |
-| `/update-cover-letter` | Retargets a letter to a different journal after rejection, stripping every trace of the old one | [docs](docs/update-cover-letter.md) |
-| `/create-response-to-reviewers` | Pairs every reviewer comment with a response and the exact manuscript location of the change | [docs](docs/create-response-to-reviewers.md) |
-| `/review-response-to-reviewers` | Re-enumerates the comments independently, then verifies every claimed change actually exists | [docs](docs/review-response-to-reviewers.md) |
-| `/update-response-to-reviewers` | Writes the second round, checked for contradictions against what you said the first time | [docs](docs/update-response-to-reviewers.md) |
-| `paper-writing-style` | The style rulebook the paper skills lean on. Claude-only, no `/` command | [docs](docs/paper-writing-style.md) |
+| `/organize` | Reads a venue's author guidelines and builds a LaTeX project in that format, with optional GitHub and Overleaf. Manual only | [docs](docs/organize.md) |
+| `/ask-paper` | The helper: explains every skill and when to use it, says where your manuscript stands and what to write next | [docs](docs/ask-paper.md) |
+| `/write <section>` | Writes or updates a section: abstract, introduction, results-discussion, conclusions, title, cover-letter, response-to-reviewers | [docs](docs/write.md) |
+| `/review <section>` | Critiques a section against its model and reports what is missing or weak, without rewriting it | [docs](docs/review.md) |
+| `paper-writing-style` | The style rulebook the others lean on. Claude-only, no `/` command | [docs](docs/paper-writing-style.md) |
 
-### Scientific paper writing
+### How it fits together
 
-The skills are built as a family, one paper section at a time. Each section
-gets three skills: `create` to draft it, `review` to critique the writing, and `update` to
-move it forward. They share the `paper-writing-style` rulebook, so
-install that alongside whichever you use.
+Four commands, and you name the section as an argument:
 
 ```
-./install.sh --all     # everything below, plus the style rulebook
+/organize ICSE 2027 <author-guidelines URL>     # the project, in the venue's format
+/write results-discussion                       # draft a section, or update an existing one
+/review introduction                            # critique a section
+/ask-paper                                      # which skill? where am I? what next?
 ```
 
-| Section | create | review | update |
-| :--- | :--- | :--- | :--- |
-| Abstract | ✅ | ✅ | ✅ |
-| Introduction | ✅ | ✅ | ✅ |
-| Results and Discussion | ✅ | ✅ | ✅ |
-| Conclusions | ✅ | ✅ | ✅ |
-| Title | ✅ | ✅ | ✅ |
-| Cover letter | ✅ | ✅ | ✅ |
-| Response to reviewers | ✅ | ✅ | ✅ |
+`/write` and `/review` cover the same seven sections. Each has its own model from the course, loaded only
+when you pick it. Leave the section out and they infer it from the open file or your session state, then
+ask if they cannot tell. When a draft already exists, `/write` asks whether to update it or rewrite it.
+
+| Section | Model |
+| :--- | :--- |
+| Abstract | Six parts: context, gap, purpose, methods, results, conclusions |
+| Introduction | Four movements: contextualization, gap, state of the art, purpose |
+| Results and discussion | Four information classes per result: background, description, interpretation, comparison |
+| Conclusions | The inverse funnel, from your result out to the field |
+| Title | A spread of options that state the finding, not just the topic |
+| Cover letter | The novelty, and why this journal |
+| Response to reviewers | Each comment paired with a response and the exact manuscript location |
+
+`/write` and `/review` share the `paper-writing-style` rulebook, so install that alongside them.
+
+```
+./install.sh --all     # everything, including the style rulebook
+```
 
 #### The writing order
 
 Sections are not written in the order they are read. The course recommends this sequence, and the whole
-family assumes it. [`/write-paper`](docs/write-paper.md) walks it, tells you where your manuscript
-currently stands, and hands off to the right skill for the next step.
+package assumes it. [`/ask-paper`](docs/ask-paper.md) walks it, tells you where your manuscript
+currently stands, and hands off to the right command for the next step.
 
-| # | Step | Skill |
+| # | Step | Command |
 | :-- | :--- | :--- |
-| -1 | Set up the project: template, repo, Overleaf | [`/setup-paper-project`](docs/setup-paper-project.md) |
+| -1 | Set up the project from the venue's format | [`/organize`](docs/organize.md) |
 | 0 | Select and order the figures | yours, no skill can do this |
-| 1 | Results and discussion | [`/create-results-discussion`](docs/create-results-discussion.md) |
-| 2 | Conclusions | [`/create-conclusions`](docs/create-conclusions.md) |
-| 3 | **Introduction** | [`/create-introduction`](docs/create-introduction.md) |
+| 1 | Results and discussion | [`/write results-discussion`](docs/write.md) |
+| 2 | Conclusions | [`/write conclusions`](docs/write.md) |
+| 3 | **Introduction** | [`/write introduction`](docs/write.md) |
 | 4 | Methods or experimental | none yet, see [`todo/`](todo/methods-family.md) |
-| 5 | Abstract | [`/create-abstract`](docs/create-abstract.md) |
-| 6 | Title | [`/create-title`](docs/create-title.md) |
-| 7 | Cover letter | [`/create-cover-letter`](docs/create-cover-letter.md) |
-| 8 | Revise after review | [`/create-response-to-reviewers`](docs/create-response-to-reviewers.md) |
+| 5 | Abstract | [`/write abstract`](docs/write.md) |
+| 6 | Title | [`/write title`](docs/write.md) |
+| 7 | Cover letter | [`/write cover-letter`](docs/write.md) |
+| 8 | Revise after review | [`/write response-to-reviewers`](docs/write.md) |
 
 **Step 3 is the one that earns the sequence.** Writing the introduction after the results means the gap
 you state is the gap your paper actually answers. Write it first and you state a gap before knowing what
@@ -90,13 +81,13 @@ it. The abstract comes fifth because you cannot summarize what does not exist. T
 because it should name your contribution, and you only know the contribution when the paper is done.
 Provisional titles along the way are fine.
 
-Deviating is a judgement call, not an error. The skills say what it costs and let you decide.
+Deviating is a judgement call, not an error. `/ask-paper` says what it costs and let you decide.
 
 #### Resuming across sessions
 
-A paper is not written in one sitting. The family keeps a `paper-out/` folder beside your manuscript so
+A paper is not written in one sitting. The package keeps a `paper-out/` folder beside your manuscript so
 work resumes where it stopped instead of restarting. Every skill reads it;
-[`/write-paper`](docs/write-paper.md) owns it.
+[`/ask-paper`](docs/ask-paper.md) owns it.
 
 ```
 my-paper/
@@ -121,21 +112,21 @@ It is meant to be **committed alongside your manuscript**: the decision log is p
 co-author benefits from, and it carries the same sensitivity as the unpublished paper itself. Everything
 in it is markdown you can read and edit by hand.
 
-#### The three verbs
+#### Write and review
 
-The three verbs divide the work cleanly:
+The two verbs divide the work cleanly:
 
-- **create** starts a section from nothing, interviewing you for what it needs.
-- **review** diagnoses an existing section and reports, without rewriting it.
-- **update** moves an existing section forward. It covers three situations, and every
-  section runs into all three: the paper changed underneath it and it has drifted, there
-  are suggested changes to incorporate (from reviewers, a co-author, or a `/review-*` run),
-  or it was left half-written and needs picking up after a pause.
+- **`/write`** starts a section from nothing, interviewing you for what it needs. With an existing draft it
+  moves it forward: reconciling it when the paper changed underneath it, applying suggested changes from
+  reviewers, a co-author or a `/review` run, or picking up a half-written draft after a pause. Or it
+  rewrites from scratch, if you say so.
+- **`/review`** diagnoses an existing section and reports, without rewriting it. It needs a draft, and
+  points you at `/write` if there is none.
 
 Sections that need more analysis before they can be built honestly are recorded in
 [`todo/`](todo/) rather than guessed at. The methods section is there now: the source course
-proposes no model for it, so it is being replaced by narrower skills such as
-`/create-threats-to-validity`, derived from real exemplar sections.
+proposes no model for it, so it is being replaced by narrower sections such as
+`threats-to-validity`, derived from real exemplar sections.
 
 All of it is distilled from *Curso de Escrita Científica: Produção de Artigos de Alto Impacto*
 by Prof. Dr. Valtencir Zucolotto (IFSC/USP), whose transcript is in [`sources/`](sources/).
@@ -156,6 +147,11 @@ with `/plugin marketplace update`.
 
 Browse what's available with `/plugin marketplace` after adding it. If the install summary
 says `Run /reload-plugins to activate.`, run that command.
+
+**Upgrading from 0.1.** The 24 per-section skills (`create-*`, `review-*`, `update-*`,
+`write-paper`, `setup-paper-project`) are replaced by `/write`, `/review`, `/ask-paper` and
+`/organize`. Install those, and uninstall the old ones: `/plugin uninstall <old-name>@yuryalencar-paper-skills`
+or `rm -rf ~/.claude/skills/<old-name>`.
 
 ### Option B: install script
 

@@ -35,6 +35,19 @@ Keep `skills/` flat: Claude Code discovers skills exactly one level deep
 (`~/.claude/skills/<group>/<name>/SKILL.md` is never found, verified by testing), and a flat
 layout matches the installed layout, so nothing is rearranged at install time.
 
+## Paper sections are not separate skills
+
+The writing skills are verbs with the section as an argument: `/write <section>` and `/review <section>`.
+Each router (`skills/write/SKILL.md`, `skills/review/SKILL.md`) holds the shared logic, and each section's
+procedure lives in `references/<section>.md` so it costs nothing until picked.
+
+To add a section, do **not** create a skill. Add `references/<section>.md` to `write` and to `review`, add
+a row to each router's section table, add the section to `docs/write.md` and `docs/review.md`, and update
+the README table and `skills/ask-paper/references/skill-guide.md`. The workflow below still applies,
+section by section, including the rule against inventing a model the source does not contain.
+
+A new top-level skill is for something that is neither writing nor reviewing a section.
+
 ## The skill creation workflow
 
 Five steps, in order. **Never write `SKILL.md` before step 2 is confirmed by the user.**

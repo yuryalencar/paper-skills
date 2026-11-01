@@ -117,7 +117,7 @@ Writing order step 2 of 6.
 
 ## Next step
 
-/create-conclusions. Results are finished, so the conclusions derive
+/write conclusions. Results are finished, so the conclusions derive
 directly from them.
 
 ## Open questions

@@ -5,8 +5,7 @@
 
 **Status:** alpha · **Version:** 0.1.0 · **Invocation:** none, Claude-only ·
 **Auto-loads:** yes
-**Used by:** [create-abstract](create-abstract.md), [review-abstract](review-abstract.md),
-[update-abstract](update-abstract.md), and every paper skill added later
+**Used by:** [write](write.md), [review](review.md) and [organize](organize.md), and every paper skill added later
 
 ## What it does
 
@@ -23,10 +22,10 @@ ask for it explicitly.
 ## Why it is a separate skill
 
 The style rules are needed by every writing skill. Duplicating them into each one would mean
-around twenty copies drifting apart, and fixing a rule would mean twenty edits. Keeping them
+several copies drifting apart, and fixing a rule would mean editing each one. Keeping them
 here means one file to correct.
 
-Each `/create-*` and `/review-*` skill embeds only a condensed set of non-negotiables, so it
+Each section's rules in `/write` carry only a condensed set of non-negotiables, so it
 still works if you install it alone. Installing this skill alongside gives the full rulebook.
 Install both.
 
