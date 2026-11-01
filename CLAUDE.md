@@ -79,7 +79,7 @@ invented one cannot.
 
 This is also the signal that a skill is scoped too broadly. `/create-methods` was dropped for
 exactly this reason: "methods" varies so much between fields that no single model fits, so it
-was replaced by narrower sections such as `/create-threats-to-validity`, which do have
+was replaced by narrower sections such as `threats-to-validity`, which do have
 conventional structures worth encoding. Prefer the narrow, well-grounded skill over the broad,
 vague one.
 

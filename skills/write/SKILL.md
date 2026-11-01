@@ -76,8 +76,10 @@ two sections.
 
 ## After it finishes
 
-- Log decisions and interview answers to `paper-out/` as `references/session-state.md` in
-  `paper-writing-style` describes, and name the files you wrote.
+- **Update `paper-out/` before you finish**, as `references/session-state.md` in `paper-writing-style`
+  sets out, creating it if absent: this section's row in `STATE.md`, `interviews/<section>.md`, a
+  `decisions.md` entry for each decision, `open-questions.md` for anything unresolved. Name the files you
+  wrote. A run is not finished until this is done.
 - Check the **ripple**: results changed means abstract, conclusions and the introduction gap may be stale;
   conclusions changed means the abstract's closing and the title may be stale. Name the affected sections
   and suggest `/write <section>` for each. Do not run them unasked.
@@ -87,7 +89,9 @@ two sections.
 
 - **Never invent a result, number, method detail or citation key.** Emit the project's `\todo{}` macro, or
   `% TODO:` where there is none.
-- **Never write to the researcher's files before they approve the text.**
+- **Never write to the researcher's files before they approve the text.** `paper-out/` is the exception:
+  update it every run, and say so.
 - **Never emit an em dash (`---`).**
 - **Never start writing until the section is settled** and the reference's interview has what it needs.
 - **Never write a section the course gives no model for.** Say so instead.
+- **Never finish a run without updating `paper-out/`.** Say which files you changed.

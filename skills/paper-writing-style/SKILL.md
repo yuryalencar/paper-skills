@@ -43,7 +43,7 @@ being read.
 A paper spans weeks or months, so **before asking the researcher anything, check whether
 `paper-out/STATE.md` exists in the working directory.** If it does, read it plus `decisions.md` and any
 relevant `interviews/*.md`, then say in two or three lines what you already know so they can correct
-anything stale. Never re-ask a question whose answer is already recorded.
+anything stale. Never re-ask a question whose answer is already recorded. **Every skill updates `paper-out/` at the end of its run**, not just the one that orients: see "Every skill updates it" in the reference.
 
 `paper-out/` stores only what cannot be re-derived from the manuscript: the target journal, which result
 is principal and why, what was deliberately deferred, interview answers, open questions, and declined

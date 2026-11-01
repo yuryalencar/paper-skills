@@ -85,20 +85,25 @@ Present and get explicit agreement on:
   the profile does not settle the structure, propose what the venue's accepted papers use and let the
   researcher change it.
 - The project directory name and local path.
+- The **`exemplars/` folder**, which is always created, with a `.gitkeep`. The researcher puts previous
+  papers from the target venue and track there, and `/draft` bases the paper's structure on them. Say what
+  it is for and that its contents are gitignored, so nobody commits other people's papers.
 - Whether to also publish to GitHub and connect Overleaf, which is opt-in.
 
 ### 5. Scaffold locally
 
 Build the project as described in [references/scaffold.md](references/scaffold.md): layout, section files,
-`src/macros.tex`, figures, `.gitignore`, build script, and the project `CLAUDE.md`. Feed the venue profile
+`src/macros.tex`, figures, `exemplars/` with its `.gitkeep`, `.gitignore`, build script, and the project
+`CLAUDE.md`. Feed the venue profile
 into it: the blind switch, the page limit, the citation style and the mandatory declarations land in
 `main.tex`, `macros.tex` and `CLAUDE.md`.
 
 **Compile before you finish.** If a TeX distribution is available, build once and report the result and
 page count. If not, say the build is untested. A scaffold that does not build is worse than none.
 
-Write `paper-out/STATE.md` recording the venue profile, template provenance, and position as step 0,
-figures not yet selected. Name the files created.
+Create `paper-out/` and write `STATE.md` recording the venue profile, template provenance, and position as
+step 0, figures not yet selected, plus a `decisions.md` entry for the section structure chosen. Name the
+files created, and say once that `paper-out/` is meant to be committed with the manuscript.
 
 ### 6. Offer Git and Overleaf
 
@@ -115,6 +120,11 @@ Say what comes next and why:
 > sequence that is already settled.
 >
 > Once the figures are chosen, run `/ask-paper` in this folder and it will take you through the rest.
+>
+> One more thing worth doing now: **put previous papers from your target venue in `exemplars/`**. Download
+> accepted papers from the same conference or journal and track, ideally 5 to 10 of the kind of paper you are
+> writing. They are among the most useful things you can have when writing a new paper: `/draft` uses them to
+> base your structure on what that venue actually accepts. The folder is never committed.
 
 ## Hard rules
 

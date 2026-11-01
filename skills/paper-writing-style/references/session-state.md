@@ -32,6 +32,7 @@ paper-out/
 ├── decisions.md          append-only log, newest last, each entry dated
 ├── open-questions.md     unresolved items, removed when resolved
 ├── interviews/
+│   ├── paper-type.md     what kind of paper, and where its structure came from
 │   ├── abstract.md       answers given, so they are not asked again
 │   ├── introduction.md
 │   └── ...
@@ -51,9 +52,9 @@ edit `decisions.md` by hand, that must work.
 - **If it exists**, read `STATE.md`, `decisions.md` and the relevant `interviews/*.md` before asking
   the researcher a single question. Then say what you already know, in two or three lines, so they can
   correct anything stale. Do not re-ask a question whose answer is in `interviews/`.
-- **If it does not exist**, proceed normally. Create it only when there is something worth saving,
-  which means after the first real decision, not on arrival. An empty `paper-out/` in a directory
-  where somebody ran one review is clutter.
+- **If it does not exist**, proceed normally, and **create it at the end of the run**. Every skill that does
+  work creates `paper-out/` when it finds none, so the state never depends on which skill ran first. Do not
+  create it on arrival or for a run that did and decided nothing.
 
 ## What to write, and when
 
@@ -87,7 +88,29 @@ cold:
 
 Remove an entry when it is resolved, and append the resolution to `decisions.md`.
 
-**At the end of any run that changed something**, update `STATE.md`.
+## Every skill updates it, every run
+
+`paper-out/` is how the next session, and Claude itself, knows what is going on. So **no skill finishes a
+run without updating it**: not just `/ask-paper`. Each skill records what it did, in the files below, and
+names what it wrote.
+
+| Skill | Writes at the end of a run |
+| :--- | :--- |
+| `/organize` | Creates `paper-out/`. `STATE.md` with the venue profile, template provenance and position step 0. A `decisions.md` entry for the section structure chosen |
+| `/draft` | The section's row in `STATE.md` (`partial`, with the TODO count), `interviews/paper-type.md` and `interviews/<section>.md`, `decisions.md` for the sources used and the structure source, unresolved TODOs summarised in `open-questions.md` |
+| `/write` | The section's row in `STATE.md`, `interviews/<section>.md`, `decisions.md` for each decision made, `open-questions.md` for anything left unresolved, `revision/` files for response letters |
+| `/review` | The section's row in `STATE.md` (reviewed on this date, how many findings), `decisions.md` for which findings were accepted or declined and why, `open-questions.md` for what was left |
+| `/ask-paper` | Reconciles `STATE.md` against the whole manuscript: position table, next step, staleness, open-question count |
+
+**`STATE.md` is updated by whichever skill ran last**, so its rows reflect the latest run even when
+`/ask-paper` was never invoked. The skills share one rule for the update: change only the rows, fields and
+entries your run touched, and rewrite the snapshot fields (`Last worked`, `Next step`) from what you know.
+Never overwrite another skill's decisions. If a row disagrees with what you can see in the manuscript, the
+manuscript wins and you correct the row.
+
+A run that changed nothing and decided nothing (a question answered, an explanation given) writes
+nothing, and says so.
+
 
 ## STATE.md
 

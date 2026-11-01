@@ -1,6 +1,6 @@
 ---
 name: ask-paper
-description: The paper-writing helper. Explains every skill in this package, why it exists and when to use it, tells you where your manuscript stands and what to do next, and keeps the session state across weeks. Follows the recommended writing order from Zucolotto's course (results and discussion, conclusions, introduction, methods, abstract, title). Use when asked which skill to use, what /write, /review or /organize do, how to start writing a paper, what to write next, what order to write in, where we left off, or to be walked through a manuscript end to end.
+description: The paper-writing helper. Explains every skill in this package, why it exists and when to use it, tells you where your manuscript stands and what to do next, and keeps the session state across weeks. Follows the recommended writing order from Zucolotto's course (results and discussion, conclusions, introduction, methods, abstract, title). Use when asked which skill to use, what /write, /review, /draft or /organize do, how to start writing a paper, what to write next, what order to write in, where we left off, or to be walked through a manuscript end to end.
 allowed-tools: Read, Grep, Glob
 ---
 
@@ -8,11 +8,11 @@ allowed-tools: Read, Grep, Glob
 
 The helper for the whole package. It does three jobs: it **explains** the skills (what each one does,
 why it exists, when to reach for it), it **orients** (where the manuscript stands and what to write next,
-since sections are not written in the order they are read), and it **remembers** (it owns the session
-state across weeks).
+since sections are not written in the order they are read), and it **remembers** (it keeps the session
+state across weeks accurate).
 
 It does not write or review any section itself. It explains, surveys, reports, and hands off to `/write`,
-`/review` or `/organize`.
+`/review`, `/draft` or `/organize`.
 
 ## Usage
 
@@ -36,12 +36,17 @@ It does not write or review any section itself. It explains, surveys, reports, a
 4. **Survey the manuscript.** Read the `.tex` files, the `.bib`, the figures and their captions. Work
    out what exists rather than asking.
 
-## This skill owns the state folder
+## This skill reconciles the state folder
 
-Every skill in the family reads `paper-out/` and appends to it. **This one owns its lifecycle**: it
-creates the folder, writes `STATE.md`, and keeps it accurate. `/write` and `/review` log their own decisions
-and interview answers; only this skill maintains the position table and the next step, because only this
-skill sees the whole manuscript.
+Every skill in the package reads `paper-out/` and **updates it at the end of every run**, as
+`references/session-state.md` in `paper-writing-style` sets out. `/write`, `/review`, `/draft` and
+`/organize` each update their own section's row, their decisions and their interviews, so `STATE.md` stays
+current even when this skill is never invoked.
+
+What is specific to this skill is that it **sees the whole manuscript**. It reconciles `STATE.md` against
+it: verifies every row, corrects what drifted, recomputes the position and the next step, and catches
+what no single section skill can (a result that changed under a finished abstract). It also creates the
+folder when nothing else has.
 
 ### Resuming
 
@@ -64,7 +69,8 @@ say so, correct it, and continue. Silent trust in stale state is worse than havi
 
 ### Creating it
 
-Create `paper-out/` on the first run that produces something worth saving, not on arrival. Then:
+Whichever skill runs first creates `paper-out/` at the end of a run that did or decided something, not on
+arrival. When this skill is the one creating it:
 
 - Tell the researcher it was created, and list the files.
 - Say once that it is intended to be **committed alongside the manuscript**, since the decision log is
@@ -104,6 +110,9 @@ invented. See `todo/methods-family.md`. Write it yourself for now.
 
 ### 1. Survey and report position
 
+Also look at `exemplars/`: whether it exists, and whether it holds any papers beyond the `.gitkeep`. Never
+open the papers to survey the manuscript; just note whether the folder is filled.
+
 Determine, for each section, whether it is absent, partial, or complete. A section is **partial** if
 it exists but is missing mandatory parts, which you can check quickly:
 
@@ -134,7 +143,8 @@ order is a judgement call, not an error.
 
 ### 3. Hand off
 
-Invoke `/write <section>` (or `/organize`) for the next step. Do not reimplement its work: each section has its
+Invoke `/write <section>` (or `/organize`) for the next step. If the researcher has material but no text for
+it, `/draft <section>` gives them a first version to react to instead of starting with an interview. Do not reimplement its work: each section has its
 own interview, model and checks, and duplicating them here would produce a worse version.
 
 After it finishes, offer to continue to the next step or to stop.
@@ -174,6 +184,18 @@ writing order.
 For each skill say **what it does, why it exists, and when to use it, and when not to**. Then point at the
 one to try first. If the question is really "what should I do now?", switch to the next-step answer below
 instead of describing skills nobody needs yet.
+
+## Previous papers
+
+The `exemplars/` folder is one of the most useful things a project can hold, and the one researchers forget
+to fill. When it is empty or missing and the researcher is about to draft, **say so once**, briefly: put
+previous papers from the target venue and track there (ideally 5 to 10 of the same paper type), because
+`/draft` bases the paper's structure on what that venue has accepted. Explain it in full from the
+"Previous papers" section of [references/skill-guide.md](references/skill-guide.md) when asked.
+
+Never suggest committing it: its contents are other people's papers and are gitignored. If the project has no
+`exemplars/` (an older one), offer to create it with a `.gitkeep` and the `.gitignore` entries
+`exemplars/*` and `!exemplars/.gitkeep`.
 
 ## Answering "what should I write next?"
 

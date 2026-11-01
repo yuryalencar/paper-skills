@@ -6,15 +6,40 @@ researcher asks which skill to use or what one does. Keep it in writing order.
 All the models below come from Valtencir Zucolotto's scientific writing course, in `sources/` of the
 repository. None was invented, which is also why some things are missing (see Not covered).
 
-## The five pieces
+## The six pieces
 
 | Piece | Invoked | Job |
 | :--- | :--- | :--- |
 | `/organize` | by you, manual only | Builds the LaTeX project from the venue's format |
-| `/write <section>` | by you, or auto | Drafts a section, or updates an existing one |
+| `/draft <section \| paper>` | by you, or auto | First version from your material, with red TODOs for gaps |
+| `/write <section>` | by you, or auto | Interviews you and writes a section, or updates an existing one |
 | `/review <section>` | by you, or auto | Critiques a section against its model |
 | `/ask-paper` | by you, or auto | Explains the skills, says where you stand, remembers across sessions |
 | `paper-writing-style` | Claude only | The shared rulebook the others load |
+
+## Previous papers: the `exemplars/` folder
+
+**What.** A folder in your project, created by `/organize` with a `.gitkeep`, for **previous papers from the
+venue and track you are targeting**. Download accepted papers from the same conference or journal into
+`exemplars/<venue-or-track>/`, ideally 5 to 10 of the kind of paper you are writing (a tool paper, an
+industry paper, a systematic mapping). A systematic mapping of the track is a good way to collect them.
+
+**Why.** A previous paper from the same venue is one of the most useful things you can have when writing a
+new one. It shows what that venue actually accepts: which sections exist, in what order, how long, what each
+one does. `/draft` reads them and bases your paper's structure on what recurs across them, instead of on a
+guess about what, say, a tool paper looks like. The structure of a paper type is a convention of a field and
+a venue, and the only honest source for it is real papers from that venue.
+
+**How it is used.** `/draft` labels each paper's sections and keeps only what recurs, saying how many papers
+each element appears in. It takes **structure** only: never sentences, results or claims. Facts from these
+papers can be cited as evidence, like any other paper.
+
+**Local only.** `.gitignore` ignores everything in `exemplars/` except the `.gitkeep`, so the papers never
+reach git or Overleaf. They are other people's copyrighted work, and the folder can be large. Do not commit
+them.
+
+**When.** Fill it right after `/organize`, before `/draft`. If it is empty when you reach `/draft`, you will be
+asked to fill it. Not needed for `/write` or `/review`, which work from your own text.
 
 ## /organize
 
@@ -27,8 +52,25 @@ project that compiles: `main.tex`, one file per section in `src/`, `macros.tex`,
 more to fix than to set up right. Venues change requirements yearly, so it reads the current page instead of
 trusting memory.
 
+It always creates a local, gitignored `exemplars/` folder (with a `.gitkeep`) for previous papers from your target venue, which `/draft` uses. See "Previous papers" above.
+
 **When.** Once, before any writing, on a new project. **Not** for a project that already has `.tex` files:
 it stops rather than scaffold over them.
+
+## /draft
+
+**Does.** Takes whatever material you have (notes, local files or a whole project, links, other papers) and
+produces a first version of one section, or a skeleton of the whole paper. Every part the material supports
+is drafted; every part it does not gets a red TODO saying what to supply and why. It first asks what kind of
+paper this is (systematic mapping, tool, industry, empirical study), because the type decides the structure,
+and takes that structure from you (venue guidelines, an `exemplars/` folder of accepted papers from your target venue and track, your outline), never from memory. Other
+papers are cited as evidence, never reused.
+
+**Why.** A blank page is the hard part. A draft full of precise, red gaps is something to react to, and the
+TODO list is the agenda for `/write`.
+
+**When.** You have material but no text, or want a whole-paper skeleton. **Not** when the section already has
+text (it stops and points at `/write` or `/review`), and not for methods, which has no model.
 
 ## /write
 
@@ -71,7 +113,7 @@ pre-submission sweep, and keeps `paper-out/` accurate.
 
 ## paper-writing-style
 
-Claude-only, loaded by `/write`, `/review` and `/organize`. It holds the house style (clarity, concision,
+Claude-only, loaded by `/write`, `/review`, `/draft` and `/organize`. It holds the house style (clarity, concision,
 the human-voice rules), the LaTeX conventions, and the session-state protocol. You never invoke it. Install it
 alongside whichever skills you use.
 
@@ -79,12 +121,13 @@ alongside whichever skills you use.
 
 1. `/organize`: the project.
 2. Select and order your figures yourself. No skill does this.
-3. `/write results-discussion`, then `conclusions`, then `introduction`.
-4. Write methods yourself.
-5. `/write abstract`, then `title`.
-6. `/review` each section, then the cross-section sweep via `/ask-paper`.
-7. `/write cover-letter`, submit.
-8. After reviews: `/write response-to-reviewers`, and `/review response-to-reviewers` before sending.
+3. Put previous papers from your target venue in `exemplars/`. Then, optional: `/draft paper` for a skeleton, or `/draft <section>` for a first version from your material.
+4. `/write results-discussion`, then `conclusions`, then `introduction`.
+5. Write methods yourself.
+6. `/write abstract`, then `title`.
+7. `/review` each section, then the cross-section sweep via `/ask-paper`.
+8. `/write cover-letter`, submit.
+9. After reviews: `/write response-to-reviewers`, and `/review response-to-reviewers` before sending.
 
 ## Not covered
 

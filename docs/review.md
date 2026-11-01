@@ -74,7 +74,8 @@ Or `./install.sh review paper-writing-style` / `.\install.ps1 review paper-writi
 ## Outputs
 
 A report in chat, organised by the section's checks, with the weak parts quoted. It logs which review ran
-and what you accepted or declined to `paper-out/`, naming the files, and offers to apply the fixes through
+and what you accepted or declined by updating `paper-out/` (the section's row in `STATE.md`, the decision log,
+open questions), creating it if absent and naming the files. It then offers to apply the fixes through
 `/write <section>`.
 
 ## Side effects

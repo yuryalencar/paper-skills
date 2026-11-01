@@ -27,6 +27,7 @@ The common layout, and what `/organize` scaffolds:
 ├── references.bib
 ├── figures/
 ├── build.ps1  or  Makefile      build script
+├── exemplars/                   local only, never committed (only .gitkeep): previous papers from the venue
 ├── CLAUDE.md                    the project's own conventions. Authoritative
 └── paper-out/                   session state
 ```

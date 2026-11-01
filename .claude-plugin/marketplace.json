@@ -12,19 +12,25 @@
       "name": "organize",
       "source": "./skills/organize",
       "description": "Set up a new paper project from the venue's own format: reads the author guidelines, fetches the official template, and scaffolds a LaTeX project that compiles, with optional GitHub and Overleaf.",
-      "version": "0.2.0"
+      "version": "0.2.1"
     },
     {
       "name": "ask-paper",
       "source": "./skills/ask-paper",
       "description": "The paper-writing helper: explains every skill and when to use it, reports where the manuscript stands and what to write next, and keeps session state across weeks.",
-      "version": "0.2.0"
+      "version": "0.2.1"
     },
     {
       "name": "write",
       "source": "./skills/write",
       "description": "Write or update one paper section in LaTeX (abstract, introduction, results and discussion, conclusions, title, cover letter, response to reviewers) from the course-derived model for that section.",
       "version": "0.2.0"
+    },
+    {
+      "name": "draft",
+      "source": "./skills/draft",
+      "description": "Draft one paper section, or a skeleton of the whole paper, from the material you already have, with red TODOs wherever the section's model needs something you have not supplied.",
+      "version": "0.1.0"
     },
     {
       "name": "review",

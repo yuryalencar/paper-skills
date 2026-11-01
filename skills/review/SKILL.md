@@ -65,8 +65,10 @@ Read the chosen reference in full and follow it. Do not mix checks from two sect
 
 ## After it finishes
 
-- Log which review ran and what the researcher accepted or declined to `paper-out/`, as
-  `references/session-state.md` in `paper-writing-style` describes, and name the files you wrote.
+- **Update `paper-out/` before you finish**, as `references/session-state.md` in `paper-writing-style`
+  sets out, creating it if absent: this section's row in `STATE.md` (reviewed on this date, how many
+  findings), a `decisions.md` entry for what was accepted or declined and why, `open-questions.md` for
+  what was left. Name the files you wrote. A run is not finished until this is done.
 - Offer to apply the fixes with `/write <section>`, which picks up the suggestions in its Update mode.
 
 ## Hard rules
@@ -75,4 +77,5 @@ Read the chosen reference in full and follow it. Do not mix checks from two sect
 - **Never invent a result, number or citation key** in a suggested rewrite. Flag it with `\todo{}` or
   `% TODO:`.
 - **Never review a section that does not exist.**
+- **Never finish a run without updating `paper-out/`.** Say which files you changed.
 - **Never emit an em dash (`---`).**

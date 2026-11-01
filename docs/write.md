@@ -60,6 +60,8 @@ Output is an English LaTeX fragment, shown in chat first. Nothing is written to 
 
 - **The work is not finished.** The course is explicit that most sections are written after the results.
   [ask-paper](ask-paper.md) says what order to work in.
+- **You have material but no text, and want a first version to react to.** Use [draft](draft.md), which
+  drafts from what exists and leaves red TODOs for the gaps.
 - **You only want a critique of what you have.** Use [review](review.md), which preserves your wording.
 - **You want methods written.** There is no model for it yet.
 
@@ -98,7 +100,8 @@ An English LaTeX fragment in a fenced block, plus a short note on the choices ma
 disk until you approve it, and then only where you say. Fragments are class-agnostic: they drop into
 `elsarticle`, `IEEEtran`, `revtex`, `achemso`, `acmart` or plain `article`.
 
-Afterwards it logs decisions and interview answers to `paper-out/`, names the files it wrote, and flags
+Before it finishes it updates `paper-out/` (this section's row in `STATE.md`, the interview answers, the
+decision log, open questions), creating it if absent, and names the files it wrote. It also flags
 which other sections the change may have made stale.
 
 ## Example

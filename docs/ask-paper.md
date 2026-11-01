@@ -3,7 +3,7 @@
 > The helper for the whole package. Explains every skill, tells you where your manuscript stands and what
 > to write next, and remembers across sessions.
 
-**Status:** alpha · **Version:** 0.2.0 · **Invocation:** `/ask-paper` ·
+**Status:** alpha · **Version:** 0.2.1 · **Invocation:** `/ask-paper` ·
 **Auto-loads:** yes
 **Companion skills:** [organize](organize.md), [write](write.md), [review](review.md),
 [paper-writing-style](paper-writing-style.md)
@@ -19,9 +19,21 @@ Three jobs.
 - **Orients.** Sections are not written in the order they are read. It holds the recommended order, works
   out where your manuscript actually stands, names the single next step, and hands off to `/write`,
   `/review` or `/organize`.
-- **Remembers.** It owns the `paper-out/` session state, so work resumes after weeks away.
+- **Remembers.** Every skill updates `paper-out/` after each run; this one reconciles it against the whole
+  manuscript, so work resumes after weeks away.
 
 It writes and reviews no section itself. Its value is orientation.
+
+## Previous papers
+
+`/ask-paper` also explains, and nudges you toward, the `exemplars/` folder that `/organize` creates. It is
+for **previous papers from the venue and track you are targeting**: accepted papers, ideally 5 to 10 of the
+kind of paper you are writing, in `exemplars/<venue-or-track>/`. They are among the most useful things you
+can have when writing a new paper, because [draft](draft.md) bases your paper's structure on what recurs
+across them, which is what that venue actually accepts, instead of on a guess about a paper type.
+
+When you are about to draft and the folder is empty, it says so once. The folder is local only: its contents
+are gitignored, because they are other people's copyrighted work, and only the `.gitkeep` is tracked.
 
 ## Asking it about the skills
 
@@ -32,6 +44,12 @@ It writes and reviews no section itself. Its value is orientation.
 gap, state of the art, purpose), traces the funnel, and audits your citations.
 It needs a draft; if you have none, /write introduction comes first.
 ```
+
+```
+> /ask-paper what is the exemplars folder for?
+```
+
+explains it (above), and
 
 ```
 > /ask-paper explain everything
@@ -170,8 +188,9 @@ my-paper/
     └── revision/            reviewer rounds and coverage
 ```
 
-**Every skill reads it. `/ask-paper` owns it**, creating the folder and keeping `STATE.md` accurate,
-since only it sees the whole manuscript.
+**Every skill reads it and updates it at the end of every run.** `/organize`, `/draft`, `/write` and
+`/review` each update their section's row, decisions and interviews, so `STATE.md` is current even when
+`/ask-paper` never ran. `/ask-paper` reconciles it, since only it sees the whole manuscript.
 
 ### The rule that keeps it honest
 
@@ -297,6 +316,7 @@ revision steps.
 
 ## Changelog
 
+- **0.2.1**: explains the `exemplars/` folder and nudges you to fill it before drafting.
 - **0.2.0**: renamed from `write-paper`. Adds the skill guide, and hands off to `/write`, `/review` and
   `/organize`.
 - **0.1.0**: initial version.

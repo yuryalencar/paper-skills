@@ -15,7 +15,9 @@ What `/organize` creates locally, and why each file earns its place.
 ├── figures/              all figures, plus a .gitkeep so the directory is tracked
 ├── <venue class files>   .cls, .bst, .sty shipped with the template
 ├── build.ps1 or Makefile build script
-├── .gitignore            LaTeX build artefacts
+├── .gitignore            LaTeX build artefacts, and the contents of exemplars/
+├── exemplars/            local only: previous papers from the target venue, see below
+│   └── .gitkeep          the only file in it that is tracked
 ├── CLAUDE.md             the project's own conventions. See below
 └── paper-out/            created by the writing skills on first decision
 ```
@@ -115,9 +117,33 @@ Build artefacts in a repository synced with Overleaf cause noise and conflicts:
 *.run.xml
 *.bcf
 main.pdf
+
+# Previous papers from the target venue: other people's work, local only.
+# Ignore the contents but keep the folder, through its .gitkeep.
+exemplars/*
+!exemplars/.gitkeep
 ```
 
 Keep `main.pdf` ignored unless the venue or the co-authors want a built PDF committed. Say which you chose.
+
+### `exemplars/`
+
+**Create it every time**, with an empty `exemplars/.gitkeep` so the folder exists from the first commit and
+is visible to the researcher. Previous papers are among the most useful things to have when writing a new
+one, and an empty folder in the project is a standing prompt to fill it.
+
+It holds **previous papers from the target venue and track**, ideally accepted ones and ideally 5 to 10 of
+the same paper type, so that `/draft` can base the paper's structure on what that venue actually accepts.
+The researcher downloads the PDFs into `exemplars/<venue-or-track>/`. A systematic mapping of the track is
+a good way to collect them.
+
+**It is local only.** The `.gitignore` entry above ignores everything in `exemplars/` except `.gitkeep`,
+which also keeps the papers out of Overleaf's sync: they are other people's copyrighted work, and the
+folder can be large. Add a line to the project `CLAUDE.md` naming the folder, saying what it is for, and
+stating that its contents are never committed.
+
+If the project already exists and has no `exemplars/`, the researcher can ask for it later; `/draft` and
+`/ask-paper` suggest it.
 
 Do **not** gitignore `paper-out/`: the decision log is meant to be committed alongside the manuscript.
 

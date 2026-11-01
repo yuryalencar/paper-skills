@@ -3,7 +3,7 @@
 > Step zero: give it the venue and its author guidelines, and it builds a LaTeX project in that venue's
 > format, ready for `/write` and `/review` to work inside. GitHub and Overleaf are an optional last step.
 
-**Status:** alpha · **Version:** 0.2.0 · **Invocation:** `/organize` ·
+**Status:** alpha · **Version:** 0.2.1 · **Invocation:** `/organize` ·
 **Auto-loads:** no, **manual only**
 **Companion skills:** [ask-paper](ask-paper.md), [write](write.md), [review](review.md),
 [paper-writing-style](paper-writing-style.md)
@@ -68,7 +68,9 @@ Or `./install.sh organize paper-writing-style`. Invoke it with `/organize`; it w
 ├── figures/              plus .gitkeep, with \graphicspath set in main.tex
 ├── <venue .cls, .bst, .sty>
 ├── build.ps1 or Makefile gates on main.log, reports the page count
-├── .gitignore            LaTeX build artefacts
+├── .gitignore            LaTeX build artefacts, and the contents of exemplars/
+├── exemplars/            local only: previous papers from the target venue
+│   └── .gitkeep
 ├── CLAUDE.md             the project's own conventions. Authoritative
 └── paper-out/
     └── STATE.md          venue profile, template provenance, position: step 0
@@ -88,6 +90,21 @@ point. An empirical software engineering paper wants `background`, `study-design
 `\ifblind` so a double-blind author block switches with one line at camera-ready, recurring values as macros
 so a revised number changes in one place instead of three, and `\todo{}` rendering in red so a gap is
 visible in the compiled PDF rather than hiding in a comment until submission.
+
+## The `exemplars/` folder
+
+Every project gets an `exemplars/` folder, created with a `.gitkeep`. **Fill it with previous papers from your
+target venue and track**: ideally accepted ones, and ideally 5 to 10 of the kind of paper you are writing. A
+systematic mapping of the track is a good way to collect them. A previous paper from the same venue is one
+of the most useful things you can have when writing a new one, and an empty folder in the project is a
+standing reminder to add them.
+
+[draft](draft.md) reads them to base your paper's structure on what that venue actually accepts, keeping what
+recurs across them. It takes structure only, never sentences or results.
+
+**It is local only.** `.gitignore` ignores everything in `exemplars/` except the `.gitkeep`, so the papers
+never reach git or Overleaf: they are other people's copyrighted work and the folder can be large. The
+project `CLAUDE.md` records that.
 
 ## Why it will not write the template itself
 
@@ -164,6 +181,9 @@ After the scaffold and a test build:
   repository rule against inventing a model the source does not contain.
 - **Local scaffold first, Git and Overleaf optional.** Chosen in the authoring interview, since the
   structure is the core job and publishing is a separate, outward-facing decision.
+- **`exemplars/` is always created, with a `.gitkeep`.** Added at the researcher's instruction: previous
+  papers from the target venue are among the most useful inputs to a new paper, so the folder is part of
+  every scaffold rather than an opt-in. Its contents are gitignored; only the `.gitkeep` is tracked.
 - **Manual only.** Creating a GitHub repository is not something to infer from context.
 - **Private by default.** The repository holds an unpublished manuscript.
 - **The Overleaf ordering constraint is stated first**, before any work, because it determines the whole
@@ -186,6 +206,7 @@ constraints are from Overleaf's own GitHub synchronization documentation, checke
 
 ## Changelog
 
+- **0.2.1**: always creates a gitignored `exemplars/` folder with a `.gitkeep`, and asks you to fill it.
 - **0.2.0**: renamed from `setup-paper-project`. Reads the venue's author guidelines into a profile,
   Git and Overleaf become optional, and the scaffold is built and compiled before hand-off.
 - **0.1.0**: initial version.

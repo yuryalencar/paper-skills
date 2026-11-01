@@ -17,20 +17,26 @@ The table is an index; the docs are where the detail lives.
 | :---- | :----------- | :--- |
 | `/organize` | Reads a venue's author guidelines and builds a LaTeX project in that format, with optional GitHub and Overleaf. Manual only | [docs](docs/organize.md) |
 | `/ask-paper` | The helper: explains every skill and when to use it, says where your manuscript stands and what to write next | [docs](docs/ask-paper.md) |
+| `/draft <section \| paper>` | A first version from the material you already have, with red TODOs for what is missing. Asks what kind of paper it is, because the type decides the structure | [docs](docs/draft.md) |
 | `/write <section>` | Writes or updates a section: abstract, introduction, results-discussion, conclusions, title, cover-letter, response-to-reviewers | [docs](docs/write.md) |
 | `/review <section>` | Critiques a section against its model and reports what is missing or weak, without rewriting it | [docs](docs/review.md) |
 | `paper-writing-style` | The style rulebook the others lean on. Claude-only, no `/` command | [docs](docs/paper-writing-style.md) |
 
 ### How it fits together
 
-Four commands, and you name the section as an argument:
+Five commands, and you name the section as an argument:
 
 ```
 /organize ICSE 2027 <author-guidelines URL>     # the project, in the venue's format
-/write results-discussion                       # draft a section, or update an existing one
+/draft introduction notes.md <link>              # first version from your material, red TODOs for gaps
+/write results-discussion                       # interview you, write a section, or update an existing one
 /review introduction                            # critique a section
 /ask-paper                                      # which skill? where am I? what next?
 ```
+
+`/organize` also creates an `exemplars/` folder (local only, never committed). **Put previous papers from your
+target venue and track there**: `/draft` bases your paper's structure on what that venue has accepted, which
+is one of the most useful things you can give it. `/ask-paper` explains why.
 
 `/write` and `/review` cover the same seven sections. Each has its own model from the course, loaded only
 when you pick it. Leave the section out and they infer it from the open file or your session state, then
@@ -86,8 +92,8 @@ Deviating is a judgement call, not an error. `/ask-paper` says what it costs and
 #### Resuming across sessions
 
 A paper is not written in one sitting. The package keeps a `paper-out/` folder beside your manuscript so
-work resumes where it stopped instead of restarting. Every skill reads it;
-[`/ask-paper`](docs/ask-paper.md) owns it.
+work resumes where it stopped instead of restarting. Every skill reads it **and updates it at the end of each run**, so it is current even if you never
+invoke [`/ask-paper`](docs/ask-paper.md), which reconciles it against the whole manuscript.
 
 ```
 my-paper/
