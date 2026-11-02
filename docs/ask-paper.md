@@ -3,9 +3,9 @@
 > The helper for the whole package. Explains every skill, tells you where your manuscript stands and what
 > to write next, and remembers across sessions.
 
-**Status:** alpha · **Version:** 0.2.1 · **Invocation:** `/ask-paper` ·
+**Status:** alpha · **Version:** 0.3.0 · **Invocation:** `/ask-paper` ·
 **Auto-loads:** yes
-**Companion skills:** [organize](organize.md), [write](write.md), [review](review.md),
+**Companion skills:** [organize](organize.md), [write](write.md), [review](review.md), [evaluate](evaluate.md),
 [paper-writing-style](paper-writing-style.md)
 
 Formerly `write-paper`.
@@ -71,6 +71,7 @@ figures).
 | 4 | Methods or experimental | none yet, see [`todo/`](../todo/methods-family.md) | The work is done |
 | 5 | Abstract | `/write abstract` | Everything above |
 | 6 | Title | `/write title` | Everything above |
+| 6b | Score the whole paper against the venue's criteria | [evaluate](evaluate.md) | Every section exists |
 | 7 | Cover letter | `/write cover-letter` | Target journal chosen |
 | 8 | Revise after review | `/write response-to-reviewers` | Reviews received |
 
@@ -262,7 +263,8 @@ When every section exists it offers a sweep rather than declaring the paper fini
 each of the five core sections, then the **cross-section checks no single review can make** (abstract, introduction
 final paragraph and conclusions all stating the same purpose and contribution; every value in the
 abstract and conclusions matching the results; every gap in the introduction answered), then the cover
-letter.
+letter, and [`/evaluate`](evaluate.md) for a section-by-section score against the venue's criteria (it asks for the venue text once and
+saves it; afterwards `/review` keeps the scores current).
 
 It reports those cross-section checks itself, since they fall between the sections.
 
@@ -316,6 +318,8 @@ revision steps.
 
 ## Changelog
 
+- **0.3.0**: explains `/evaluate`, adds it to the writing order and the pre-submission pass, and reads `evaluation.md`
+  and `venue-criteria.md` when reconciling state.
 - **0.2.1**: explains the `exemplars/` folder and nudges you to fill it before drafting.
 - **0.2.0**: renamed from `write-paper`. Adds the skill guide, and hands off to `/write`, `/review` and
   `/organize`.

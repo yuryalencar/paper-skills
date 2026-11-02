@@ -3,9 +3,9 @@
 > Critiques one section of a scientific paper against the model for that section, and reports what is
 > missing, weak or inconsistent. Name the section; it does the rest.
 
-**Status:** alpha · **Version:** 0.2.0 · **Invocation:** `/review <section>` ·
+**Status:** alpha · **Version:** 0.3.0 · **Invocation:** `/review <section>` ·
 **Auto-loads:** yes
-**Companion skills:** [write](write.md), [ask-paper](ask-paper.md),
+**Companion skills:** [write](write.md), [evaluate](evaluate.md), [ask-paper](ask-paper.md),
 [paper-writing-style](paper-writing-style.md)
 
 Replaces the seven `review-*` skills.
@@ -77,6 +77,12 @@ A report in chat, organised by the section's checks, with the weak parts quoted.
 and what you accepted or declined by updating `paper-out/` (the section's row in `STATE.md`, the decision log,
 open questions), creating it if absent and naming the files. It then offers to apply the fixes through
 `/write <section>`.
+
+**Keeps scores current.** If [`/evaluate`](evaluate.md) has already produced `paper-out/evaluation.md`, a review
+also re-scores that section against the venue criteria saved in `paper-out/venue-criteria.md`, replaces its block
+in the report, recomputes the overall score and shows the change (`Introduction 6.0 to 7.0, overall 6.4 to 6.7`).
+You never paste the venue text again. With no `evaluation.md` it does nothing extra and creates none, and it
+skips the re-score, saying why, if the criteria file is missing or `evaluate` is not installed.
 
 ## Side effects
 
@@ -204,5 +210,6 @@ drives every review is from Module 2.
 
 ## Changelog
 
+- **0.3.0**: re-scores the reviewed section in `evaluation.md` when an evaluation exists.
 - **0.2.0**: merged the seven `review-*` skills into `/review <section>`.
 - **0.1.0**: separate `review-*` skills, one per section.

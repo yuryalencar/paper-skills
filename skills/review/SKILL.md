@@ -68,7 +68,14 @@ Read the chosen reference in full and follow it. Do not mix checks from two sect
 - **Update `paper-out/` before you finish**, as `references/session-state.md` in `paper-writing-style`
   sets out, creating it if absent: this section's row in `STATE.md` (reviewed on this date, how many
   findings), a `decisions.md` entry for what was accepted or declined and why, `open-questions.md` for
-  what was left. Name the files you wrote. A run is not finished until this is done.
+  what was left, and the section's score in `evaluation.md` if it was re-scored. Name the files you wrote. A
+  run is not finished until this is done.
+- **Re-score the section if an evaluation exists.** If `paper-out/evaluation.md` exists, follow "Re-scoring one
+  section" in the `evaluate` skill's `references/rubric.md`: score the section again against the stored
+  `paper-out/venue-criteria.md`, replace that section's block, recompute the overall score, and show the change
+  (`Introduction 6.0 to 7.0, overall 6.4 to 6.7`). The user does not paste the venue text again. If there is no
+  `evaluation.md`, do nothing and do not create one. If `venue-criteria.md` is missing or unreadable, or the
+  `evaluate` skill is not installed, skip the re-score and say why.
 - Offer to apply the fixes with `/write <section>`, which picks up the suggestions in its Update mode.
 
 ## Hard rules
@@ -77,5 +84,7 @@ Read the chosen reference in full and follow it. Do not mix checks from two sect
 - **Never invent a result, number or citation key** in a suggested rewrite. Flag it with `\todo{}` or
   `% TODO:`.
 - **Never review a section that does not exist.**
+- **Never create `evaluation.md` or `venue-criteria.md`**, and never score from criteria you did not read
+  from the file. Only `/evaluate` starts an evaluation.
 - **Never finish a run without updating `paper-out/`.** Say which files you changed.
 - **Never emit an em dash (`---`).**

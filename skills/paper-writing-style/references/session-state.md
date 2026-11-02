@@ -17,6 +17,7 @@ re-derived from it.**
 | The reasoning behind a gap phrasing | Whether a section is complete |
 | What was deliberately deferred or excluded | Anything in the `.tex` or `.bib` |
 | Interview answers, so they are not asked twice | |
+| The venue text the researcher pasted, so they paste it once | |
 | Open questions the researcher has not settled | |
 | Which reviews ran, and what was accepted or rejected | |
 | Declined reviewer points and the reasons | |
@@ -31,6 +32,8 @@ paper-out/
 ├── STATE.md              the entry point. Position, next step, decisions summary
 ├── decisions.md          append-only log, newest last, each entry dated
 ├── open-questions.md     unresolved items, removed when resolved
+├── venue-criteria.md     the venue text the researcher pasted, verbatim, plus the criteria extracted from it
+├── evaluation.md         the latest whole-paper score, one block per section
 ├── interviews/
 │   ├── paper-type.md     what kind of paper, and where its structure came from
 │   ├── abstract.md       answers given, so they are not asked again
@@ -99,7 +102,8 @@ names what it wrote.
 | `/organize` | Creates `paper-out/`. `STATE.md` with the venue profile, template provenance and position step 0. A `decisions.md` entry for the section structure chosen |
 | `/draft` | The section's row in `STATE.md` (`partial`, with the TODO count), `interviews/paper-type.md` and `interviews/<section>.md`, `decisions.md` for the sources used and the structure source, unresolved TODOs summarised in `open-questions.md` |
 | `/write` | The section's row in `STATE.md`, `interviews/<section>.md`, `decisions.md` for each decision made, `open-questions.md` for anything left unresolved, `revision/` files for response letters |
-| `/review` | The section's row in `STATE.md` (reviewed on this date, how many findings), `decisions.md` for which findings were accepted or declined and why, `open-questions.md` for what was left |
+| `/review` | The section's row in `STATE.md` (reviewed on this date, how many findings), `decisions.md` for which findings were accepted or declined and why, `open-questions.md` for what was left. If `evaluation.md` exists, that section's re-scored block in it and the new overall score |
+| `/evaluate` | `venue-criteria.md` (the pasted text, once), `evaluation.md` (overwritten), the score and date in `STATE.md`, one line in `decisions.md` with the overall score, unscorable criteria in `open-questions.md` |
 | `/ask-paper` | Reconciles `STATE.md` against the whole manuscript: position table, next step, staleness, open-question count |
 
 **`STATE.md` is updated by whichever skill ran last**, so its rows reflect the latest run even when

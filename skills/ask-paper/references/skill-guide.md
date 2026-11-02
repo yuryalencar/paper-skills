@@ -6,7 +6,7 @@ researcher asks which skill to use or what one does. Keep it in writing order.
 All the models below come from Valtencir Zucolotto's scientific writing course, in `sources/` of the
 repository. None was invented, which is also why some things are missing (see Not covered).
 
-## The six pieces
+## The seven pieces
 
 | Piece | Invoked | Job |
 | :--- | :--- | :--- |
@@ -14,6 +14,7 @@ repository. None was invented, which is also why some things are missing (see No
 | `/draft <section \| paper>` | by you, or auto | First version from your material, with red TODOs for gaps |
 | `/write <section>` | by you, or auto | Interviews you and writes a section, or updates an existing one |
 | `/review <section>` | by you, or auto | Critiques a section against its model |
+| `/evaluate` | by you, manual only | Scores the whole paper, section by section, against the venue's criteria |
 | `/ask-paper` | by you, or auto | Explains the skills, says where you stand, remembers across sessions |
 | `paper-writing-style` | Claude only | The shared rulebook the others load |
 
@@ -101,6 +102,24 @@ abstract with no numbers) that a read-through misses.
 **When.** After drafting a section, and again as a sweep before submission. **Not** before a draft exists:
 it refuses and points at `/write`.
 
+When a section is reviewed and an evaluation exists, `/review` also re-scores that section in `paper-out/evaluation.md`.
+
+## /evaluate
+
+**Does.** Scores a complete draft from 1 to 10, section by section and overall, against the venue's review
+criteria and against the structure that recurs in the papers in `exemplars/`. For each section it gives the
+score, the reason, quotes from your text, the exemplar comparison (counts such as "in 6 of 8"), and the one
+change that would raise it most. It writes `paper-out/evaluation.md`. It does not predict accept or reject.
+
+**Why.** To see where the paper is weakest against what the venue says it wants, before a reviewer does.
+
+**Needs.** The venue's review criteria, call for papers or reviewer guidelines, **pasted once**. It saves the
+text to `paper-out/venue-criteria.md` and never asks again unless you say the text changed. It refuses
+without it. `exemplars/` is optional: if empty, the criteria that depend on it are left unscored and it says so.
+
+**When.** Once every section exists. **Not** on an outline: it stops and points at `/draft` or `/write`. It
+only scores, so the fixes are `/review <section>` then `/write <section>`.
+
 ## /ask-paper
 
 **Does.** Explains the skills (this guide), surveys the manuscript and reports where it stands, names the
@@ -113,7 +132,7 @@ pre-submission sweep, and keeps `paper-out/` accurate.
 
 ## paper-writing-style
 
-Claude-only, loaded by `/write`, `/review`, `/draft` and `/organize`. It holds the house style (clarity, concision,
+Claude-only, loaded by `/write`, `/review`, `/draft`, `/evaluate` and `/organize`. It holds the house style (clarity, concision,
 the human-voice rules), the LaTeX conventions, and the session-state protocol. You never invoke it. Install it
 alongside whichever skills you use.
 
@@ -126,8 +145,9 @@ alongside whichever skills you use.
 5. Write methods yourself.
 6. `/write abstract`, then `title`.
 7. `/review` each section, then the cross-section sweep via `/ask-paper`.
-8. `/write cover-letter`, submit.
-9. After reviews: `/write response-to-reviewers`, and `/review response-to-reviewers` before sending.
+8. `/evaluate`: paste the venue text once, get the scores, then `/review` the weakest sections.
+9. `/write cover-letter`, submit.
+10. After reviews: `/write response-to-reviewers`, and `/review response-to-reviewers` before sending.
 
 ## Not covered
 

@@ -18,7 +18,7 @@
       "name": "ask-paper",
       "source": "./skills/ask-paper",
       "description": "The paper-writing helper: explains every skill and when to use it, reports where the manuscript stands and what to write next, and keeps session state across weeks.",
-      "version": "0.2.1"
+      "version": "0.3.0"
     },
     {
       "name": "write",
@@ -36,7 +36,13 @@
       "name": "review",
       "source": "./skills/review",
       "description": "Review one paper section against the course-derived model for that section and report what is missing, weak or inconsistent, without rewriting it unasked.",
-      "version": "0.2.0"
+      "version": "0.3.0"
+    },
+    {
+      "name": "evaluate",
+      "source": "./skills/evaluate",
+      "description": "Score a complete paper section by section and overall against the venue's pasted review criteria and the structure of previous accepted papers, with the reason for every score.",
+      "version": "0.1.0"
     },
     {
       "name": "paper-writing-style",

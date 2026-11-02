@@ -19,18 +19,20 @@ The table is an index; the docs are where the detail lives.
 | `/ask-paper` | The helper: explains every skill and when to use it, says where your manuscript stands and what to write next | [docs](docs/ask-paper.md) |
 | `/draft <section \| paper>` | A first version from the material you already have, with red TODOs for what is missing. Asks what kind of paper it is, because the type decides the structure | [docs](docs/draft.md) |
 | `/write <section>` | Writes or updates a section: abstract, introduction, results-discussion, conclusions, title, cover-letter, response-to-reviewers | [docs](docs/write.md) |
-| `/review <section>` | Critiques a section against its model and reports what is missing or weak, without rewriting it | [docs](docs/review.md) |
+| `/review <section>` | Critiques a section against its model and reports what is missing or weak, without rewriting it. Keeps that section's score current if an evaluation exists | [docs](docs/review.md) |
+| `/evaluate` | Scores the whole paper 1 to 10, section by section and overall, against the venue's review criteria (pasted once, saved) and the structure of accepted papers in `exemplars/`. Manual only | [docs](docs/evaluate.md) |
 | `paper-writing-style` | The style rulebook the others lean on. Claude-only, no `/` command | [docs](docs/paper-writing-style.md) |
 
 ### How it fits together
 
-Five commands, and you name the section as an argument:
+Six commands, and you name the section as an argument:
 
 ```
 /organize ICSE 2027 <author-guidelines URL>     # the project, in the venue's format
 /draft introduction notes.md <link>              # first version from your material, red TODOs for gaps
 /write results-discussion                       # interview you, write a section, or update an existing one
 /review introduction                            # critique a section
+/evaluate                                       # score the whole paper against the venue's criteria
 /ask-paper                                      # which skill? where am I? what next?
 ```
 
@@ -74,6 +76,7 @@ currently stands, and hands off to the right command for the next step.
 | 4 | Methods or experimental | none yet, see [`todo/`](todo/methods-family.md) |
 | 5 | Abstract | [`/write abstract`](docs/write.md) |
 | 6 | Title | [`/write title`](docs/write.md) |
+| 6b | Score the whole paper against the venue's criteria | [`/evaluate`](docs/evaluate.md) |
 | 7 | Cover letter | [`/write cover-letter`](docs/write.md) |
 | 8 | Revise after review | [`/write response-to-reviewers`](docs/write.md) |
 
@@ -104,6 +107,8 @@ my-paper/
     ├── STATE.md            position, next step, key decisions
     ├── decisions.md        append-only log, each entry dated
     ├── open-questions.md   unresolved items
+    ├── venue-criteria.md   the venue text you pasted once, and the criteria extracted from it
+    ├── evaluation.md       the latest whole-paper score, kept current by /review
     ├── interviews/         answers given, so they are not asked twice
     └── revision/           reviewer rounds and coverage
 ```

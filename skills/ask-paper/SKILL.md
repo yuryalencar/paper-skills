@@ -1,6 +1,6 @@
 ---
 name: ask-paper
-description: The paper-writing helper. Explains every skill in this package, why it exists and when to use it, tells you where your manuscript stands and what to do next, and keeps the session state across weeks. Follows the recommended writing order from Zucolotto's course (results and discussion, conclusions, introduction, methods, abstract, title). Use when asked which skill to use, what /write, /review, /draft or /organize do, how to start writing a paper, what to write next, what order to write in, where we left off, or to be walked through a manuscript end to end.
+description: The paper-writing helper. Explains every skill in this package, why it exists and when to use it, tells you where your manuscript stands and what to do next, and keeps the session state across weeks. Follows the recommended writing order from Zucolotto's course (results and discussion, conclusions, introduction, methods, abstract, title). Use when asked which skill to use, what /write, /review, /draft, /evaluate or /organize do, how to start writing a paper, what to write next, what order to write in, where we left off, or to be walked through a manuscript end to end.
 allowed-tools: Read, Grep, Glob
 ---
 
@@ -42,6 +42,10 @@ Every skill in the package reads `paper-out/` and **updates it at the end of eve
 `references/session-state.md` in `paper-writing-style` sets out. `/write`, `/review`, `/draft` and
 `/organize` each update their own section's row, their decisions and their interviews, so `STATE.md` stays
 current even when this skill is never invoked.
+
+`/evaluate` also writes `venue-criteria.md` and `evaluation.md`, and `/review` updates a section's score in
+`evaluation.md`. Read both when they exist, report the overall score and its date, and flag a section whose
+score predates changes you can see in the manuscript. Never re-score it yourself: that is `/review`'s job.
 
 What is specific to this skill is that it **sees the whole manuscript**. It reconciles `STATE.md` against
 it: verifies every row, corrects what drifted, recomputes the position and the next step, and catches
@@ -96,6 +100,7 @@ snapshot; `decisions.md` is the append-only log.
 | 4 | Methods or experimental | none yet, see `todo/` | The work is done |
 | 5 | Abstract | `/write abstract` | Everything above written |
 | 6 | Title | `/write title` | Everything above written |
+| 6b | Score the whole paper against the venue's criteria | `/evaluate` | Every section exists, and the venue text is pasted once |
 | 7 | Cover letter | `/write cover-letter` | Target journal chosen |
 | 8 | Submit, then revise | `/write response-to-reviewers` | Reviews received |
 
@@ -143,7 +148,7 @@ order is a judgement call, not an error.
 
 ### 3. Hand off
 
-Invoke `/write <section>` (or `/organize`) for the next step. If the researcher has material but no text for
+Invoke `/write <section>` (or `/organize`, or `/evaluate` for a complete draft) for the next step. If the researcher has material but no text for
 it, `/draft <section>` gives them a first version to react to instead of starting with an interview. Do not reimplement its work: each section has its
 own interview, model and checks, and duplicating them here would produce a worse version.
 
@@ -170,7 +175,11 @@ When every section exists, offer a review sweep rather than declaring the paper 
 2. Then the cross-section checks that no single review can make: the abstract, introduction final
    paragraph and conclusions must all state the same purpose and contribution; every value in the
    abstract and conclusions must match the results; every gap in the introduction must be answered.
-3. Then `/write cover-letter`.
+3. Then `/evaluate`, which scores every section and the paper against the venue's pasted criteria and the
+   exemplars, and writes `paper-out/evaluation.md`. It asks for the venue text once and saves it to
+   `paper-out/venue-criteria.md`. If an evaluation already exists, `/review` keeps each section's score current,
+   so offer `/evaluate` again only when the venue text changed or sections were added.
+4. Then `/write cover-letter`.
 
 Report the cross-section checks yourself, since they fall between the sections.
 
